@@ -684,13 +684,15 @@ class FP {
     const from = this.pages[this.cur];
     const to = this.pages[next];
 
-    if (dir > 0) to.scrollTop = 0; // 앞으로 갈 때만 목적지 리셋
-
     from.classList.remove('cur');
     from.classList.add(dir > 0 ? 'past' : 'dn');
 
     to.classList.remove('past', 'dn');
     to.getBoundingClientRect(); // force reflow
+    if (dir > 0) {
+      to.scrollTop = 0;
+      requestAnimationFrame(() => { to.scrollTop = 0; });
+    }
     to.classList.add('cur');
 
     this.cur = next;
