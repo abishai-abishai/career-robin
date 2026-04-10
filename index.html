@@ -139,7 +139,7 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .pg-cover > section { justify-content:flex-start; padding-top:80px; }
 .ci-card { background:var(--ink); border-radius:16px; padding:28px 32px; margin-bottom:28px; font-size:13.5px; color:rgba(255,255,255,.65); line-height:1.9; word-break:keep-all; }
 .ci-card strong { color:var(--mint); font-weight:700; }
-.cv-blocks { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.cv-blocks { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
 .cv { background:var(--white); border:1px solid var(--g100); border-radius:16px; padding:24px 28px; position:relative; overflow:hidden; transition:box-shadow .3s, transform .3s; }
 .cv:hover { box-shadow:0 14px 44px rgba(0,0,0,.07); transform:translateY(-2px); }
 .cv::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mint6); }
@@ -654,19 +654,25 @@ class FP {
 
   onWheel(e) {
     e.preventDefault();
+
+    const pg = this.pages[this.cur];
+    const over = pg.scrollHeight > pg.clientHeight + 10;
+
+    if (over) {
+      if (e.deltaY > 0 && pg.scrollTop < pg.scrollHeight - pg.clientHeight - 10) {
+        pg.scrollTop += e.deltaY;
+        return;
+      }
+      if (e.deltaY < 0 && pg.scrollTop > 10) {
+        pg.scrollTop += e.deltaY;
+        return;
+      }
+    }
+
     if (Math.abs(e.deltaY) < 8) return;
     const now = Date.now();
     if (now - this.lastT < 200) return;
     this.lastT = now;
-
-    // Check internal overflow
-    const pg = this.pages[this.cur];
-    const over = pg.scrollHeight > pg.clientHeight + 10;
-    if (over) {
-      if (e.deltaY > 0 && pg.scrollTop < pg.scrollHeight - pg.clientHeight - 10) return;
-      if (e.deltaY < 0 && pg.scrollTop > 10) return;
-    }
-
     this.go(e.deltaY > 0 ? 1 : -1);
   }
 
