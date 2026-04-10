@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한아비새 · Career</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+<style>
+:root {
+  --ink:   #231F20;
+  --g700:  #333;
+  --g500:  #555;
+  --g400:  #999;
+  --g100:  #EBEBEB;
+  --g50:   #F5F5F5;
+  --white: #FFF;
+  --mint:  #2BF5A0;
+  --mint6: #1AD88B;
+  --mbg:   #F0FBF5;
+  --en: 'Inter', sans-serif;
+  --kr: 'Pretendard', 'Noto Sans KR', sans-serif;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { font-family:var(--kr); color:var(--ink); background:var(--white); -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+
+/* ── Progress bar ── */
+#prog { position:fixed; top:0; left:0; height:3px; width:0; background:var(--mint6); z-index:9999; transition:width .1s linear; }
+
+/* ── Nav ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  height:60px; padding:0 48px;
+  display:flex; align-items:center; justify-content:space-between;
+  transition:background .3s, box-shadow .3s;
+}
+nav.s { background:rgba(255,255,255,.95); backdrop-filter:blur(12px); box-shadow:0 1px 0 var(--g100); }
+.nav-logo { font-family:var(--en); font-weight:900; font-size:18px; letter-spacing:-.5px; color:#fff; text-decoration:none; transition:color .3s; }
+nav.s .nav-logo { color:var(--ink); }
+.nav-logo .dot { color:var(--mint); }
+.nav-links { display:flex; gap:28px; }
+.nav-links a { font-family:var(--en); font-size:12.5px; font-weight:600; color:rgba(255,255,255,.6); text-decoration:none; transition:color .2s; position:relative; padding-bottom:2px; }
+.nav-links a::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:2px; background:var(--mint); transform:scaleX(0); transform-origin:left; transition:transform .2s; }
+.nav-links a:hover::after, .nav-links a.on::after { transform:scaleX(1); }
+nav.s .nav-links a { color:var(--g400); }
+nav.s .nav-links a:hover, nav.s .nav-links a.on { color:var(--ink); }
+
+/* ── Anim ── */
+.a { opacity:0; transform:translateY(44px); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1); }
+.a.fl { transform:translateX(-36px); }
+.a.fr { transform:translateX(36px); }
+.a.sc { transform:scale(.93); }
+.a.vis { opacity:1; transform:none; }
+.a[data-d="1"]{transition-delay:.08s} .a[data-d="2"]{transition-delay:.16s} .a[data-d="3"]{transition-delay:.24s}
+.a[data-d="4"]{transition-delay:.32s} .a[data-d="5"]{transition-delay:.40s} .a[data-d="6"]{transition-delay:.48s}
+.a[data-d="7"]{transition-delay:.56s} .a[data-d="8"]{transition-delay:.64s}
+
+/* ── HERO ── */
+#hero {
+  min-height:100vh; background:var(--ink);
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:120px 48px 80px;
+  position:relative; overflow:hidden;
+}
+#hero::before {
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image: linear-gradient(rgba(43,245,160,.035) 1px,transparent 1px), linear-gradient(90deg,rgba(43,245,160,.035) 1px,transparent 1px);
+  background-size:52px 52px;
+}
+.h-eyebrow { font-family:var(--en); font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--mint6); margin-bottom:24px; opacity:0; animation:fu .6s .2s forwards; }
+.h-name { font-size:clamp(52px,9vw,92px); font-weight:900; letter-spacing:-3px; color:#fff; line-height:1; margin-bottom:28px; opacity:0; animation:fu .7s .35s forwards; }
+.h-name .dot { color:var(--mint); }
+.h-quote { font-size:clamp(15px,2.2vw,21px); color:rgba(255,255,255,.5); line-height:1.75; margin-bottom:36px; word-break:keep-all; opacity:0; animation:fu .7s .5s forwards; }
+.h-roles { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:56px; opacity:0; animation:fu .7s .65s forwards; }
+.h-pill { font-family:var(--en); font-size:11.5px; font-weight:600; padding:5px 15px; border-radius:100px; border:1px solid rgba(43,245,160,.25); color:var(--mint6); }
+.h-stats { display:flex; gap:56px; justify-content:center; margin-bottom:80px; opacity:0; animation:fu .7s .8s forwards; }
+.s-num { display:block; font-family:var(--en); font-size:34px; font-weight:800; color:#fff; letter-spacing:-1px; line-height:1; margin-bottom:5px; }
+.s-num .m { color:var(--mint); }
+.s-lbl { font-size:11.5px; color:rgba(255,255,255,.35); font-weight:500; }
+.h-scroll { position:absolute; bottom:36px; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:8px; text-decoration:none; opacity:0; animation:fu .7s 1s forwards; }
+.h-scroll span { font-family:var(--en); font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.25); }
+.s-arrow { width:20px; height:32px; border:1.5px solid rgba(255,255,255,.12); border-radius:10px; position:relative; display:flex; justify-content:center; }
+.s-arrow::after { content:''; width:4px; height:8px; background:var(--mint); border-radius:2px; position:absolute; top:6px; animation:sb 1.4s infinite; }
+@keyframes sb { 0%,100%{transform:translateY(0);opacity:1} 80%{transform:translateY(10px);opacity:0} }
+@keyframes fu { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:none} }
+
+/* ── Section commons ── */
+section { padding:96px 0; }
+.wrap { max-width:900px; margin:0 auto; padding:0 48px; }
+.eyebrow { font-family:var(--en); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--mint6); margin-bottom:10px; }
+.heading { font-size:30px; font-weight:800; letter-spacing:-.7px; margin-bottom:48px; line-height:1.2; }
+
+/* ── ABOUT ── */
+#about { background:var(--white); }
+.about-grid { display:grid; grid-template-columns:210px 1fr; gap:56px; align-items:start; }
+.a-photo { width:170px; height:212px; border-radius:14px; object-fit:cover; object-position:center top; margin-bottom:20px; box-shadow:0 20px 56px rgba(0,0,0,.12); display:block; }
+.c-list { list-style:none; }
+.c-list li { display:flex; align-items:baseline; gap:10px; font-size:12.5px; color:var(--g700); padding:5px 0; border-bottom:1px solid var(--g100); }
+.c-list li:last-child { border-bottom:none; }
+.c-list .k { font-family:var(--en); font-size:10px; font-weight:700; color:var(--g400); min-width:50px; text-transform:uppercase; letter-spacing:.3px; }
+.s-head { font-size:12px; font-weight:700; color:var(--g400); text-transform:uppercase; letter-spacing:1.5px; font-family:var(--en); margin:0 0 14px; }
+.sg { margin-bottom:12px; }
+.sg-name { font-size:10px; font-weight:700; color:var(--g400); font-family:var(--en); letter-spacing:.5px; text-transform:uppercase; margin-bottom:7px; }
+.st { display:flex; flex-wrap:wrap; gap:5px; }
+.sk { font-family:var(--en); font-size:11px; font-weight:600; padding:3px 10px; border-radius:6px; border:1.5px solid var(--g100); background:var(--white); color:var(--g700); transition:border-color .2s, background .2s; }
+.sk:hover { border-color:var(--mint6); background:var(--mbg); }
+.sk.mi { background:var(--mbg); color:#0FA56A; border-color:#C0EDD5; }
+.sk.bl { background:#EEF2FF; color:#4F6BD5; border-color:#C7D2FE; }
+.sk.de { background:#FFF7ED; color:#C2410C; border-color:#FED7AA; }
+.sk.gr { background:#F0FDF4; color:#16A34A; border-color:#BBF7D0; }
+.div { height:1px; background:var(--g100); margin:28px 0; }
+.deg { margin-bottom:14px; }
+.deg-p { font-family:var(--en); font-size:11px; font-weight:700; color:var(--mint6); margin-bottom:3px; }
+.deg-n { font-size:12.5px; color:var(--g700); line-height:1.6; word-break:keep-all; }
+
+/* ── COVER ── */
+#cover { background:var(--g50); }
+.ci-card { background:var(--ink); border-radius:16px; padding:30px 34px; margin-bottom:32px; font-size:14.5px; color:rgba(255,255,255,.65); line-height:1.9; word-break:keep-all; }
+.ci-card strong { color:var(--mint); font-weight:700; }
+.cv-blocks { display:grid; gap:16px; }
+.cv { background:var(--white); border:1px solid var(--g100); border-radius:16px; padding:28px 32px; position:relative; overflow:hidden; transition:box-shadow .3s, transform .3s; }
+.cv:hover { box-shadow:0 14px 44px rgba(0,0,0,.07); transform:translateY(-2px); }
+.cv::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mint6); }
+.cv-tag { font-size:13px; font-weight:800; color:var(--mint6); margin-bottom:12px; font-style:italic; }
+.cv-p { font-size:13px; color:var(--g700); line-height:1.95; word-break:keep-all; text-indent:1em; }
+.cv-p + .cv-p { margin-top:10px; }
+.cv-p strong { color:var(--ink); font-weight:700; }
+
+/* ── CAREER ── */
+#career { background:var(--white); }
+.tl { position:relative; padding-left:26px; }
+.tl::before { content:''; position:absolute; left:0; top:8px; bottom:0; width:1.5px; background:var(--g100); }
+.tc { margin-bottom:44px; position:relative; }
+.tdot { position:absolute; left:-30px; top:9px; width:10px; height:10px; border-radius:50%; }
+.tdot.mi { background:var(--mint6); box-shadow:0 0 0 3px rgba(26,216,139,.15); }
+.tdot.bl { background:#6C8EF5; box-shadow:0 0 0 3px rgba(108,142,245,.15); }
+.t-per { font-family:var(--en); font-size:12px; font-weight:700; margin-bottom:4px; }
+.t-per.mi { color:var(--mint6); } .t-per.bl { color:#6C8EF5; }
+.t-role { font-size:20px; font-weight:800; letter-spacing:-.4px; margin-bottom:4px; }
+.t-meta { font-size:12px; color:var(--g500); margin-bottom:16px; }
+.t-meta .nt { color:var(--g400); }
+.pcards { display:flex; flex-direction:column; gap:10px; }
+.pc { border:1px solid var(--g100); border-radius:12px; overflow:hidden; transition:box-shadow .25s; }
+.pc:hover { box-shadow:0 6px 24px rgba(0,0,0,.06); }
+.pc-h { display:flex; align-items:center; gap:10px; padding:12px 18px; background:var(--g50); border-bottom:1px solid var(--g100); cursor:pointer; user-select:none; flex-wrap:wrap; }
+.pc-h .ch { font-size:10px; color:var(--g400); transition:transform .25s; flex-shrink:0; }
+.pc-h.open .ch { transform:rotate(90deg); }
+.pn { font-size:13px; font-weight:800; }
+.pn.mi { color:var(--mint6); } .pn.bl { color:#6C8EF5; } .pn.co { color:#F4845F; }
+.pd { font-size:12px; color:var(--g500); }
+.pb { display:none; }
+.pb.open { display:block; }
+.pt { width:100%; border-collapse:collapse; }
+.pt td { padding:9px 18px; border-bottom:1px solid var(--g100); font-size:12.5px; vertical-align:top; color:var(--g700); line-height:1.75; word-break:keep-all; }
+.pt tr:last-child td { border-bottom:none; }
+.pt td.k { font-size:11.5px; font-weight:700; color:var(--g400); width:44px; min-width:44px; padding-right:0; }
+.tr { display:flex; flex-wrap:wrap; gap:4px; }
+.tk { display:inline-block; font-family:var(--en); font-size:10.5px; font-weight:600; padding:2px 9px; border-radius:5px; border:1px solid var(--g100); background:var(--white); color:var(--g700); }
+.tk.mi { background:var(--mbg); color:#0FA56A; border-color:#C0EDD5; }
+.tk.bl { background:#EEF2FF; color:#4F6BD5; border-color:#C7D2FE; }
+.tk.de { background:#FFF7ED; color:#C2410C; border-color:#FED7AA; }
+.tk.gr { background:#F0FDF4; color:#16A34A; border-color:#BBF7D0; }
+.ol { list-style:none; }
+.ol li { padding-left:20px; position:relative; margin-bottom:3px; font-size:12.5px; line-height:1.8; color:var(--g700); word-break:keep-all; }
+.ol li::before { content:attr(data-n); position:absolute; left:0; color:var(--mint6); font-weight:700; font-family:var(--en); font-size:12px; }
+.cf { font-size:12px; color:var(--g500); margin-top:10px; }
+.cf a { color:var(--mint6); font-weight:600; text-decoration:none; }
+.cf a:hover { text-decoration:underline; }
+
+/* ── PROJECT ── */
+#project { background:var(--ink); }
+#project .eyebrow { color:rgba(43,245,160,.55); }
+#project .heading { color:#fff; }
+.sp { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:20px; overflow:hidden; transition:border-color .3s; }
+.sp:hover { border-color:rgba(43,245,160,.25); }
+.sp-top { padding:30px 34px 26px; border-bottom:1px solid rgba(255,255,255,.06); }
+.sp-badge { display:inline-block; font-family:var(--en); font-size:10px; font-weight:700; padding:3px 10px; border-radius:100px; background:rgba(43,245,160,.1); color:var(--mint6); letter-spacing:.5px; text-transform:uppercase; margin-bottom:14px; }
+.sp-title { font-size:24px; font-weight:800; color:#fff; letter-spacing:-.5px; margin-bottom:5px; }
+.sp-sub { font-size:13px; color:rgba(255,255,255,.35); margin-bottom:18px; }
+.sp-meta { font-family:var(--en); font-size:11px; color:rgba(255,255,255,.2); margin-bottom:14px; }
+.sp-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.sp-t { font-family:var(--en); font-size:11px; font-weight:600; padding:3px 10px; border-radius:6px; border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.4); }
+.sp-t.hl { background:rgba(43,245,160,.1); color:var(--mint6); border-color:rgba(43,245,160,.2); }
+.sp-body { padding:26px 34px; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+.sp-cl { font-family:var(--en); font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,.2); margin-bottom:12px; }
+.sp-ol { list-style:none; }
+.sp-ol li { padding-left:18px; position:relative; margin-bottom:6px; font-size:12.5px; line-height:1.75; color:rgba(255,255,255,.5); word-break:keep-all; }
+.sp-ol li::before { content:attr(data-n); position:absolute; left:0; color:var(--mint6); font-weight:700; font-family:var(--en); font-size:12px; }
+
+/* ── MORE ── */
+#more { background:var(--white); }
+.more-g { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-bottom:60px; }
+.mc-title { font-size:18px; font-weight:800; margin-bottom:18px; }
+.il { list-style:none; }
+.ii { display:flex; gap:14px; align-items:baseline; padding:9px 0; border-bottom:1px solid var(--g100); font-size:13px; color:var(--g700); }
+.ii:last-child { border-bottom:none; }
+.id { font-family:var(--en); font-size:11px; font-weight:700; color:var(--mint6); white-space:nowrap; flex-shrink:0; min-width:58px; }
+.in { font-weight:700; color:var(--ink); }
+.is { font-size:11.5px; color:var(--g500); }
+
+/* ── CAMPUS ── */
+#campus { background:var(--g50); }
+.cg { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.cc { background:var(--white); border:1px solid var(--g100); border-radius:12px; padding:18px 20px; transition:box-shadow .25s, transform .25s; }
+.cc:hover { box-shadow:0 8px 26px rgba(0,0,0,.07); transform:translateY(-2px); }
+.cc-course { font-size:11px; color:var(--g400); margin-bottom:7px; display:flex; flex-wrap:wrap; align-items:center; gap:5px; line-height:1.5; }
+.cc-title { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:5px; word-break:keep-all; line-height:1.5; }
+.cc-note { font-size:11.5px; color:var(--g400); line-height:1.6; word-break:keep-all; }
+
+/* ── LIFE ── */
+#life { background:var(--white); }
+.lg { display:grid; grid-template-columns:1fr 1fr; gap:52px; }
+.lt { font-size:18px; font-weight:800; margin-bottom:18px; }
+.ll { list-style:none; }
+.li { display:flex; gap:12px; padding:9px 0; border-bottom:1px solid var(--g100); align-items:baseline; }
+.li:last-child { border-bottom:none; }
+.ld { font-family:var(--en); font-size:10.5px; font-weight:700; color:var(--mint6); white-space:nowrap; flex-shrink:0; min-width:104px; }
+.lb { font-size:12.5px; color:var(--g700); line-height:1.7; word-break:keep-all; }
+.lb strong { color:var(--ink); font-weight:700; }
+
+/* ── FOOTER ── */
+footer { background:var(--ink); padding:56px 48px; display:flex; justify-content:space-between; align-items:center; }
+.fl { font-family:var(--en); font-weight:900; font-size:22px; letter-spacing:-.5px; color:#fff; }
+.fl .dot { color:var(--mint); }
+.fr { text-align:right; }
+.fc { font-family:var(--en); font-size:12px; color:rgba(255,255,255,.3); margin-bottom:3px; }
+.fm { font-family:var(--en); font-size:11px; color:rgba(255,255,255,.15); }
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#hero">Han Abishai<span class="dot">.</span></a>
+  <div class="nav-links">
+    <a href="#about" data-s="about">About</a>
+    <a href="#cover" data-s="cover">Story</a>
+    <a href="#career" data-s="career">Career</a>
+    <a href="#project" data-s="project">Project</a>
+    <a href="#more" data-s="more">More</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="h-eyebrow">경력기술서 · Career Description</div>
+  <h1 class="h-name">한아비새<span class="dot">.</span></h1>
+  <p class="h-quote">서비스의 기능을 점검하던 사람이,<br>이제는 그 기능을 설계합니다.</p>
+  <div class="h-roles">
+    <span class="h-pill">Service Planner</span>
+    <span class="h-pill">QA Engineer</span>
+    <span class="h-pill">UX Thinker</span>
+  </div>
+  <div class="h-stats">
+    <div class="stat-item">
+      <span class="s-num"><span class="cnt" data-t="10382">0</span></span>
+      <span class="s-lbl">TC 설계 건수</span>
+    </div>
+    <div class="stat-item">
+      <span class="s-num"><span class="cnt" data-t="13082">0</span></span>
+      <span class="s-lbl">테스트 수행 건수</span>
+    </div>
+    <div class="stat-item">
+      <span class="s-num"><span class="cnt" data-t="13">0</span><span class="m">개월</span></span>
+      <span class="s-lbl">실무 경력</span>
+    </div>
+  </div>
+  <a class="h-scroll" href="#about">
+    <span>Scroll</span>
+    <div class="s-arrow"></div>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow a">Introduction</div>
+    <div class="heading a" data-d="1">한아비새를 소개합니다.</div>
+    <div class="about-grid">
+      <div class="a fl">
+        <img class="a-photo" src="./assets/photo.jpg" alt="한아비새">
+        <ul class="c-list">
+          <li><span class="k">Birth</span><span>2001. 03. 17.</span></li>
+          <li><span class="k">Phone</span><span>+82 010-7319-6094</span></li>
+          <li><span class="k">Email</span><span>rainbirddd25@gmail.com</span></li>
+        </ul>
+      </div>
+      <div class="a fr">
+        <p class="s-head">Skills</p>
+        <div class="sg"><div class="sg-name">PM · Planning</div><div class="st"><span class="sk">Figma</span><span class="sk">FigmaMake</span><span class="sk mi">Claude</span><span class="sk">Notion</span><span class="sk">GoogleDocs</span></div></div>
+        <div class="sg"><div class="sg-name">Data · Analytics</div><div class="st"><span class="sk bl">Python</span><span class="sk bl">JupyterNotebook</span><span class="sk bl">Pandas</span><span class="sk bl">Numpy</span><span class="sk">Tableau</span><span class="sk">GA4</span></div></div>
+        <div class="sg"><div class="sg-name">DB · Collab</div><div class="st"><span class="sk">DBeaver</span><span class="sk gr">SQL</span><span class="sk gr">Slack</span><span class="sk gr">Jira</span></div></div>
+        <div class="sg"><div class="sg-name">Dev · Automation</div><div class="st"><span class="sk de">JavaScript</span><span class="sk de">HTML</span><span class="sk de">CSS</span><span class="sk de">Selenium</span><span class="sk">Twine</span></div></div>
+        <div class="div"></div>
+        <p class="s-head">Degrees</p>
+        <div class="deg"><div class="deg-p">2017.03 – 2020.02</div><div class="deg-n">서울 중동고등학교 졸업</div></div>
+        <div class="deg"><div class="deg-p">2021.03 – 2025.08</div><div class="deg-n">강남대학교 글로벌문화학부 문화콘텐츠학 주전공,<br>사회복지학부 사회서비스정책학 복수전공</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COVER LETTER -->
+<section id="cover">
+  <div class="wrap">
+    <div class="eyebrow a">Cover Letter</div>
+    <div class="heading a" data-d="1">저는 이런 사람입니다.</div>
+    <div class="ci-card a" data-d="2">
+      안녕하세요. 10개월의 QA 엔지니어, 3개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. 저는 <strong>사용자에게 유능하고 다정하게 다가가는 UX 전문가</strong>로 성장하고 싶은 비전을 지니고 있습니다.
+    </div>
+    <div class="cv-blocks">
+      <div class="cv a" data-d="2">
+        <div class="cv-tag">#사용자 관점으로 서비스 품질 관리하기</div>
+        <p class="cv-p">㈜다우기술에서 '쿠팝', '뿌리오', '다우오피스' 등 자사 도메인의 품질 관리를 위해 <strong>10,382건의 테스트 케이스를 설계</strong>하고 <strong>13,082건의 테스트를 수행</strong>하며 QA 인턴으로 실무를 수행했습니다. B2B 쿠폰 마케팅 서비스 '쿠팝비즈'의 기존 결함율을 <strong>39%에서 0%로 감소</strong>시켜 서비스를 성공적으로 출시한 바 있으며, '다우오피스' 차세대 버전의 테스트를 진행하면서 사용자 <strong>로그인 UX Writing을 기획</strong>하기도 했습니다.</p>
+        <p class="cv-p">이때 저는 <strong>'왜 이런 문제가 발생했는가?'에 대하여 서비스의 구조적 질문을 던지고, 기획자들과 함께 기능의 목적과 흐름을 고민하면서</strong> 자연스럽게 기획의 언어에 관심을 가지게 되었습니다. 이 과정이 결과적으로 기획자로서의 커리어를 꿈꾸는 촉매제가 되었습니다.</p>
+      </div>
+      <div class="cv a" data-d="3">
+        <div class="cv-tag">#사용자 데이터를 논거로 문제를 정의하는 기획자</div>
+        <p class="cv-p">㈜뱅크클리어에 서비스 기획자로 입사하여 <strong>법무사 등기 업무 플랫폼 '코스' 앱/어드민의 유지 보수 및 고도화를 수행</strong>했습니다. 법무사들이 법정 수수료 상한액 이상의 수수료를 수취하는 사례를 발견하고, <strong>Python 기반의 pandas 라이브러리를 통해 사용자 데이터를 분석하여 문제를 정의</strong>하고, 수수료 상한액 분기 처리 정책과 법무사 사무소 소개 키워드 기능 등을 기획하며 출시까지 프로젝트를 관리했습니다.</p>
+      </div>
+      <div class="cv a" data-d="4">
+        <div class="cv-tag">#어떤 상황에서도 정답은 '소통'이다</div>
+        <p class="cv-p">기획 팀장님이 입사 2개월 만에 퇴사하면서 전사 인원 17명 중 <strong>제가 유일한 기획자로 재직</strong>하게 되는 난항이 생겼습니다. 이 위기를 기회로 삼아 <strong>기획을 비롯해 QA, 데이터 분석, CS, 디자인 등 모든 업무에 영향력을 더하며</strong> A to Z의 프로덕트 전문가가 되기 위해 발돋움했습니다.</p>
+        <p class="cv-p">저는 프로덕트 매니저이자 서비스 UX 기획자로서 <strong>실무자와 사용자 모두에게 유능하고 다정하게 소통하는 사람이라 자부합니다.</strong> 안정적인 서비스를 매니징하는 서비스 기획자로 성장해 나갈 것을 약속드립니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAREER -->
+<section id="career">
+  <div class="wrap">
+    <div class="eyebrow a">Work Experience</div>
+    <div class="heading a" data-d="1">실무 경력</div>
+    <div class="tl">
+
+      <!-- 뱅크클리어 -->
+      <div class="tc a">
+        <div class="tdot mi"></div>
+        <div class="t-per mi">2025.07 – 2025.10 · 4개월</div>
+        <div class="t-role">서비스 기획자</div>
+        <div class="t-meta">㈜뱅크클리어 기획팀 · 매니저 · 정규직 <span class="nt">(*이후 경영 악화로 수습 종료)</span></div>
+        <div class="pcards">
+          <div class="pc">
+            <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn mi">코스</span><span class="pd">: 근저당 설정 및 소유권 이전 등 법무사의 등기 업무 플랫폼</span></div>
+            <div class="pb open"><table class="pt">
+              <tr><td class="k">기간</td><td>2025.07 – 2025.10 (총 4개월)</td></tr>
+              <tr><td class="k">개요</td><td>코스 서비스 유지 보수 및 고도화</td></tr>
+              <tr><td class="k">업무</td><td>서비스 기획 및 프로젝트 매니지먼트</td></tr>
+              <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span><span class="tk">Notion</span><span class="tk gr">GoogleSpreadsheets</span><span class="tk bl">Python</span><span class="tk bl">JupyterNotebook</span><span class="tk bl">Pandas</span><span class="tk gr">SQL</span></div></td></tr>
+              <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">앱/어드민 프론트 화면 설계 및 디자인</li><li data-n="②">우리은행-권원보험사-자사 간 데이터 송수신 정책 유지 보수</li><li data-n="③">운영 이슈 조치에 따른 QA/QC 진행, 관련 앱/어드민 배포 사후 관리</li><li data-n="④">법무사 우선 문의 CS 응대 지원, 당일 대출 실행 확인 조사 및 권리 조사 수행 지원</li></ul></td></tr>
+              <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">법무사의 법정 수수료 상한액 초과 사례 데이터 분석 및 분기 처리 기능 기획</li><li data-n="②">앱 내 법무사 사무소 소개 키워드 기능 기획 및 출시</li></ul></td></tr>
+            </table></div>
+          </div>
+          <div class="pc">
+            <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn mi">전자등기 솔루션</span><span class="pd">: 근저당권 전자 등기 접수 플랫폼</span></div>
+            <div class="pb"><table class="pt">
+              <tr><td class="k">기간</td><td>2025.09 – 2025.10 (총 2개월)</td></tr>
+              <tr><td class="k">개요</td><td>전자등기 솔루션 플랫폼 초기 기획 및 화면 설계</td></tr>
+              <tr><td class="k">업무</td><td>서비스 기획 및 프로젝트 매니지먼트</td></tr>
+              <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span></div></td></tr>
+              <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">인터넷 등기소 메뉴 구조 파악에 따른 플랫폼 기능 정의</li></ul></td></tr>
+              <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">플랫폼 홈 화면 및 로그인 정책 기획</li></ul></td></tr>
+            </table></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 다우기술 -->
+      <div class="tc a" data-d="1">
+        <div class="tdot bl"></div>
+        <div class="t-per bl">2024.06 – 2025.03 · 10개월</div>
+        <div class="t-role">QA 엔지니어</div>
+        <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장 제안, 총 9개월 근무)</span></div>
+        <div class="pcards">
+          <div class="pc">
+            <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">쿠팝(현 애드콘)</span><span class="pd">: B2B 모바일 쿠폰 마케팅 서비스</span></div>
+            <div class="pb open"><table class="pt">
+              <tr><td class="k">기간</td><td>2024.06 – 2024.09 (총 4개월)</td></tr>
+              <tr><td class="k">개요</td><td>비즈쿠팝에서의 B2B 마케팅 수요 특화를 위한 쿠폰 서비스 출시</td></tr>
+              <tr><td class="k">업무</td><td>테스트 설계(TC 작성) 및 테스트 QC 수행</td></tr>
+              <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk">Figma</span><span class="tk de">CSS</span><span class="tk de">Selenium</span></div></td></tr>
+              <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">1~3차 전수 단위테스트 및 회귀테스트 TC 작성(총 1,062건) 및 테스트 수행(총 9,521건)</li><li data-n="②">각 기능 결함에 대한 조치 우선도 설정 및 개발자 조치 건에 대한 재테스트 수행</li></ul></td></tr>
+              <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">매 테스트벌 결함율 감소 추세 확보, 서비스 릴리즈 당시 운영 서버 결함율 0% 달성</li><li data-n="②">비즈쿠팝 EOS 업데이트 테스트에 대한 결함 관리 및 사이트 통합</li></ul></td></tr>
+            </table></div>
+          </div>
+          <div class="pc">
+            <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">뿌리오</span><span class="pd">: B2B / B2C 문자 마케팅 서비스</span></div>
+            <div class="pb"><table class="pt">
+              <tr><td class="k">기간</td><td>2024.09 – 2024.10 (총 2개월)</td></tr>
+              <tr><td class="k">개요</td><td>뿌리오 메인UI 개편 및 문자 설문 기능 도입</td></tr>
+              <tr><td class="k">업무</td><td>테스트 설계(TC 작성) 및 테스트 QC 수행</td></tr>
+              <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk gr">Jira</span><span class="tk">Figma</span><span class="tk de">CSS</span></div></td></tr>
+              <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">메인화면 개편 단위 테스트 QC 수행(총 310건)</li><li data-n="②">모바일 설문 단위 테스트 TC 작성(총 89건) 및 QC 수행(총 319건)</li></ul></td></tr>
+              <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">서비스 릴리즈 후 일부 개발 미구현 건에 대한 개선 방향 제안</li></ul></td></tr>
+            </table></div>
+          </div>
+          <div class="pc">
+            <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">다우오피스</span><span class="pd">: 그룹웨어, 회계, 경영, HR 올인원 사내 업무 플랫폼</span></div>
+            <div class="pb"><table class="pt">
+              <tr><td class="k">기간</td><td>2024.09 – 2025.03 (총 7개월)</td></tr>
+              <tr><td class="k">개요</td><td>차세대 다우오피스 대규모 업데이트를 위한 Sprint 1~4 테스트 진행</td></tr>
+              <tr><td class="k">업무</td><td>테스트 설계(TC 작성) 및 테스트 QC 수행</td></tr>
+              <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk gr">GoogleSlide</span><span class="tk">Figma</span></div></td></tr>
+              <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">기존 다우오피스 서비스 고도화</li><li data-n="②">Sprint 단위별 전수 테스트 TC 작성(총 8,829건) 및 QC 수행(총 2,322건)</li></ul></td></tr>
+              <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">다우오피스 서비스 로그인 프로세스 UX 및 Validation 문구 기획</li><li data-n="②">각 Sprint 메뉴 단위별 결함 관리 슬라이드 기획 및 배포</li></ul></td></tr>
+            </table></div>
+          </div>
+        </div>
+        <div class="cf">cf. <a href="#">다우기술_품질관리경력(상세)_한아비새 사원</a></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SIDE PROJECT -->
+<section id="project">
+  <div class="wrap">
+    <div class="eyebrow a">Side Project</div>
+    <div class="heading a" data-d="1">진행 중인 프로젝트</div>
+    <div class="sp a sc" data-d="2">
+      <div class="sp-top">
+        <div class="sp-badge">ing · 2025.10 ~</div>
+        <div class="sp-title">다가원 그룹웨어</div>
+        <div class="sp-sub">오피스 그룹웨어 플랫폼</div>
+        <div class="sp-meta">서비스 기획자 / PM · 개발자 4인 + 기획자 1인, 5인조 팀</div>
+        <div class="sp-tags">
+          <span class="sp-t">Figma</span><span class="sp-t">FigmaMake</span><span class="sp-t hl">Claude</span><span class="sp-t">Notion</span>
+        </div>
+      </div>
+      <div class="sp-body">
+        <div>
+          <div class="sp-cl">요약</div>
+          <ul class="sp-ol">
+            <li data-n="①">IA/메뉴 구조도 작성 및 상세 기능별 정의</li>
+            <li data-n="②">프론트엔드 UI/UX 정의 및 백엔드 테이블 설계 어시스트</li>
+            <li data-n="③">AI(Figma Make, Claude Code)를 활용한 화면 프로토타이핑</li>
+            <li data-n="④">프로젝트 이해관계자와의 커뮤니케이션 주도</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sp-cl">문서</div>
+          <a href="#" style="color:var(--mint6);font-size:13px;font-weight:600;text-decoration:none">🅵 [다가원 그룹웨어🌊] 기획안 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES + EXPERIENCES -->
+<section id="more">
+  <div class="wrap">
+    <div class="eyebrow a">Certificates & Experiences</div>
+    <div class="heading a" data-d="1">자격증 및 경험</div>
+    <div class="more-g">
+      <div class="a fl">
+        <div class="mc-title">📋 Certificates</div>
+        <ul class="il">
+          <li class="ii"><span class="id">2025.06</span><span><span class="in">SQL 개발자</span> <span class="is">(SQLD)</span></span></li>
+          <li class="ii"><span class="id">2025.06</span><span><span class="in">GAIQ</span> <span class="is">(Google Analytics Individual Qualification)</span></span></li>
+          <li class="ii"><span class="id">2024.02</span><span><span class="in">대한유도회 유도 1단</span> <span class="is">(단증번호: 2024-1-478876)</span></span></li>
+          <li class="ii"><span class="id">2024.01</span><span><span class="in">운전면허 2종 보통</span></span></li>
+        </ul>
+      </div>
+      <div class="a fr">
+        <div class="mc-title">👋 Experiences</div>
+        <ul class="il">
+          <li class="ii"><span class="id">2018.08</span><span>소설 <span class="in">「향기, 통증, 가면.」</span> 출판</span></li>
+          <li class="ii"><span class="id">2018.10–2019.03</span><span>YG엔터테인먼트 디렉터 프로젝트 4기 <span class="in">작사가 활동</span></span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPUS PROJECTS -->
+<section id="campus">
+  <div class="wrap">
+    <div class="eyebrow a">University</div>
+    <div class="heading a" data-d="1">캠퍼스 프로젝트</div>
+    <div class="cg">
+      <div class="cc a" data-d="1"><div class="cc-course">2024-1 캡스톤디자인 졸업 심사 <span class="tk" style="font-size:10px">FinalCutPro</span><span class="tk" style="font-size:10px">Motion</span><span class="tk" style="font-size:10px">SketchUp</span></div><div class="cc-title">🎮 게임 블라인드(BLIND)</div><div class="cc-note">컨셉 아이데이션과 플레이스루 영상 프로토타이핑 담당</div></div>
+      <div class="cc a" data-d="2"><div class="cc-course">2024-1 게임기획스튜디오 기말 <span class="tk" style="font-size:10px">Figma</span></div><div class="cc-title">🎮 &lt;즐거우세요? ㅎ 아이돌디렉팅이요&gt; 최종기획안</div><div class="cc-note">컨셉 아이데이션과 피그마 UI구성 작업 담당</div></div>
+      <div class="cc a" data-d="3"><div class="cc-course">2023-2 소설창작워크숍 기말</div><div class="cc-title">📄 초단편 소설 「킥플립 마끼아또」</div></div>
+      <div class="cc a" data-d="4"><div class="cc-course">2023-2 게임메이킹워크숍 기말 <span class="tk" style="font-size:10px">SketchUp</span></div><div class="cc-title">🏃 &lt;막내산타 수난시대&gt; 최종기획안</div><div class="cc-note">퀘스트 기획과 공간 구현 담당</div></div>
+      <div class="cc a" data-d="5"><div class="cc-course">2023-2 게임메이킹워크숍 중간 <span class="tk de" style="font-size:10px">HTML</span><span class="tk" style="font-size:10px">Twine</span></div><div class="cc-title">📄 Twine웹게임_푸른수업의아내_한아비새.html</div></div>
+      <div class="cc a" data-d="6"><div class="cc-course">2023-1 광고.PR의이해 기말</div><div class="cc-title">📄 SM엔터테인먼트 ESG PR기획 제안</div></div>
+      <div class="cc a" data-d="7"><div class="cc-course">2022-2 영상콘텐츠제작실습 기말 <span class="tk" style="font-size:10px">FinalCutPro</span><span class="tk" style="font-size:10px">Motion</span></div><div class="cc-title">🎬 뮤직비디오 &lt;스물셋&gt;(원곡:IU) 리메이크 기획 및 촬영</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES + VOLUNTEERS -->
+<section id="life">
+  <div class="wrap">
+    <div class="eyebrow a">Activities & Community</div>
+    <div class="heading a" data-d="1">활동 및 봉사</div>
+    <div class="lg">
+      <div class="a fl">
+        <div class="lt">🏃 Activities</div>
+        <ul class="ll">
+          <li class="li"><span class="ld">2021.08–2022.08</span><span class="lb"><strong>뽀로로파크 영등포빅마켓점</strong> 운영팀 스탭: 키즈파크 어트랙션 진행, 유아 응대 및 놀이지도</span></li>
+          <li class="li"><span class="ld">2022.03–2023.04</span><span class="lb"><strong>사회복지청년단체 Z team</strong> 대외홍보팀: 사회사업 진행 및 홍보 콘텐츠 제작</span></li>
+          <li class="li"><span class="ld">2022.07–2023.06</span><span class="lb"><strong>자란다 가정돌봄 교사</strong>: 5-7세 아동 대상 놀이지도, 한글/영어 수업</span></li>
+          <li class="li"><span class="ld">2022.09–2023.03</span><span class="lb"><strong>다문화NGO 조인어스코리아</strong> 그린블루 크리에이터 13기 촬영편집팀장</span></li>
+          <li class="li"><span class="ld">2022.09–2024.06</span><span class="lb"><strong>강남대학교 카페 블룸즈버리</strong> 근무</span></li>
+          <li class="li"><span class="ld">2023.06–2024.02</span><span class="lb"><strong>수원시 카페 구스타브</strong> 근무</span></li>
+          <li class="li"><span class="ld">2023.03–2023.05</span><span class="lb"><strong>강남대학교 유학생 문화 부스</strong> 기획 및 운영: 독일·미국·카자흐스탄 유학생 협업</span></li>
+          <li class="li"><span class="ld">2023.12–2024.06</span><span class="lb"><strong>'Youth Talk' 촬영편집팀장</strong>: 숏폼 콘텐츠 기획 및 제작</span></li>
+        </ul>
+      </div>
+      <div class="a fr">
+        <div class="lt">🌱 Volunteers <span style="font-size:14px;color:var(--g400);font-weight:500">총 88시간</span></div>
+        <ul class="ll">
+          <li class="li"><span class="ld">2021.07–2021.11</span><span class="lb"><strong>서대문교육복지센터</strong> 좋은 이웃 활동가: 발달장애 중학생 멘토링</span></li>
+          <li class="li"><span class="ld">2021.11–2022.03</span><span class="lb"><strong>주원지역아동센터</strong> 청소년 멘토링: 발달장애 중학생 멘토링</span></li>
+          <li class="li"><span class="ld">2022.02–2022.08</span><span class="lb"><strong>Z team</strong>: "꿈을 펼쳐라, 드림캐치" 청소년 진로연계 프로그램 기획 및 진행</span></li>
+          <li class="li"><span class="ld">2022.05–2022.11</span><span class="lb"><strong>Z team</strong>: 필환경 캠페인 "필대로 취하자!" 진행</span></li>
+          <li class="li"><span class="ld">2022.09–2023.02</span><span class="lb"><strong>다문화NGO 조인어스코리아</strong>: 외국인 대상 국내 언어·문화 소개 활동</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl">Han Abishai<span class="dot">.</span></div>
+  <div class="fr">
+    <div class="fc">rainbirddd25@gmail.com</div>
+    <div class="fc">+82 010-7319-6094</div>
+    <div class="fm">경력기술서 v2.0.0 · 2025</div>
+  </div>
+</footer>
+
+<script>
+// Progress bar
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  prog.style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
+});
+
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('s', scrollY > 60); });
+
+// Active nav link
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('.nav-links a[data-s]');
+new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.s === e.target.id));
+  });
+}, { threshold: 0.4 }).observe.call({ observe(el){} }, ...[], ...secs) || secs.forEach(s => new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle('on', a.dataset.s === e.target.id)); });
+}, { threshold: 0.4 }).observe(s));
+
+// Scroll animations
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.a').forEach(el => obs.observe(el));
+
+// Counter animation
+function runCounter(el) {
+  const target = +el.dataset.t;
+  const dur = 1800;
+  const start = performance.now();
+  function tick(now) {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.floor(ease * target).toLocaleString();
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target.toLocaleString();
+  }
+  requestAnimationFrame(tick);
+}
+const cObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { runCounter(e.target); cObs.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('.cnt').forEach(c => cObs.observe(c));
+
+// Card accordion
+function tog(head) {
+  const open = head.classList.contains('open');
+  head.classList.toggle('open', !open);
+  head.nextElementSibling.classList.toggle('open', !open);
+}
+</script>
+</body>
+</html>
