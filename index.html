@@ -673,7 +673,7 @@ class FP {
     }
 
     const now = Date.now();
-    if (now - this.lastT < 200) return;
+    if (now - this.lastT < 400) return;
     this.lastT = now;
     this.go(e.deltaY > 0 ? 1 : -1);
   }
@@ -696,20 +696,19 @@ class FP {
 
     to.classList.remove('past', 'dn');
     to.getBoundingClientRect(); // force reflow
-
-    // scrollTop 직접 강제 설정 (CSS transition 전에)
     to.scrollTop = targetScroll;
     to.classList.add('cur');
-
-    // transition 시작 후에도 재확인 (브라우저 복원 방어)
+    // rAF 한 번으로 브라우저 복원 방어
     requestAnimationFrame(() => { to.scrollTop = targetScroll; });
-    setTimeout(() => { to.scrollTop = targetScroll; }, 50);
 
     this.cur = next;
     this.updateUI(next);
     this.triggerAnim(next);
 
-    setTimeout(() => { this.busy = false; }, 950);
+    setTimeout(() => {
+      this.busy = false;
+      this.lastT = Date.now(); // 전환 종료 후 cooldown 리셋 (트랙패드 모멘텀 방어)
+    }, 1000);
   }
 
   triggerAnim(idx) {
