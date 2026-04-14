@@ -609,6 +609,7 @@ class FP {
     this.busy = false;
     this.lastT = 0;
     this.countersDone = new Set();
+    this.scrollPos = new Array(this.pages.length).fill(0);
 
     // Set initial states
     this.pages.forEach((pg, i) => {
@@ -663,11 +664,14 @@ class FP {
       const atBottom = pg.scrollTop >= maxScroll - 5;
       const atTop    = pg.scrollTop <= 5;
 
-      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; return; }
-      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; return; }
+      // 내부 스크롤
+      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; this.scrollPos[this.cur] = pg.scrollTop; return; }
+      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; this.scrollPos[this.cur] = pg.scrollTop; return; }
+      // 경계에 도달 → deltaY 크기 무관하게 바로 페이지 이동
+    } else {
+      if (Math.abs(e.deltaY) < 8) return;
     }
 
-    if (Math.abs(e.deltaY) < 8) return;
     const now = Date.now();
     if (now - this.lastT < 200) return;
     this.lastT = now;
@@ -682,18 +686,24 @@ class FP {
 
     const dir = next > this.cur ? 1 : -1;
     const from = this.pages[this.cur];
-    const to = this.pages[next];
+    const to   = this.pages[next];
+
+    // 앞으로: 목적지 top / 뒤로: 마지막 위치 복원
+    const targetScroll = dir > 0 ? 0 : (this.scrollPos[next] || 0);
 
     from.classList.remove('cur');
     from.classList.add(dir > 0 ? 'past' : 'dn');
 
     to.classList.remove('past', 'dn');
     to.getBoundingClientRect(); // force reflow
-    if (dir > 0) {
-      to.scrollTop = 0;
-      requestAnimationFrame(() => { to.scrollTop = 0; });
-    }
+
+    // scrollTop 직접 강제 설정 (CSS transition 전에)
+    to.scrollTop = targetScroll;
     to.classList.add('cur');
+
+    // transition 시작 후에도 재확인 (브라우저 복원 방어)
+    requestAnimationFrame(() => { to.scrollTop = targetScroll; });
+    setTimeout(() => { to.scrollTop = targetScroll; }, 50);
 
     this.cur = next;
     this.updateUI(next);
