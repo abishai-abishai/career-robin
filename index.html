@@ -655,6 +655,7 @@ class FP {
 
   onWheel(e) {
     e.preventDefault();
+    if (this.busy) return; // 전환 중엔 스크롤/네비 모두 차단
 
     const pg = this.pages[this.cur];
     const maxScroll = pg.scrollHeight - pg.clientHeight;
