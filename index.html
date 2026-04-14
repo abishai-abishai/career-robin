@@ -666,8 +666,8 @@ class FP {
       const atTop    = pg.scrollTop <= 5;
 
       // 내부 스크롤
-      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; this.scrollPos[this.cur] = pg.scrollTop; return; }
-      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; this.scrollPos[this.cur] = pg.scrollTop; return; }
+      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; return; }
+      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; return; }
       // 경계에 도달 → deltaY 크기 무관하게 바로 페이지 이동
     } else {
       if (Math.abs(e.deltaY) < 8) return;
@@ -695,19 +695,12 @@ class FP {
     to.classList.remove('past', 'dn');
     to.getBoundingClientRect(); // force reflow
 
-    if (dir > 0) {
-      // overflowY를 잠깐 hidden으로 → scrollTop이 물리적으로 0 고정, 브라우저 복원 불가
-      to.style.overflowY = 'hidden';
-    }
+    // 방향 상관없이 항상 최상단
+    to.style.overflowY = 'hidden';
     to.classList.add('cur');
-
     requestAnimationFrame(() => {
-      if (dir > 0) {
-        to.style.overflowY = '';
-        to.scrollTop = 0;
-      } else {
-        to.scrollTop = this.scrollPos[next] || 0;
-      }
+      to.style.overflowY = '';
+      to.scrollTop = 0;
     });
 
     this.cur = next;
