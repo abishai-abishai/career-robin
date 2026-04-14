@@ -688,18 +688,26 @@ class FP {
     const from = this.pages[this.cur];
     const to   = this.pages[next];
 
-    // 앞으로: 목적지 top / 뒤로: 마지막 위치 복원
-    const targetScroll = dir > 0 ? 0 : (this.scrollPos[next] || 0);
-
     from.classList.remove('cur');
     from.classList.add(dir > 0 ? 'past' : 'dn');
 
     to.classList.remove('past', 'dn');
     to.getBoundingClientRect(); // force reflow
-    to.scrollTop = targetScroll;
+
+    if (dir > 0) {
+      // overflowY를 잠깐 hidden으로 → scrollTop이 물리적으로 0 고정, 브라우저 복원 불가
+      to.style.overflowY = 'hidden';
+    }
     to.classList.add('cur');
-    // rAF 한 번으로 브라우저 복원 방어
-    requestAnimationFrame(() => { to.scrollTop = targetScroll; });
+
+    requestAnimationFrame(() => {
+      if (dir > 0) {
+        to.style.overflowY = '';
+        to.scrollTop = 0;
+      } else {
+        to.scrollTop = this.scrollPos[next] || 0;
+      }
+    });
 
     this.cur = next;
     this.updateUI(next);
