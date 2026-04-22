@@ -722,6 +722,7 @@ class FP {
   onWheel(e) {
     e.preventDefault();
     if (this.busy) return; // 전환 중엔 스크롤/네비 모두 차단
+    if (!e.deltaY) return; // deltaY = 0 이벤트 무시
 
     const pg = this.pages[this.cur];
     const maxScroll = pg.scrollHeight - pg.clientHeight;
@@ -739,8 +740,6 @@ class FP {
       if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; this.pendingDir = 0; return; }
       if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; this.pendingDir = 0; return; }
       // 경계에 도달 → 두 번째 제스처에서만 전환
-    } else {
-      if (Math.abs(e.deltaY) < 8) return;
     }
 
     // 첫 시도 → armed만 설정, 전환 없음
