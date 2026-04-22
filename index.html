@@ -657,8 +657,9 @@ class FP {
     this.lastT = 0;
     this.countersDone = new Set();
     this.scrollPos = new Array(this.pages.length).fill(0);
-    this.pendingDir = 0;  // 경계에서 첫 시도 방향 (두 번째 시도에서만 전환)
-    this.pendingT = 0;    // armed 시점
+    this.pendingDir = 0;   // 경계에서 첫 시도 방향 (두 번째 시도에서만 전환)
+    this.pendingT = 0;     // armed 시점
+    this.pendingCount = 0; // armed 후 경계 이벤트 누적 수 (안전장치)
     this.lastWheelT = 0;
 
     // Set initial states
@@ -737,17 +738,28 @@ class FP {
       const atTop    = pg.scrollTop <= 5;
 
       // 내부 스크롤 중 → armed 상태 해제
-      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; this.pendingDir = 0; return; }
-      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; this.pendingDir = 0; return; }
+      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; this.pendingDir = 0; this.pendingCount = 0; return; }
+      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; this.pendingDir = 0; this.pendingCount = 0; return; }
       // 경계에 도달 → 두 번째 제스처에서만 전환
     }
 
     // 첫 시도 → armed만 설정, 전환 없음
-    if (this.pendingDir !== dir) { this.pendingDir = dir; this.pendingT = now; return; }
-    // arm한 지 너무 짧거나 직전 이벤트 간격 좁으면 = 같은 제스처 꼬리로 취급
-    if (now - this.pendingT < 350 || gap < 200) return;
-    // 두 번째 독립 제스처 → 전환
+    if (this.pendingDir !== dir) {
+      this.pendingDir = dir;
+      this.pendingT = now;
+      this.pendingCount = 1;
+      return;
+    }
+    this.pendingCount++;
+
+    // 전환 조건: (A) 제스처 사이 충분한 간격 OR (B) 경계에서 충분히 오래 밀고 있음
+    const hasGap = gap >= 250;
+    const heldAtBoundary = this.pendingCount >= 25;
+    if (!hasGap && !heldAtBoundary) return;
+
+    // 두 번째 독립 제스처 또는 지속 압박 → 전환
     this.pendingDir = 0;
+    this.pendingCount = 0;
 
     if (now - this.lastT < 400) return;
     this.lastT = now;
