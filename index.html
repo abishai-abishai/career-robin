@@ -657,6 +657,8 @@ class FP {
     this.lastT = 0;
     this.countersDone = new Set();
     this.scrollPos = new Array(this.pages.length).fill(0);
+    this.pendingDir = 0;  // 경계에서 첫 시도 방향 (두 번째 시도에서만 전환)
+    this.lastWheelT = 0;
 
     // Set initial states
     this.pages.forEach((pg, i) => {
@@ -675,7 +677,23 @@ class FP {
     window.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
     window.addEventListener('touchend', e => {
       const dy = touchY - e.changedTouches[0].clientY;
-      if (Math.abs(dy) > 40) this.go(dy > 0 ? 1 : -1);
+      if (Math.abs(dy) < 40) return;
+      const dir = dy > 0 ? 1 : -1;
+
+      // 경계 판정
+      const pg = this.pages[this.cur];
+      const maxScroll = pg.scrollHeight - pg.clientHeight;
+      if (maxScroll > 5) {
+        const atBottom = pg.scrollTop >= maxScroll - 5;
+        const atTop    = pg.scrollTop <= 5;
+        if (dir > 0 && !atBottom) { this.pendingDir = 0; return; }
+        if (dir < 0 && !atTop)    { this.pendingDir = 0; return; }
+      }
+
+      // 첫 스와이프 → armed만, 두 번째 스와이프에서 전환
+      if (this.pendingDir !== dir) { this.pendingDir = dir; return; }
+      this.pendingDir = 0;
+      this.go(dir);
     }, { passive: true });
 
     // Keyboard
@@ -707,23 +725,33 @@ class FP {
     const pg = this.pages[this.cur];
     const maxScroll = pg.scrollHeight - pg.clientHeight;
     const isOverflow = maxScroll > 5;
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const now = Date.now();
+    const gap = now - this.lastWheelT;
+    this.lastWheelT = now;
 
     if (isOverflow) {
       const atBottom = pg.scrollTop >= maxScroll - 5;
       const atTop    = pg.scrollTop <= 5;
 
-      // 내부 스크롤
-      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; return; }
-      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; return; }
-      // 경계에 도달 → deltaY 크기 무관하게 바로 페이지 이동
+      // 내부 스크롤 중 → armed 상태 해제
+      if (e.deltaY > 0 && !atBottom) { pg.scrollTop += e.deltaY; this.pendingDir = 0; return; }
+      if (e.deltaY < 0 && !atTop)    { pg.scrollTop += e.deltaY; this.pendingDir = 0; return; }
+      // 경계에 도달 → 두 번째 제스처에서만 전환
     } else {
       if (Math.abs(e.deltaY) < 8) return;
     }
 
-    const now = Date.now();
+    // 첫 시도 → armed만 설정, 전환 없음
+    if (this.pendingDir !== dir) { this.pendingDir = dir; return; }
+    // 같은 방향이지만 연속된 제스처(모멘텀 꼬리 등) → 동일 시도로 취급
+    if (gap < 500) return;
+    // 두 번째 독립 제스처 → 전환
+    this.pendingDir = 0;
+
     if (now - this.lastT < 400) return;
     this.lastT = now;
-    this.go(e.deltaY > 0 ? 1 : -1);
+    this.go(dir);
   }
 
   go(dir) { this.goTo(this.cur + dir); }
