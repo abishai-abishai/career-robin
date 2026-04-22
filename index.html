@@ -658,6 +658,7 @@ class FP {
     this.countersDone = new Set();
     this.scrollPos = new Array(this.pages.length).fill(0);
     this.pendingDir = 0;  // 경계에서 첫 시도 방향 (두 번째 시도에서만 전환)
+    this.pendingT = 0;    // armed 시점
     this.lastWheelT = 0;
 
     // Set initial states
@@ -743,9 +744,9 @@ class FP {
     }
 
     // 첫 시도 → armed만 설정, 전환 없음
-    if (this.pendingDir !== dir) { this.pendingDir = dir; return; }
-    // 같은 방향이지만 연속된 제스처(모멘텀 꼬리 등) → 동일 시도로 취급
-    if (gap < 500) return;
+    if (this.pendingDir !== dir) { this.pendingDir = dir; this.pendingT = now; return; }
+    // arm한 지 너무 짧거나 직전 이벤트 간격 좁으면 = 같은 제스처 꼬리로 취급
+    if (now - this.pendingT < 350 || gap < 200) return;
     // 두 번째 독립 제스처 → 전환
     this.pendingDir = 0;
 
