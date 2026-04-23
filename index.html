@@ -170,6 +170,12 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .t-role { font-size:20px; font-weight:800; letter-spacing:-.4px; margin-bottom:4px; }
 .t-meta { font-size:12px; color:var(--g500); margin-bottom:16px; }
 .t-meta .nt { color:var(--g400); }
+.career-lead { font-size:15px; color:var(--g500); font-weight:500; margin:-4px 0 28px; letter-spacing:-.2px; }
+.t-hook { font-size:13.5px; line-height:1.7; color:var(--g700); padding:12px 16px; margin:0 0 18px; border-left:3px solid var(--g100); border-radius:0 6px 6px 0; background:#FAFBFC; font-weight:500; word-break:keep-all; }
+.t-hook strong { color:#111; font-weight:800; }
+.t-hook.co { border-left-color:#F4845F; background:rgba(244,132,95,.06); }
+.t-hook.mi { border-left-color:var(--mint6); background:rgba(26,216,139,.07); }
+.t-hook.bl { border-left-color:#6C8EF5; background:rgba(108,142,245,.06); }
 .pcards { display:flex; flex-direction:column; gap:10px; }
 .pc { border:1px solid var(--g100); border-radius:12px; overflow:hidden; transition:box-shadow .25s; }
 .pc:hover { box-shadow:0 6px 24px rgba(0,0,0,.06); }
@@ -185,6 +191,11 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .pt td { padding:9px 18px; border-bottom:1px solid var(--g100); font-size:12.5px; vertical-align:top; color:var(--g700); line-height:1.75; word-break:keep-all; }
 .pt tr:last-child td { border-bottom:none; }
 .pt td.k { font-size:11.5px; font-weight:700; color:var(--g400); width:44px; min-width:44px; padding-right:0; }
+.pt tr.o { background:var(--mbg); }
+.pt tr.o td { border-bottom-color:#C0EDD5; }
+.pt tr.o td.k { color:#0FA56A; font-weight:800; }
+.pt tr.o .ol li { color:var(--g700); font-weight:500; }
+.pt tr.o .ol li::before { color:#0FA56A; }
 .tr { display:flex; flex-wrap:wrap; gap:4px; }
 .tk { display:inline-block; font-family:var(--en); font-size:10.5px; font-weight:600; padding:2px 9px; border-radius:5px; border:1px solid var(--g100); background:var(--white); color:var(--g700); }
 .tk.mi { background:var(--mbg); color:#0FA56A; border-color:#C0EDD5; }
@@ -385,6 +396,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
       <div class="wrap">
         <div class="eyebrow a">Work Experience</div>
         <div class="heading a" data-d="1">실무 경력</div>
+        <p class="career-lead a" data-d="2">QA 기반에서 기획과 PM으로 방향을 잡아온 사람입니다.</p>
         <div class="tl">
 
           <!-- 루쿠쿠 -->
@@ -393,6 +405,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-per co">2025.11 – 2026.04 · 6개월</div>
             <div class="t-role">Assistant PM(Project Manager)</div>
             <div class="t-meta">㈜루쿠쿠 · 계약직 <span class="nt">(*6개월 계약 만료 후 퇴사)</span></div>
+            <div class="t-hook co">PDP 리뉴얼로 스토어 이탈율 <strong>33% 감소</strong>. 인수인계 공백을 AI로 돌파하며 글로벌 브랜드 쇼피파이 협업을 주도했습니다.</div>
             <div class="pcards">
               <div class="pc">
                 <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn co">FILA</span><span class="pd">: 스포츠웨어 브랜드 스토어 런칭</span></div>
@@ -402,7 +415,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">업무</td><td>고객사 대응, 스토어 스펙 문서화 및 TC 작성, 테스트 결함 관리</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span><span class="tk mi">Claude</span><span class="tk gr">GoogleDocs</span><span class="tk">ClickUp</span><span class="tk">Slack</span></div></td></tr>
                   <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">기존 스토어 내 미비된 기획 체크리스트 수집 및 엣지케이스 정의</li><li data-n="②">단위 통합 테스트 TC 작성 및 결함 관리</li><li data-n="③">고객사-해외개발자 영어 번역 소통 주도</li></ul></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">최종 테스트 결함율 38% 감소</li><li data-n="②">고객사 가이드를 위한 어드민 기능 정의서 자산화</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">최종 테스트 결함율 38% 감소</li><li data-n="②">고객사 가이드를 위한 어드민 기능 정의서 자산화</li></ul></td></tr>
                 </table></div>
               </div>
               <div class="pc">
@@ -413,7 +426,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">업무</td><td>고객사 대응, 추가개발 및 유지보수 기획-개발-QA-출시 리드</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span><span class="tk mi">Claude</span><span class="tk gr">GoogleDocs</span><span class="tk">ClickUp</span><span class="tk">Slack</span></div></td></tr>
                   <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">스토어 PDP 리뉴얼 프로젝트 관리</li><li data-n="②">월별 견적서 및 내외부 자산/공수 관리</li><li data-n="③">고객사-해외개발자 영어 번역 소통 주도</li></ul></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">리뉴얼 PDP 출시에 따른 스토어 이탈율 33% 감소</li><li data-n="②">추가개발 건에 따른 고객사 대응 QA 시트 자산화</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">리뉴얼 PDP 출시에 따른 스토어 이탈율 33% 감소</li><li data-n="②">추가개발 건에 따른 고객사 대응 QA 시트 자산화</li></ul></td></tr>
                 </table></div>
               </div>
               <div class="pc">
@@ -424,7 +437,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">업무</td><td>고객사 요구사항 대응 및 QA 진행</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span><span class="tk gr">GoogleDocs</span><span class="tk">ClickUp</span><span class="tk">Slack</span></div></td></tr>
                   <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">선수 퇴사 PM 히스토리 파악 및 메인 PM 서포트</li><li data-n="②">견적서에 따른 고객사 요구사항 확인 및 조치 진행</li><li data-n="③">고객사-해외개발자 영어 번역 소통 주도</li></ul></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">고객사 요구사항 달성율 62% 상향</li><li data-n="②">고객사 추가 유지보수 계약 체결</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">고객사 요구사항 달성율 62% 상향</li><li data-n="②">고객사 추가 유지보수 계약 체결</li></ul></td></tr>
                 </table></div>
               </div>
             </div>
@@ -436,6 +449,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-per mi">2025.07 – 2025.10 · 4개월</div>
             <div class="t-role">서비스 기획자</div>
             <div class="t-meta">㈜뱅크클리어 기획팀 · 매니저 · 정규직 <span class="nt">(*이후 경영 악화로 수습 종료)</span></div>
+            <div class="t-hook mi">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <strong>전사 유일 기획자</strong>로 A to Z 프로덕트를 책임졌습니다.</div>
             <div class="pcards">
               <div class="pc">
                 <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn mi">코스</span><span class="pd">: 근저당 설정 및 소유권 이전 등 법무사의 등기 업무 플랫폼</span></div>
@@ -445,7 +459,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">업무</td><td>서비스 기획 및 프로젝트 매니지먼트</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span><span class="tk">Notion</span><span class="tk gr">GoogleSpreadsheets</span><span class="tk bl">Python</span><span class="tk bl">JupyterNotebook</span><span class="tk bl">Pandas</span><span class="tk gr">SQL</span></div></td></tr>
                   <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">앱/어드민 프론트 화면 설계 및 디자인</li><li data-n="②">우리은행-권원보험사-자사 간 데이터 송수신 정책 유지 보수</li><li data-n="③">운영 이슈 조치에 따른 QA/QC 진행, 관련 앱/어드민 배포 사후 관리</li><li data-n="④">법무사 우선 문의 CS 응대 지원</li></ul></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">법무사의 법정 수수료 상한액 초과 사례 데이터 분석 및 분기 처리 기능 기획</li><li data-n="②">앱 내 법무사 사무소 소개 키워드 기능 기획 및 출시</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">법무사의 법정 수수료 상한액 초과 사례 데이터 분석 및 분기 처리 기능 기획</li><li data-n="②">앱 내 법무사 사무소 소개 키워드 기능 기획 및 출시</li></ul></td></tr>
                 </table></div>
               </div>
               <div class="pc">
@@ -455,7 +469,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">개요</td><td>전자등기 솔루션 플랫폼 초기 기획 및 화면 설계</td></tr>
                   <tr><td class="k">업무</td><td>서비스 기획 및 프로젝트 매니지먼트</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk">Figma</span></div></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">플랫폼 홈 화면 및 로그인 정책 기획</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">플랫폼 홈 화면 및 로그인 정책 기획</li></ul></td></tr>
                 </table></div>
               </div>
             </div>
@@ -467,6 +481,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-per bl">2024.06 – 2025.03 · 10개월</div>
             <div class="t-role">QA 엔지니어</div>
             <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장 제안, 총 9개월 근무)</span></div>
+            <div class="t-hook bl">쿠팝비즈 결함율 <strong>39% → 0%</strong> 달성. <strong>23,464건</strong>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
             <div class="pcards">
               <div class="pc">
                 <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">쿠팝(현 애드콘)</span><span class="pd">: B2B 모바일 쿠폰 마케팅 서비스</span></div>
@@ -475,7 +490,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">개요</td><td>비즈쿠팝에서의 B2B 마케팅 수요 특화를 위한 쿠폰 서비스 출시</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk">Figma</span><span class="tk de">CSS</span><span class="tk de">Selenium</span></div></td></tr>
                   <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">1~3차 전수 단위테스트 및 회귀테스트 TC 작성(총 1,062건) 및 테스트 수행(총 9,521건)</li><li data-n="②">각 기능 결함에 대한 조치 우선도 설정 및 재테스트 수행</li></ul></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">서비스 릴리즈 당시 운영 서버 결함율 0% 달성</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">서비스 릴리즈 당시 운영 서버 결함율 0% 달성</li></ul></td></tr>
                 </table></div>
               </div>
               <div class="pc">
@@ -492,7 +507,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                   <tr><td class="k">기간</td><td>2024.09 – 2025.03 (총 7개월)</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk gr">GoogleSlide</span><span class="tk">Figma</span></div></td></tr>
                   <tr><td class="k">요약</td><td><ul class="ol"><li data-n="①">Sprint 단위별 전수 테스트 TC 작성(총 8,829건) 및 QC 수행(총 2,322건)</li></ul></td></tr>
-                  <tr><td class="k">성과</td><td><ul class="ol"><li data-n="①">다우오피스 서비스 로그인 프로세스 UX 및 Validation 문구 기획</li></ul></td></tr>
+                  <tr class="o"><td class="k">성과</td><td><ul class="ol"><li data-n="①">다우오피스 서비스 로그인 프로세스 UX 및 Validation 문구 기획</li></ul></td></tr>
                 </table></div>
               </div>
             </div>
