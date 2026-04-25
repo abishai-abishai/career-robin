@@ -164,6 +164,7 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 /* ── CAREER ── */
 #career { background:var(--white); }
 .pg-career > section { justify-content:flex-start; padding-top:80px; }
+#pg-portfolio > section { justify-content:flex-start; padding-top:80px; }
 .tl { position:relative; padding-left:26px; }
 .tl::before { content:''; position:absolute; left:0; top:8px; bottom:0; width:1.5px; background:var(--g100); }
 .tc { margin-bottom:44px; position:relative; }
@@ -236,6 +237,15 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .sp-ol { list-style:none; }
 .sp-ol li { padding-left:18px; position:relative; margin-bottom:6px; font-size:12.5px; line-height:1.75; color:rgba(255,255,255,.5); word-break:keep-all; }
 .sp-ol li::before { content:attr(data-n); position:absolute; left:0; color:var(--navy-3); font-weight:700; font-family:var(--en); font-size:12px; }
+#portfolio .sp { margin-bottom:18px; }
+#portfolio .sp:last-child { margin-bottom:0; }
+.sp-d { font-size:12.5px; color:rgba(255,255,255,.55); margin-bottom:14px; line-height:1.7; word-break:keep-all; }
+.sp-d + .sp-cl { margin-top:4px; }
+.sp-link { display:inline-block; color:var(--navy-bg); font-size:13px; font-weight:600; text-decoration:none; line-height:1.6; word-break:break-all; }
+.sp-link:hover { text-decoration:underline; }
+.sp-body.sp-body-1 { grid-template-columns:1fr; }
+.sp-app .sp-top { padding-bottom:18px; }
+.sp-app .sp-badge { background:rgba(255,255,255,.06); color:rgba(255,255,255,.5); }
 
 /* ── MORE ── */
 #more { background:var(--white); }
@@ -281,7 +291,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 @media (max-width: 720px) {
   .pg { min-height:100dvh; }
   .pg > section { padding:80px 0 56px; }
-  .pg-cover > section, .pg-career > section, .pg-campus > section, .pg-life > section { padding-top:64px; }
+  .pg-cover > section, .pg-career > section, .pg-campus > section, .pg-life > section, #pg-portfolio > section { padding-top:64px; }
 
   .wrap { padding:0 22px; }
 
@@ -387,7 +397,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <a data-s="about">About</a>
     <a data-s="cover">Story</a>
     <a data-s="career">Career</a>
-    <a data-s="project">Project</a>
+    <a data-s="portfolio">Portfolio</a>
     <a data-s="more">More</a>
   </div>
 </nav>
@@ -632,25 +642,29 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     </section>
   </div>
 
-  <!-- PAGE 4: SIDE PROJECT -->
-  <div class="pg" id="pg-project" data-dark="1" data-id="project">
-    <section id="project">
+  <!-- PAGE 4: PORTFOLIO -->
+  <div class="pg" id="pg-portfolio" data-dark="1" data-id="portfolio">
+    <section id="portfolio">
       <div class="wrap">
-        <div class="eyebrow a">Side Project</div>
-        <div class="heading a" data-d="1">진행 중인 프로젝트</div>
+        <div class="eyebrow a">Portfolio</div>
+        <div class="heading a" data-d="1">포트폴리오</div>
+
+        <!-- #1. 다가원 그룹웨어 -->
         <div class="sp a sc" data-d="2">
           <div class="sp-top">
             <div class="sp-badge">ing · 2025.10 ~</div>
-            <div class="sp-title">다가원 그룹웨어</div>
-            <div class="sp-sub">오피스 그룹웨어 플랫폼</div>
-            <div class="sp-meta">서비스 기획자 / PM · 개발자 4인 + 기획자 1인, 5인조 팀</div>
+            <div class="sp-title">#1. 다가원 그룹웨어</div>
+            <div class="sp-sub">사이드 프로젝트 — 오피스 그룹웨어 플랫폼</div>
+            <div class="sp-meta">서비스 기획자 / PM · 5인조 팀(개발 4인 + 기획 1인)</div>
             <div class="sp-tags">
               <span class="sp-t">Figma</span><span class="sp-t">FigmaMake</span><span class="sp-t hl">Claude</span><span class="sp-t">Notion</span>
             </div>
           </div>
           <div class="sp-body">
             <div>
-              <div class="sp-cl">요약</div>
+              <div class="sp-cl">개요</div>
+              <p class="sp-d">그룹웨어 서비스 기능 정의 및 프로젝트 관리</p>
+              <div class="sp-cl">상세</div>
               <ul class="sp-ol">
                 <li data-n="①">IA/메뉴 구조도 작성 및 상세 기능별 정의</li>
                 <li data-n="②">프론트엔드 UI/UX 정의 및 백엔드 테이블 설계 어시스트</li>
@@ -660,10 +674,112 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             </div>
             <div>
               <div class="sp-cl">문서</div>
-              <a href="#" style="color:var(--navy-bg);font-size:13px;font-weight:600;text-decoration:none">🅵 [다가원 그룹웨어🌊] 기획안 →</a>
+              <a class="sp-link" href="#" data-link>🅵 [다가원 그룹웨어🌊] 기획안 →</a>
             </div>
           </div>
         </div>
+
+        <!-- #2. 코스 / 이전 등기 업무 활성화 제안 -->
+        <div class="sp a sc" data-d="3">
+          <div class="sp-top">
+            <div class="sp-badge">제안서 · 2025.08.22 ~ 09.04</div>
+            <div class="sp-title">#2. 이전 등기 업무 활성화 제안</div>
+            <div class="sp-sub">코스 — 법무사 등기 업무 플랫폼</div>
+            <div class="sp-tags">
+              <span class="sp-t">Figma</span>
+            </div>
+          </div>
+          <div class="sp-body">
+            <div>
+              <div class="sp-cl">개요</div>
+              <p class="sp-d">코스 법무사의 소유권 이전 등기 업무를 활성화할 수 있는 기능을 제안</p>
+              <div class="sp-cl">상세</div>
+              <ul class="sp-ol">
+                <li data-n="①">법무사의 법정 수수료 상한액 초과 사례 데이터 분석</li>
+                <li data-n="②">이전 등기 업무 활성화 목적의 신규 기능 및 유저 플로우 제안</li>
+              </ul>
+            </div>
+            <div>
+              <div class="sp-cl">파일</div>
+              <a class="sp-link" href="#" data-link>🅵 [포트폴리오] 한아비새.fig (이전 등기) →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #3. 코스 / 법무사 사무소 소개 키워드 -->
+        <div class="sp a sc" data-d="4">
+          <div class="sp-top">
+            <div class="sp-badge">기획서 · 2025.09.03 ~ 09.09</div>
+            <div class="sp-title">#3. 법무사 사무소 소개 키워드</div>
+            <div class="sp-sub">코스 — 법무사 등기 업무 플랫폼</div>
+            <div class="sp-tags">
+              <span class="sp-t">Figma</span><span class="sp-t">Notion</span>
+            </div>
+          </div>
+          <div class="sp-body">
+            <div>
+              <div class="sp-cl">개요</div>
+              <p class="sp-d">차주(채무자)의 코스 앱 접근성을 향상시키는 법무사 사무소 소개 키워드 기능을 기획</p>
+              <div class="sp-cl">상세</div>
+              <ul class="sp-ol">
+                <li data-n="①">상세 기능 정의 및 유저 플로우 시각화</li>
+                <li data-n="②">최초 기획 단계부터 운영 서버 릴리즈까지의 프로젝트 관리 현황 공유</li>
+              </ul>
+            </div>
+            <div>
+              <div class="sp-cl">파일</div>
+              <a class="sp-link" href="#" data-link>🅵 [포트폴리오] 한아비새.fig (소개 키워드) →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- #4. 애드콘 / UX 개선 제안 -->
+        <div class="sp a sc" data-d="5">
+          <div class="sp-top">
+            <div class="sp-badge">제안서 · 2025.06.02 ~ 06.04</div>
+            <div class="sp-title">#4. UX 개선 제안</div>
+            <div class="sp-sub">애드콘 — 쿠폰 마케팅 서비스</div>
+            <div class="sp-tags">
+              <span class="sp-t">Figma</span>
+            </div>
+          </div>
+          <div class="sp-body">
+            <div>
+              <div class="sp-cl">개요</div>
+              <p class="sp-d">다우기술 쿠폰 마케팅 서비스 '쿠팝비즈'의 UX 개선 제안서를 작성</p>
+              <div class="sp-cl">상세</div>
+              <ul class="sp-ol">
+                <li data-n="①">QA 실무 당시 경험한 Fail 건들을 바탕으로 사용성 문제 정의</li>
+                <li data-n="②">UX를 비롯한 사용성을 개선할 수 있는 상세 기능 개선안 수립</li>
+              </ul>
+            </div>
+            <div>
+              <div class="sp-cl">파일</div>
+              <a class="sp-link" href="#" data-link>🅵 [포트폴리오] 한아비새.fig (UX 개선) →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Appendix. 다우기술 품질관리 경력 상세 -->
+        <div class="sp a sc sp-app" data-d="6">
+          <div class="sp-top">
+            <div class="sp-badge">Appendix</div>
+            <div class="sp-title">다우기술 품질관리 경력 상세</div>
+            <div class="sp-sub">9개월 QA 재직 리소스 아카이브</div>
+            <div class="sp-tags">
+              <span class="sp-t">Spreadsheets</span>
+            </div>
+          </div>
+          <div class="sp-body sp-body-1">
+            <div>
+              <div class="sp-cl">개요</div>
+              <p class="sp-d">㈜다우기술에서 9개월 간 QA로 재직하며 참여한 리소스, UX 기획 산출물, TC 작성 예시, 결함관리 슬라이드 템플릿 등을 아카이브한 스프레드시트입니다.</p>
+              <div class="sp-cl">파일</div>
+              <a class="sp-link" href="#" data-link>🗂 다우기술 품질관리 경력 상세 →</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   </div>
