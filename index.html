@@ -274,6 +274,103 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 .fl-r { text-align:right; }
 .fc { font-family:var(--en); font-size:12px; color:rgba(255,255,255,.3); margin-bottom:3px; }
 .fm { font-family:var(--en); font-size:11px; color:rgba(255,255,255,.15); }
+
+/* ── Responsive (mobile, ~tablet portrait) ── */
+@media (max-width: 720px) {
+  .pg { min-height:100dvh; }
+  .pg > section { padding:80px 0 56px; }
+  .pg-cover > section, .pg-career > section, .pg-campus > section, .pg-life > section { padding-top:64px; }
+
+  .wrap { padding:0 22px; }
+
+  /* Nav */
+  nav { padding:0 22px; height:54px; }
+  .nav-logo { font-size:16px; }
+  .nav-links { gap:14px; }
+  .nav-links a { font-size:11px; }
+
+  /* Slide dots indicator */
+  #dots { right:14px; }
+
+  /* Hero */
+  .h-name { margin-bottom:20px; }
+  .h-quote { margin-bottom:28px; }
+  .h-roles { margin-bottom:36px; gap:8px; }
+  .h-pill { font-size:10.5px; padding:4px 12px; }
+  .h-stats { gap:24px; flex-wrap:wrap; }
+  .s-num { font-size:26px; }
+  .s-lbl { font-size:10.5px; }
+
+  /* Headings (page) */
+  .heading { font-size:22px; margin-bottom:28px; }
+  .eyebrow { font-size:9.5px; margin-bottom:8px; }
+
+  /* About */
+  .about-grid { grid-template-columns:1fr; gap:28px; }
+  .a-photo { width:150px; height:150px; }
+  .c-list li { font-size:12px; }
+  .s-head { font-size:11px; flex-wrap:wrap; }
+  .sk-hint { display:block; margin:6px 0 0; font-size:10.5px; line-height:1.5; }
+  .sg-name { font-size:9.5px; }
+
+  /* Cover Letter */
+  .cover-sub { font-size:14.5px; margin:-16px 0 22px; }
+  .ci-card { padding:20px 22px; font-size:12.5px; line-height:1.85; }
+  .cv { padding:20px 22px; }
+  .cv-tag { font-size:12.5px; line-height:1.5; }
+  .cv-punch { font-size:13.5px; line-height:1.55; padding-bottom:12px; margin-bottom:14px; }
+  .cv-p { font-size:12px; line-height:1.85; }
+
+  /* Career timeline */
+  .career-lead { font-size:13.5px; margin-bottom:20px; }
+  .tl { padding-left:22px; }
+  .tdot { left:-26px; width:8px; height:8px; }
+  .t-per { font-size:11px; }
+  .t-role { font-size:17px; }
+  .t-meta { font-size:11.5px; }
+  .t-hook { font-size:12.5px; padding:10px 13px; line-height:1.6; margin-bottom:14px; }
+  .tc { margin-bottom:32px; }
+  .pc-h { padding:11px 14px; }
+  .pn { font-size:12.5px; }
+  .pd { font-size:11.5px; word-break:keep-all; }
+  .pt td { padding:7px 12px; font-size:11.5px; line-height:1.7; }
+  .pt td.k { width:38px; min-width:38px; }
+  .ol li { font-size:11.5px; line-height:1.7; padding-left:18px; }
+
+  /* Skill popover */
+  .sk-pop { max-width:calc(100vw - 32px); font-size:12px; padding:11px 13px; }
+
+  /* Side Project */
+  .sp-top { padding:22px 22px 20px; }
+  .sp-title { font-size:22px; }
+  .sp-body { grid-template-columns:1fr; gap:18px; padding:22px; }
+
+  /* More */
+  .more-g { grid-template-columns:1fr; gap:32px; }
+
+  /* Campus */
+  .cg { grid-template-columns:1fr; }
+
+  /* Activities & Volunteers */
+  .lg { grid-template-columns:1fr; gap:32px; }
+  .lt { font-size:16px; margin-bottom:14px; }
+  .li { flex-direction:column; align-items:flex-start; gap:4px; padding:10px 0; }
+  .ld { min-width:0; }
+  .lb { font-size:12px; }
+
+  /* Footer */
+  footer { flex-direction:column; gap:14px; padding:32px 22px; text-align:center; align-items:center; }
+  .fl-r { text-align:center; }
+}
+
+@media (max-width: 420px) {
+  .h-stats { gap:18px; }
+  .s-num { font-size:23px; }
+  .heading { font-size:20px; }
+  .h-name { letter-spacing:-2px; }
+  .pt td { padding:6px 10px; font-size:11px; }
+  .pt td.k { width:34px; min-width:34px; }
+}
 </style>
 </head>
 <body>
