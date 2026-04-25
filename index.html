@@ -808,23 +808,21 @@ class FP {
     let touchY = 0;
     window.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
     window.addEventListener('touchend', e => {
+      if (this.busy) return;
       const dy = touchY - e.changedTouches[0].clientY;
       if (Math.abs(dy) < 40) return;
       const dir = dy > 0 ? 1 : -1;
 
-      // 경계 판정
+      // 경계 판정 — 모바일은 첫 스와이프에 경계 닿으면 바로 전환
       const pg = this.pages[this.cur];
       const maxScroll = pg.scrollHeight - pg.clientHeight;
       if (maxScroll > 5) {
         const atBottom = pg.scrollTop >= maxScroll - 5;
         const atTop    = pg.scrollTop <= 5;
-        if (dir > 0 && !atBottom) { this.pendingDir = 0; return; }
-        if (dir < 0 && !atTop)    { this.pendingDir = 0; return; }
+        if (dir > 0 && !atBottom) return;
+        if (dir < 0 && !atTop)    return;
       }
 
-      // 첫 스와이프 → armed만, 두 번째 스와이프에서 전환
-      if (this.pendingDir !== dir) { this.pendingDir = dir; return; }
-      this.pendingDir = 0;
       this.go(dir);
     }, { passive: true });
 
