@@ -168,20 +168,22 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .tl::before { content:''; position:absolute; left:0; top:8px; bottom:0; width:1.5px; background:var(--g100); }
 .tc { margin-bottom:44px; position:relative; }
 .tdot { position:absolute; left:-30px; top:9px; width:10px; height:10px; border-radius:50%; }
-.tdot.mi { background:var(--navy); box-shadow:0 0 0 3px rgba(16,54,125,.15); }
-.tdot.bl { background:#5678B1; box-shadow:0 0 0 3px rgba(86,120,177,.15); }
-.tdot.co { background:#8AAAD8; box-shadow:0 0 0 3px rgba(138,170,216,.15); }
+.tdot.mi { background:#5678B1; box-shadow:0 0 0 3px rgba(86,120,177,.18); }
+.tdot.bl { background:#8AAAD8; box-shadow:0 0 0 3px rgba(138,170,216,.2); }
+.tdot.co { background:var(--navy); box-shadow:0 0 0 3px rgba(16,54,125,.18); }
 .t-per { font-family:var(--en); font-size:12px; font-weight:700; margin-bottom:4px; }
-.t-per.mi { color:var(--navy); } .t-per.bl { color:#5678B1; } .t-per.co { color:#8AAAD8; }
+.t-per.mi { color:#5678B1; } .t-per.bl { color:#8AAAD8; } .t-per.co { color:var(--navy); }
 .t-role { font-size:20px; font-weight:800; letter-spacing:-.4px; margin-bottom:4px; }
 .t-meta { font-size:12px; color:var(--g500); margin-bottom:16px; }
 .t-meta .nt { color:var(--g400); }
 .career-lead { font-size:15px; color:var(--g500); font-weight:500; margin:-4px 0 28px; letter-spacing:-.2px; }
+.t-solved { font-family:var(--en); font-size:10.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin:0 0 6px; }
+.t-solved.mi { color:#5678B1; } .t-solved.bl { color:#8AAAD8; } .t-solved.co { color:var(--navy); }
 .t-hook { font-size:13.5px; line-height:1.7; color:var(--g700); padding:12px 16px; margin:0 0 18px; border-left:3px solid var(--g100); border-radius:0 6px 6px 0; background:#FAFBFC; font-weight:500; word-break:keep-all; }
 .t-hook strong { color:#111; font-weight:800; }
-.t-hook.co { border-left-color:#8AAAD8; background:rgba(138,170,216,.06); }
-.t-hook.mi { border-left-color:var(--navy); background:rgba(16,54,125,.07); }
-.t-hook.bl { border-left-color:#5678B1; background:rgba(86,120,177,.06); }
+.t-hook.co { border-left-color:var(--navy); background:rgba(16,54,125,.07); }
+.t-hook.mi { border-left-color:#5678B1; background:rgba(86,120,177,.06); }
+.t-hook.bl { border-left-color:#8AAAD8; background:rgba(138,170,216,.07); }
 .pcards { display:flex; flex-direction:column; gap:10px; }
 .pc { border:1px solid var(--g100); border-radius:12px; overflow:hidden; transition:box-shadow .25s; }
 .pc:hover { box-shadow:0 6px 24px rgba(0,0,0,.06); }
@@ -189,7 +191,7 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .pc-h .ch { font-size:10px; color:var(--g400); transition:transform .25s; flex-shrink:0; }
 .pc-h.open .ch { transform:rotate(90deg); }
 .pn { font-size:13px; font-weight:800; }
-.pn.mi { color:var(--navy); } .pn.bl { color:#5678B1; } .pn.co { color:#8AAAD8; }
+.pn.mi { color:#5678B1; } .pn.bl { color:#8AAAD8; } .pn.co { color:var(--navy); }
 .pd { font-size:12px; color:var(--g500); }
 .pb { display:none; }
 .pb.open { display:block; }
@@ -307,8 +309,11 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
   /* About */
   .about-grid { grid-template-columns:1fr; gap:28px; }
-  .a-photo { width:150px; height:150px; }
-  .c-list li { font-size:12px; }
+  .a.fl { display:flex; gap:16px; align-items:flex-start; }
+  .a-photo { width:108px; height:144px; margin-bottom:0; flex-shrink:0; }
+  .c-list { flex:1; min-width:0; }
+  .c-list li { font-size:11.5px; gap:8px; padding:5px 0; }
+  .c-list .k { min-width:42px; }
   .s-head { font-size:11px; flex-wrap:wrap; }
   .sk-hint { display:block; margin:6px 0 0; font-size:10.5px; line-height:1.5; }
   .sg-name { font-size:9.5px; }
@@ -503,7 +508,6 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
       <div class="wrap">
         <div class="eyebrow a">Work Experience</div>
         <div class="heading a" data-d="1">실무 경력</div>
-        <p class="career-lead a" data-d="2">QA 기반에서 기획과 PM으로 방향을 잡아온 사람입니다.</p>
         <div class="tl">
 
           <!-- 루쿠쿠 -->
@@ -512,6 +516,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-per co">2025.11 – 2026.04 · 6개월</div>
             <div class="t-role">PM(Project Manager)</div>
             <div class="t-meta">㈜루쿠쿠 · 정규직 <span class="nt">(*6개월 근무 후 이직)</span></div>
+            <div class="t-solved co">What I've Delivered</div>
             <div class="t-hook co">기획자로 입사 후 프로젝트 환경상 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업을 주도. PDP 리뉴얼로 스토어 이탈율 <strong>33% 감소</strong>, 인수인계 공백을 AI로 돌파했습니다.</div>
             <div class="pcards">
               <div class="pc">
@@ -556,6 +561,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-per mi">2025.07 – 2025.10 · 4개월</div>
             <div class="t-role">서비스 기획자</div>
             <div class="t-meta">㈜뱅크클리어 기획팀 · 매니저 · 정규직 <span class="nt">(*이후 경영 악화로 수습 종료)</span></div>
+            <div class="t-solved mi">What I've Defined</div>
             <div class="t-hook mi">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <strong>전사 유일 기획자</strong>로 A to Z 프로덕트를 책임졌습니다.</div>
             <div class="pcards">
               <div class="pc">
@@ -588,6 +594,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-per bl">2024.06 – 2025.03 · 10개월</div>
             <div class="t-role">QA 엔지니어</div>
             <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장 제안, 총 9개월 근무)</span></div>
+            <div class="t-solved bl">What I've Discovered</div>
             <div class="t-hook bl">쿠팝비즈 결함율 <strong>39% → 0%</strong> 달성. <strong>23,464건</strong>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
             <div class="pcards">
               <div class="pc">
@@ -653,7 +660,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             </div>
             <div>
               <div class="sp-cl">문서</div>
-              <a href="#" style="color:var(--navy);font-size:13px;font-weight:600;text-decoration:none">🅵 [다가원 그룹웨어🌊] 기획안 →</a>
+              <a href="#" style="color:var(--navy-bg);font-size:13px;font-weight:600;text-decoration:none">🅵 [다가원 그룹웨어🌊] 기획안 →</a>
             </div>
           </div>
         </div>
@@ -720,12 +727,12 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <ul class="ll">
               <li class="li"><span class="ld">2021.08–2022.08</span><span class="lb"><strong>뽀로로파크 영등포빅마켓점</strong> 운영팀 스탭: 키즈파크 어트랙션 진행, 유아 응대 및 놀이지도</span></li>
               <li class="li"><span class="ld">2022.03–2023.04</span><span class="lb"><strong>사회복지청년단체 Z team</strong> 대외홍보팀: 사회사업 진행 및 홍보 콘텐츠 제작</span></li>
-              <li class="li"><span class="ld">2022.07–2023.06</span><span class="lb"><strong>자란다 가정돌봄 교사</strong>: 5-7세 아동 대상 놀이지도, 한글/영어 수업</span></li>
+              <li class="li"><span class="ld">2022.07–2023.06</span><span class="lb"><strong>자란다 가정돌봄 교사</strong> 5-7세 아동 대상 놀이지도, 한글/영어 수업</span></li>
               <li class="li"><span class="ld">2022.09–2023.03</span><span class="lb"><strong>다문화NGO 조인어스코리아</strong> 그린블루 크리에이터 13기 촬영편집팀장</span></li>
-              <li class="li"><span class="ld">2022.09–2024.06</span><span class="lb"><strong>강남대학교 카페 블룸즈버리</strong> 근무</span></li>
-              <li class="li"><span class="ld">2023.06–2024.02</span><span class="lb"><strong>수원시 카페 구스타브</strong> 근무</span></li>
+              <li class="li"><span class="ld">2022.09–2024.06</span><span class="lb"><strong>강남대학교 카페 블룸즈버리</strong> 카페 바리스타 및 디저트 제조</span></li>
+              <li class="li"><span class="ld">2023.06–2024.02</span><span class="lb"><strong>수원시 카페 구스타브</strong> 카페 바리스타 및 디저트 제조</span></li>
               <li class="li"><span class="ld">2023.03–2023.05</span><span class="lb"><strong>강남대학교 유학생 문화 부스</strong> 기획 및 운영: 독일·미국·카자흐스탄 유학생 협업</span></li>
-              <li class="li"><span class="ld">2023.12–2024.06</span><span class="lb"><strong>'Youth Talk' 촬영편집팀장</strong>: 숏폼 콘텐츠 기획 및 제작</span></li>
+              <li class="li"><span class="ld">2023.12–2024.06</span><span class="lb"><strong>'Youth Talk' 촬영편집팀장</strong> 숏폼 콘텐츠 기획 및 제작</span></li>
             </ul>
           </div>
           <div class="a fr">
@@ -733,9 +740,9 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <ul class="ll">
               <li class="li"><span class="ld">2021.07–2021.11</span><span class="lb"><strong>서대문교육복지센터</strong> 좋은 이웃 활동가: 발달장애 중학생 멘토링</span></li>
               <li class="li"><span class="ld">2021.11–2022.03</span><span class="lb"><strong>주원지역아동센터</strong> 청소년 멘토링: 발달장애 중학생 멘토링</span></li>
-              <li class="li"><span class="ld">2022.02–2022.08</span><span class="lb"><strong>사회복지청년단체 Z team</strong>: "꿈을 펼쳐라, 드림캐치" 청소년 진로연계 프로그램 기획 및 진행</span></li>
-              <li class="li"><span class="ld">2022.05–2022.11</span><span class="lb"><strong>사회복지청년단체 Z team</strong>: 필환경 캠페인 "필대로 취하자!" 진행</span></li>
-              <li class="li"><span class="ld">2022.09–2023.02</span><span class="lb"><strong>다문화NGO 조인어스코리아</strong>: 외국인 대상 국내 언어·문화 소개 활동</span></li>
+              <li class="li"><span class="ld">2022.02–2022.08</span><span class="lb"><strong>사회복지청년단체 Z team</strong> "꿈을 펼쳐라, 드림캐치" 청소년 진로연계 프로그램 기획 및 진행</span></li>
+              <li class="li"><span class="ld">2022.05–2022.11</span><span class="lb"><strong>사회복지청년단체 Z team</strong> 필환경 캠페인 "필대로 취하자!" 진행</span></li>
+              <li class="li"><span class="ld">2022.09–2023.02</span><span class="lb"><strong>다문화NGO 조인어스코리아</strong> 외국인 대상 국내 언어·문화 소개 활동</span></li>
             </ul>
           </div>
         </div>
