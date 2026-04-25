@@ -150,10 +150,14 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .cv { background:var(--white); border:1px solid var(--g100); border-radius:16px; padding:24px 28px; position:relative; overflow:hidden; transition:box-shadow .3s, transform .3s; }
 .cv:hover { box-shadow:0 14px 44px rgba(0,0,0,.07); transform:translateY(-2px); }
 .cv::before { content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--mint6); }
-.cv-tag { font-size:12px; font-weight:800; color:var(--mint6); margin-bottom:10px; font-style:italic; }
+.cv-tag { font-size:13px; font-weight:800; color:var(--mint6); margin-bottom:8px; font-style:italic; letter-spacing:-.2px; word-break:keep-all; line-height:1.5; }
+.cv-punch { font-size:15px; font-weight:700; color:var(--ink); line-height:1.6; margin:0 0 16px; padding-bottom:14px; border-bottom:1px dashed var(--g100); word-break:keep-all; letter-spacing:-.3px; }
+.cv-punch strong { color:#0FA56A; font-weight:800; }
 .cv-p { font-size:12.5px; color:var(--g700); line-height:1.9; word-break:keep-all; text-indent:1em; }
 .cv-p + .cv-p { margin-top:8px; }
 .cv-p strong { color:var(--ink); font-weight:700; }
+.ci-greet { margin:0; }
+.ci-tldr { margin:16px 0 0; padding-top:14px; border-top:1px solid rgba(255,255,255,.12); font-size:14.5px; font-weight:700; color:var(--mint); line-height:1.6; letter-spacing:-.2px; word-break:keep-all; }
 
 /* ── CAREER ── */
 #career { background:var(--white); }
@@ -365,21 +369,25 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
         <div class="eyebrow a">Cover Letter</div>
         <div class="heading a" data-d="1">저는 이런 사람입니다.</div>
         <div class="ci-card a" data-d="2">
-          안녕하세요. 10개월의 QA 엔지니어, 9개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <strong style="color:#fff">QA에서 시작해 기획, PM으로 이어진 경험은</strong> <strong>서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</strong>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.
+          <p class="ci-greet">안녕하세요. 10개월의 QA 엔지니어, 9개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <strong style="color:#fff">QA에서 시작해 기획, PM으로 이어진 경험은</strong> <strong>서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</strong>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.</p>
+          <p class="ci-tldr">QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
         </div>
         <div class="cv-blocks">
           <div class="cv a" data-d="2">
-            <div class="cv-tag">#사용자 관점으로 서비스 품질 관리하기</div>
+            <div class="cv-tag">#결함율 39%를 0%로 — 품질의 관점에서 사용자 문제를 발견하다</div>
+            <p class="cv-punch">쿠팝비즈 결함율 <strong>39% → 0%</strong> 달성. <strong>23,464건의 TC</strong>로 QA에서 사용자 관점을 체득했습니다.</p>
             <p class="cv-p">㈜다우기술에서 '쿠팝', '뿌리오', '다우오피스' 등 자사 도메인의 품질 관리를 위해 <strong>10,382건의 테스트 케이스를 설계</strong>하고 <strong>13,082건의 테스트를 수행</strong>하며 QA 인턴으로 실무를 수행했습니다. B2B 쿠폰 마케팅 서비스 '쿠팝비즈'의 기존 결함율을 <strong>39%에서 0%로 감소</strong>시켜 서비스를 성공적으로 출시한 바 있으며, '다우오피스' 차세대 버전의 테스트를 진행하면서 사용자 <strong>로그인 UX Writing을 기획</strong>하기도 했습니다.</p>
             <p class="cv-p">이때 저는 QA로서 단순한 오류를 찾는 것은 물론, 실제 사용자들의 다양한 맥락 속에서 <strong>문제를 발견하고 정의하는 경험</strong>을 쌓았습니다. <strong>'왜 이런 문제가 발생했는가?'에 대하여 서비스의 구조적 질문을 던지고, 기획자들과 함께 기능의 목적과 흐름을 고민하면서</strong> 자연스럽게 기획의 언어에 관심을 가지게 되었고, 결과적으로 기획자로서의 커리어를 꿈꾸는 촉매제가 되었습니다.</p>
           </div>
           <div class="cv a" data-d="3">
-            <div class="cv-tag">#사용자 데이터로 문제를 정의하는 기획자</div>
+            <div class="cv-tag">#법정 수수료 초과 사례를 데이터로 발견하고 기획으로 해결하다</div>
+            <p class="cv-punch">법정 수수료 초과 사례를 <strong>데이터로 발견</strong>하고 분기 처리 기능으로 해결. <strong>전사 유일 기획자</strong>로 A to Z를 책임졌습니다.</p>
             <p class="cv-p">인턴 계약 종료 후, ㈜뱅크클리어에 서비스 기획자로 입사하여 <strong>법무사 등기 업무 플랫폼 '코스' 앱/어드민의 유지 보수 및 고도화를 수행</strong>했습니다. 법무사들이 법정 수수료 상한액 이상의 수수료를 수취하는 사례를 발견하고, <strong>Python 기반의 pandas 라이브러리를 통해 사용자 데이터를 분석하여 문제를 정의</strong>하고, 수수료 상한액 분기 처리 정책과 법무사 사무소 소개 키워드 기능 등을 기획하며 출시까지 프로젝트를 관리했습니다.</p>
             <p class="cv-p">재직 중 기획 팀장님이 입사 2개월 만에 퇴사하면서 전사 인원 17명 중 <strong>제가 유일한 기획자로 재직</strong>하게 되는 난항이 생겼습니다. 이 위기를 기회로 삼아 <strong>기획을 비롯해 QA, 데이터 분석, CS, 디자인 등 모든 업무에 영향력을 더하며</strong> A to Z의 프로덕트 전문가가 되기 위해 발돋움했고, 개발팀·운영팀·경영진 등 다양한 이해관계자와 소통하며 <strong>실무진의 관점을 입체적으로 이해하고 조율하는 태도</strong>를 갖추게 되었습니다.</p>
           </div>
           <div class="cv a" data-d="4">
-            <div class="cv-tag">#어떤 상황에서도 정답은 '소통'이다</div>
+            <div class="cv-tag">#인수인계 공백을 AI로 돌파하며 글로벌 협업을 만들다</div>
+            <p class="cv-punch">인수인계 공백을 <strong>AI로 돌파</strong>하며 글로벌 협업을 주도. 결과를 만드는 건 결국 <strong>소통의 밀도</strong>였습니다.</p>
             <p class="cv-p">경영 악화로 ㈜뱅크클리어에서 수습 종료 통보를 받은 뒤, 곧이어 이커머스 에이전시 ㈜루쿠쿠에 <strong>Assistant PM</strong>으로 입사하여 FILA, WILSON, LOEIL 등 글로벌 브랜드의 쇼피파이 스토어 런칭·유지보수를 맡았습니다. 인하우스 조직과 달리 ㈜루쿠쿠에서는 <strong>고객사 대응과 해외 개발자(중앙아시아권)와의 영어 커뮤니케이션</strong>이 주요 업무였고, 휴일·새벽을 가리지 않는 고객사 요청과 시차를 넘는 협업 환경 속에서 <strong>문제의 핵심을 파악해 상대가 이해할 수 있게 전달하는 '소통'이 어떤 환경에서도 가장 중요한 도구임을 체감</strong>했습니다.</p>
             <p class="cv-p">특히 입사 초기, 규모 있는 스토어 구축 프로젝트를 단독으로 맡게 되면서 <strong>기존 인수인계 자료가 거의 없는 상황</strong>에 직면했습니다. 이때 저는 <strong>Claude를 활용해 Git 내 코드 구조를 빠르게 이해</strong>하고, 기존 개발 방식·API 연결·폴더 구조 등을 파악함으로써 담당 개발자 부재 상황에서도 <strong>고객사 유지보수 요청을 신속하게 처리</strong>할 수 있었습니다. AI 활용은 단순한 기술 사용이 아니라, '<strong>정보의 공백을 메워 소통을 가능하게 만든 방식</strong>'이었습니다.</p>
             <p class="cv-p">이 경험을 통해 저는 정보가 부족하거나 구조가 불완전한 상황일수록 <strong>소통의 밀도와 정확성이 프로젝트 성패를 좌우</strong>한다는 것을 배웠습니다. QA에서 시작해 기획을 거쳐 PM으로 이어진 제 경력은 각기 다른 자리에서 <strong>'이 서비스가 사용자에게 어떻게 닿고 있는가'</strong>라는 같은 질문을 던져 온 여정이었으며, 앞으로도 다양한 이해관계자와의 소통 속에서 문제를 구조화하고 명확한 실행 전략을 만드는 <strong>제품 중심의 기획자</strong>로 성장하고자 합니다.</p>
