@@ -1213,7 +1213,7 @@ const fp = new FP();
     }
     function start() {
       if (timer || paused || !inView || reduced) return;
-      timer = setInterval(() => show(idx + 1), 4500);
+      timer = setInterval(() => show(idx + 1), 3000);
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
