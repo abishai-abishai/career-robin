@@ -1,2 +1,25 @@
+# 검색엔진엔 미노출
 User-agent: *
 Disallow: /
+
+# SNS 미리보기 봇은 허용 (OG 메타 활용)
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: Slackbot-LinkExpanding
+Allow: /
+
+User-agent: kakaotalk-scrap
+Allow: /
+
+User-agent: Discordbot
+Allow: /
