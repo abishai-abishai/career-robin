@@ -124,6 +124,29 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 }
 .ch-p b { color:var(--ink); font-weight:700; }
 
+/* ── Combined slide (compact) ── */
+.combo-section + .combo-section {
+  margin-top:18px; padding-top:18px; border-top:1px dashed var(--gray-100);
+}
+.combo .subtitle-bar { margin-bottom:10px; }
+.combo .intro-tldr {
+  font-size:15px; font-weight:700; color:var(--ink); line-height:1.55;
+  margin-bottom:12px; word-break:keep-all; letter-spacing:-.2px;
+}
+.combo .intro-greet {
+  padding:16px 20px; font-size:12px; line-height:1.85; border-radius:10px;
+}
+.combo .ch-eyebrow { font-size:11px; margin-bottom:5px; }
+.combo .ch-tag {
+  font-size:13px; line-height:1.4; margin-bottom:10px;
+}
+.combo .ch-punch {
+  padding:12px 18px; font-size:13.5px; line-height:1.5; margin-bottom:14px;
+  border-radius:8px;
+}
+.combo .ch-body { gap:8px; }
+.combo .ch-p { font-size:12px; line-height:1.75; }
+
 /* ── Closing Slide ── */
 .closing-body { flex:1; display:flex; flex-direction:column; justify-content:center; }
 .closing-eyebrow {
@@ -163,17 +186,27 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </footer>
 </section>
 
-<!-- Slide 02: 들어가며 (TL;DR + 인사말) -->
-<section class="slide">
+<!-- Slide 02: 들어가며 + Chapter 01 -->
+<section class="slide combo">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">자기소개서 · 한아비새</div>
   </header>
-  <h2 class="sec-title">들어가며</h2>
-  <p class="sec-sub">QA → 기획 → PM 으로 이어진 20개월의 한 줄 요약과 인사말입니다.</p>
-  <p class="intro-tldr">QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
-  <div class="intro-greet">
-    안녕하세요. 10개월의 QA 엔지니어, 10개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <b>QA에서 시작해 기획, PM으로 이어진 경험은</b> <span class="acc">서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</span>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.
+  <div class="combo-section">
+    <div class="subtitle-bar">들어가며</div>
+    <p class="intro-tldr">QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
+    <div class="intro-greet">
+      안녕하세요. 10개월의 QA 엔지니어, 10개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <b>QA에서 시작해 기획, PM으로 이어진 경험은</b> <span class="acc">서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</span>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.
+    </div>
+  </div>
+  <div class="combo-section">
+    <div class="ch-eyebrow">Chapter 01 · 다우기술 QA</div>
+    <div class="ch-tag">#결함율 39%를 0%로 — 품질의 관점에서 사용자 문제를 발견하다</div>
+    <div class="ch-punch">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건의 TC</b>로 QA에서 사용자 관점을 체득했습니다.</div>
+    <div class="ch-body">
+      <p class="ch-p">㈜다우기술에서 '쿠팝', '뿌리오', '다우오피스' 등 자사 도메인의 품질 관리를 위해 <b>10,382건의 TC를 설계</b>하고 <b>13,082건의 테스트를 수행</b>하며 QA 인턴으로 실무를 수행했습니다. B2B 쿠폰 마케팅 서비스 '쿠팝비즈'의 기존 결함율을 <b>39%에서 0%로 감소</b>시켜 서비스를 성공적으로 출시한 바 있으며, '다우오피스' 차세대 버전의 테스트를 진행하면서 사용자 <b>로그인 UX Writing을 기획</b>하기도 했습니다.</p>
+      <p class="ch-p">이때 저는 QA로서 단순한 오류를 찾는 것은 물론, 실제 사용자들의 다양한 맥락 속에서 <b>문제를 발견하고 정의하는 경험</b>을 쌓았습니다. '왜 이런 문제가 발생했는가?'에 대하여 서비스의 구조적 질문을 던지고, 기획자들과 함께 기능의 목적과 흐름을 고민하면서 자연스럽게 기획의 언어에 관심을 가지게 되었고, 결과적으로 <b>기획자로서의 커리어를 꿈꾸는 촉매제</b>가 되었습니다.</p>
+    </div>
   </div>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
@@ -181,18 +214,29 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </footer>
 </section>
 
-<!-- Slide 03: Chapter 1 -->
-<section class="slide">
+<!-- Slide 03: Chapter 02 + Chapter 03 -->
+<section class="slide combo">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">자기소개서 · 한아비새</div>
   </header>
-  <div class="ch-eyebrow">Chapter 01 · 다우기술 QA</div>
-  <div class="ch-tag">#결함율 39%를 0%로 — 품질의 관점에서 사용자 문제를 발견하다</div>
-  <div class="ch-punch">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건의 TC</b>로 QA에서 사용자 관점을 체득했습니다.</div>
-  <div class="ch-body">
-    <p class="ch-p">㈜다우기술에서 '쿠팝', '뿌리오', '다우오피스' 등 자사 도메인의 품질 관리를 위해 <b>10,382건의 테스트 케이스를 설계</b>하고 <b>13,082건의 테스트를 수행</b>하며 QA 인턴으로 실무를 수행했습니다. B2B 쿠폰 마케팅 서비스 '쿠팝비즈'의 기존 결함율을 <b>39%에서 0%로 감소</b>시켜 서비스를 성공적으로 출시한 바 있으며, '다우오피스' 차세대 버전의 테스트를 진행하면서 사용자 <b>로그인 UX Writing을 기획</b>하기도 했습니다.</p>
-    <p class="ch-p">이때 저는 QA로서 단순한 오류를 찾는 것은 물론, 실제 사용자들의 다양한 맥락 속에서 <b>문제를 발견하고 정의하는 경험</b>을 쌓았습니다. '왜 이런 문제가 발생했는가?'에 대하여 서비스의 구조적 질문을 던지고, 기획자들과 함께 기능의 목적과 흐름을 고민하면서 자연스럽게 기획의 언어에 관심을 가지게 되었고, 결과적으로 기획자로서의 커리어를 꿈꾸는 촉매제가 되었습니다.</p>
+  <div class="combo-section">
+    <div class="ch-eyebrow">Chapter 02 · 뱅크클리어 기획</div>
+    <div class="ch-tag">#법정 수수료 초과 사례를 데이터로 발견하고 기획으로 해결하다</div>
+    <div class="ch-punch">법정 수수료 초과 사례를 <b>데이터로 발견</b>하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z를 책임졌습니다.</div>
+    <div class="ch-body">
+      <p class="ch-p">인턴 계약 종료 후, ㈜뱅크클리어에 서비스 기획자로 입사하여 <b>법무사 등기 업무 플랫폼 '코스' 앱/어드민의 유지 보수 및 고도화</b>를 수행했습니다. 법무사들이 법정 수수료 상한액 이상을 수취하는 사례를 발견하고, <b>Python 기반 pandas로 사용자 데이터를 분석</b>해 문제를 정의하고, 수수료 분기 처리 정책과 법무사 사무소 소개 키워드 기능을 기획·출시까지 관리했습니다.</p>
+      <p class="ch-p">재직 중 기획 팀장님 퇴사로 전사 인원 17명 중 <b>제가 유일한 기획자</b>가 되는 난항이 생겼습니다. 이 위기를 기회로 삼아 <b>기획·QA·데이터 분석·CS·디자인 모든 업무에 영향력을 더하며</b> A to Z 프로덕트 전문가로 발돋움했고, 개발팀·운영팀·경영진과 소통하며 <b>실무진의 관점을 입체적으로 이해·조율하는 태도</b>를 갖추게 되었습니다.</p>
+    </div>
+  </div>
+  <div class="combo-section">
+    <div class="ch-eyebrow">Chapter 03 · 루쿠쿠 PM</div>
+    <div class="ch-tag">#인수인계 공백을 AI로 돌파하며 글로벌 협업을 만들다</div>
+    <div class="ch-punch">인수인계 공백을 <b>AI로 돌파</b>하며 글로벌 협업을 주도. 결과를 만드는 건 결국 <b>소통의 밀도</b>였습니다.</div>
+    <div class="ch-body">
+      <p class="ch-p">경영 악화로 ㈜뱅크클리어 수습 종료 통보를 받은 뒤, 곧이어 이커머스 에이전시 ㈜루쿠쿠에 <b>Assistant PM</b>으로 입사하여 FILA, WILSON, LOEIL 등 글로벌 브랜드 쇼피파이 스토어 런칭·유지보수를 맡았습니다. 고객사 대응과 <b>해외 개발자(중앙아시아권)와의 영어 커뮤니케이션</b>이 주요 업무였고, 시차를 넘는 협업 속에서 <b>문제의 핵심을 파악해 상대가 이해할 수 있게 전달하는 '소통'</b>이 가장 중요한 도구임을 체감했습니다.</p>
+      <p class="ch-p">특히 입사 초기, 규모 있는 스토어 구축 프로젝트를 단독으로 맡으며 <b>기존 인수인계 자료가 거의 없는 상황</b>에 직면했습니다. <b>Claude를 활용해 Git 내 코드 구조를 빠르게 이해</b>하고, API 연결·폴더 구조를 파악해 담당 개발자 부재 상황에서도 <b>고객사 유지보수 요청을 신속히 처리</b>했습니다. AI 활용은 '<b>정보의 공백을 메워 소통을 가능하게 만든 방식</b>'이었습니다.</p>
+    </div>
   </div>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
@@ -200,45 +244,7 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </footer>
 </section>
 
-<!-- Slide 04: Chapter 2 -->
-<section class="slide">
-  <header class="s-head">
-    <div class="logo">Han Abishai<span class="dot">.</span></div>
-    <div class="head-meta">자기소개서 · 한아비새</div>
-  </header>
-  <div class="ch-eyebrow">Chapter 02 · 뱅크클리어 기획</div>
-  <div class="ch-tag">#법정 수수료 초과 사례를 데이터로 발견하고 기획으로 해결하다</div>
-  <div class="ch-punch">법정 수수료 초과 사례를 <b>데이터로 발견</b>하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z를 책임졌습니다.</div>
-  <div class="ch-body">
-    <p class="ch-p">인턴 계약 종료 후, ㈜뱅크클리어에 서비스 기획자로 입사하여 <b>법무사 등기 업무 플랫폼 '코스' 앱/어드민의 유지 보수 및 고도화를 수행</b>했습니다. 법무사들이 법정 수수료 상한액 이상의 수수료를 수취하는 사례를 발견하고, <b>Python 기반 pandas 라이브러리를 통해 사용자 데이터를 분석하여 문제를 정의</b>하고, 수수료 상한액 분기 처리 정책과 법무사 사무소 소개 키워드 기능 등을 기획하며 출시까지 프로젝트를 관리했습니다.</p>
-    <p class="ch-p">재직 중 기획 팀장님이 입사 2개월 만에 퇴사하면서 전사 인원 17명 중 <b>제가 유일한 기획자로 재직</b>하게 되는 난항이 생겼습니다. 이 위기를 기회로 삼아 <b>기획을 비롯해 QA, 데이터 분석, CS, 디자인 등 모든 업무에 영향력을 더하며</b> A to Z의 프로덕트 전문가가 되기 위해 발돋움했고, 개발팀·운영팀·경영진 등 다양한 이해관계자와 소통하며 <b>실무진의 관점을 입체적으로 이해하고 조율하는 태도</b>를 갖추게 되었습니다.</p>
-  </div>
-  <footer class="s-foot">
-    <span class="brand">Han Abishai<span class="dot">.</span></span>
-    <span>04</span>
-  </footer>
-</section>
-
-<!-- Slide 05: Chapter 3 -->
-<section class="slide">
-  <header class="s-head">
-    <div class="logo">Han Abishai<span class="dot">.</span></div>
-    <div class="head-meta">자기소개서 · 한아비새</div>
-  </header>
-  <div class="ch-eyebrow">Chapter 03 · 루쿠쿠 PM</div>
-  <div class="ch-tag">#인수인계 공백을 AI로 돌파하며 글로벌 협업을 만들다</div>
-  <div class="ch-punch">인수인계 공백을 <b>AI로 돌파</b>하며 글로벌 협업을 주도. 결과를 만드는 건 결국 <b>소통의 밀도</b>였습니다.</div>
-  <div class="ch-body">
-    <p class="ch-p">경영 악화로 ㈜뱅크클리어에서 수습 종료 통보를 받은 뒤, 곧이어 이커머스 에이전시 ㈜루쿠쿠에 <b>Assistant PM</b>으로 입사하여 FILA, WILSON, LOEIL 등 글로벌 브랜드의 쇼피파이 스토어 런칭·유지보수를 맡았습니다. 인하우스 조직과 달리 ㈜루쿠쿠에서는 <b>고객사 대응과 해외 개발자(중앙아시아권)와의 영어 커뮤니케이션</b>이 주요 업무였고, 휴일·새벽을 가리지 않는 고객사 요청과 시차를 넘는 협업 환경 속에서 <b>문제의 핵심을 파악해 상대가 이해할 수 있게 전달하는 '소통'이 어떤 환경에서도 가장 중요한 도구임을 체감</b>했습니다.</p>
-    <p class="ch-p">특히 입사 초기, 규모 있는 스토어 구축 프로젝트를 단독으로 맡게 되면서 <b>기존 인수인계 자료가 거의 없는 상황</b>에 직면했습니다. 이때 저는 <b>Claude를 활용해 Git 내 코드 구조를 빠르게 이해</b>하고, 기존 개발 방식·API 연결·폴더 구조 등을 파악함으로써 담당 개발자 부재 상황에서도 <b>고객사 유지보수 요청을 신속하게 처리</b>할 수 있었습니다. AI 활용은 단순한 기술 사용이 아니라, '<b>정보의 공백을 메워 소통을 가능하게 만든 방식</b>'이었습니다.</p>
-  </div>
-  <footer class="s-foot">
-    <span class="brand">Han Abishai<span class="dot">.</span></span>
-    <span>05</span>
-  </footer>
-</section>
-
-<!-- Slide 06: Closing -->
+<!-- Slide 04: Closing -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
@@ -251,7 +257,7 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </div>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
-    <span>06</span>
+    <span>04</span>
   </footer>
 </section>
 
