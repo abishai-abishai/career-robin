@@ -3,7 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
 <title>한아비새 · Career</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🙇🏼‍♂️</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
 <style>
@@ -27,6 +30,10 @@
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html, body { height:100%; overflow:hidden; font-family:var(--kr); color:var(--ink); -webkit-font-smoothing:antialiased; }
+
+/* ── Skip link ── */
+.skip-link { position:fixed; top:-100px; left:12px; z-index:300; background:var(--ink); color:#fff; padding:10px 16px; font-size:13px; font-weight:600; text-decoration:none; border-radius:6px; transition:top .2s; }
+.skip-link:focus { top:12px; outline:2px solid var(--navy-bg); }
 
 /* ── Full-page scroll ── */
 #fp { position:fixed; inset:0; overflow:hidden; }
@@ -231,7 +238,7 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .sp-meta { font-family:var(--en); font-size:11px; color:rgba(255,255,255,.2); margin-bottom:14px; }
 .sp-tags { display:flex; flex-wrap:wrap; gap:6px; }
 .sp-t { font-family:var(--en); font-size:11px; font-weight:600; padding:3px 10px; border-radius:6px; border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.4); }
-.sp-t.hl { background:rgba(191,219,254,.15); color:var(--navy-3); border-color:rgba(191,219,254,.3); }
+.sp-t.hl { background:rgba(191,219,254,.22); color:#BFDBFE; border-color:rgba(191,219,254,.55); font-weight:700; }
 .sp-body { padding:26px 34px; display:grid; grid-template-columns:1fr 1fr; gap:26px; }
 .sp-cl { font-family:var(--en); font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,.2); margin-bottom:12px; }
 .sp-ol { list-style:none; }
@@ -248,6 +255,7 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .sp-thumb-dot.on { background:#fff; width:18px; border-radius:3px; }
 .sp-d { font-size:12.5px; color:rgba(255,255,255,.55); margin-bottom:14px; line-height:1.7; word-break:keep-all; }
 .sp-d + .sp-cl { margin-top:4px; }
+.sp-note { font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.7; padding:10px 13px; background:rgba(255,255,255,.04); border-left:2px solid rgba(255,255,255,.2); border-radius:0 6px 6px 0; margin:6px 0 14px; word-break:keep-all; }
 .sp-link { display:inline-block; color:var(--navy-bg); font-size:13px; font-weight:600; text-decoration:none; line-height:1.6; word-break:break-all; }
 .sp-link:hover { text-decoration:underline; }
 .sp-body.sp-body-1 { grid-template-columns:1fr; }
@@ -274,12 +282,14 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .cc-course { font-size:11px; color:var(--g400); margin-bottom:7px; display:flex; flex-wrap:wrap; align-items:center; gap:5px; line-height:1.5; }
 .cc-title { font-size:13px; font-weight:700; color:var(--ink); margin-bottom:5px; word-break:keep-all; line-height:1.5; }
 .cc-note { font-size:11.5px; color:var(--g400); line-height:1.6; word-break:keep-all; }
+.cc-course .tk { font-size:10px; }
 
 /* ── LIFE ── */
 #life { background:var(--white); }
 .pg-life > section { justify-content:flex-start; padding-top:80px; }
 .lg { display:grid; grid-template-columns:1fr 1fr; gap:52px; }
 .lt { font-size:18px; font-weight:800; margin-bottom:18px; }
+.lt-meta { font-size:14px; color:var(--g400); font-weight:500; }
 .ll { list-style:none; }
 .li { display:flex; gap:12px; padding:9px 0; border-bottom:1px solid var(--g100); align-items:baseline; }
 .li:last-child { border-bottom:none; }
@@ -397,6 +407,8 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 </head>
 <body>
 
+<a class="skip-link" href="#hero">본문으로 건너뛰기</a>
+
 <!-- NAV -->
 <nav id="nav">
   <a class="nav-logo" href="#">Han Abishai<span class="acc">.</span></a>
@@ -445,7 +457,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
           <span class="s-lbl">작성·수행 TC</span>
         </div>
         <div class="stat-item">
-          <span class="s-num"><span class="cnt" data-t="19">0</span><span class="m">개월</span></span>
+          <span class="s-num"><span class="cnt" data-t="20">0</span><span class="m">개월</span></span>
           <span class="s-lbl">실무 경력 (인턴 포함)</span>
         </div>
       </div>
@@ -457,18 +469,17 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="about">
       <div class="wrap">
         <div class="eyebrow a">Introduction</div>
-        <div class="heading a" data-d="1">한아비새를 소개합니다.</div>
+        <h2 class="heading a" data-d="1">한아비새를 소개합니다.</h2>
         <div class="about-grid">
           <div class="a fl">
             <img class="a-photo" src="./assets/photo.jpg" alt="한아비새">
             <ul class="c-list">
               <li><span class="k">Birth</span><span>2001. 03. 17.</span></li>
-              <li><span class="k">Phone</span><span>010-7319-6094</span></li>
               <li><span class="k">Email</span><span>rainbirddd25@gmail.com</span></li>
             </ul>
           </div>
           <div class="a fr">
-            <p class="s-head">Skills<span class="sk-hint">배지 클릭 시 활용 이력이 나타납니다. 자세한 정보는 <a class="sk-go" data-go="career">Career</a> 페이지를 참고해주세요.</span></p>
+            <p class="s-head">Skills<span class="sk-hint">배지에 마우스 호버 시 활용 이력이 나타납니다. 자세한 정보는 <a class="sk-go" data-go="career">Career</a> 페이지를 참고해주세요.</span></p>
             <div class="sg"><div class="sg-name">PM · Planning</div><div class="st"><span class="sk mi" data-sk="[뱅크클리어] 코스 앱 유지보수 기획, [다가원 그룹웨어] IA 수립 및 기획">Figma</span><span class="sk mi" data-sk="[다가원 그룹웨어] 목업 화면 빌드">FigmaMake</span><span class="sk mi" data-sk="[루쿠쿠] 입사 후 코드 분석을 바탕으로 고객사 유지보수, 개인 프로젝트를 위한 본 한아비새 커리어 페이지 등 바이브 코딩">Claude</span><span class="sk mi" data-sk="[뱅크클리어] 정책정의서 작성 및 업무 소통">Notion</span><span class="sk mi" data-sk="[다우기술] 자사서비스 TC 작성, QC 수행 및 결함 관리">GoogleDocs</span><span class="sk mi" data-sk="[루쿠쿠] PM 대내외 소통 및 문서 관리">Slack</span></div></div>
             <div class="sg"><div class="sg-name">Data · Analytics</div><div class="st"><span class="sk" data-sk="[뱅크클리어] 기능 제안을 위한 사용자 데이터 분석">Python</span><span class="sk" data-sk="[뱅크클리어] 법무수수료 상한액 관련 사용자 데이터 분석">Pandas</span><span class="sk" data-sk="[뱅크클리어] 법무수수료 상한액 관련 사용자 데이터 분석">Numpy</span><span class="sk" data-sk="[뱅크클리어] 법무수수료 상한액 관련 사용자 데이터 분석">Tableau</span><span class="sk" data-sk="자격증 취득 외 실무 경험 없음">GA4</span></div></div>
             <div class="sg"><div class="sg-name">DB · Collab</div><div class="st"><span class="sk" data-sk="[루쿠쿠] 스토어API 및 SQL 쿼리를 사용한 스토어 상/주문 등품 일괄 관리, SQLD 자격증 취득">SQL</span><span class="sk" data-sk="[다우기술] 뿌리오 서비스 이슈관리">Jira</span></div></div>
@@ -488,7 +499,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="cover">
       <div class="wrap">
         <div class="eyebrow a">Cover Letter</div>
-        <div class="heading a" data-d="1">저는 이런 사람입니다.</div>
+        <h2 class="heading a" data-d="1">저는 이런 사람입니다.</h2>
         <p class="cover-sub a" data-d="2">QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
         <div class="ci-card a" data-d="3">
           <p class="ci-greet">안녕하세요. 10개월의 QA 엔지니어, 9개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <strong style="color:#fff">QA에서 시작해 기획, PM으로 이어진 경험은</strong> <strong>서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</strong>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.</p>
@@ -524,7 +535,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="career">
       <div class="wrap">
         <div class="eyebrow a">Work Experience</div>
-        <div class="heading a" data-d="1">실무 경력</div>
+        <h2 class="heading a" data-d="1">실무 경력</h2>
         <div class="tl">
 
           <!-- 루쿠쿠 -->
@@ -537,7 +548,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-hook co">기획자로 입사 후 프로젝트 환경상 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업을 주도. PDP 리뉴얼로 스토어 이탈율 <strong>33% 감소</strong>, 인수인계 공백을 AI로 돌파했습니다.</div>
             <div class="pcards">
               <div class="pc">
-                <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn co">FILA</span><span class="pd">: 스포츠웨어 브랜드 스토어 런칭</span></div>
+                <div class="pc-h open"><span class="ch">▶</span><span class="pn co">FILA</span><span class="pd">: 스포츠웨어 브랜드 스토어 런칭</span></div>
                 <div class="pb open"><table class="pt">
                   <tr><td class="k">기간</td><td>2025.11 – 2026.04 (총 6개월)</td></tr>
                   <tr><td class="k">개요</td><td>기존 FILA몰 쇼파이 리뉴얼 런칭</td></tr>
@@ -548,7 +559,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                 </table></div>
               </div>
               <div class="pc">
-                <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn co">WILSON</span><span class="pd">: 테니스웨어 브랜드 스토어 유지보수</span></div>
+                <div class="pc-h"><span class="ch">▶</span><span class="pn co">WILSON</span><span class="pd">: 테니스웨어 브랜드 스토어 유지보수</span></div>
                 <div class="pb"><table class="pt">
                   <tr><td class="k">기간</td><td>2025.11 – 2026.02 (총 4개월)</td></tr>
                   <tr><td class="k">개요</td><td>Wilson 쇼파이 스토어 유지보수 리드</td></tr>
@@ -559,7 +570,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                 </table></div>
               </div>
               <div class="pc">
-                <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn co">LOEIL</span><span class="pd">: 하이엔드 브랜드 스토어 런칭</span></div>
+                <div class="pc-h"><span class="ch">▶</span><span class="pn co">LOEIL</span><span class="pd">: 하이엔드 브랜드 스토어 런칭</span></div>
                 <div class="pb"><table class="pt">
                   <tr><td class="k">기간</td><td>2025.11 – 2025.12 (총 2개월)</td></tr>
                   <tr><td class="k">개요</td><td>LOEIL 쇼파이 스토어 런칭 서포트</td></tr>
@@ -582,7 +593,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="t-hook mi">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <strong>전사 유일 기획자</strong>로 A to Z 프로덕트를 책임졌습니다.</div>
             <div class="pcards">
               <div class="pc">
-                <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn mi">코스</span><span class="pd">: 근저당 설정 및 소유권 이전 등 법무사의 등기 업무 플랫폼</span></div>
+                <div class="pc-h open"><span class="ch">▶</span><span class="pn mi">코스</span><span class="pd">: 근저당 설정 및 소유권 이전 등 법무사의 등기 업무 플랫폼</span></div>
                 <div class="pb open"><table class="pt">
                   <tr><td class="k">기간</td><td>2025.07 – 2025.10 (총 4개월)</td></tr>
                   <tr><td class="k">개요</td><td>코스 서비스 유지 보수 및 고도화</td></tr>
@@ -593,7 +604,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                 </table></div>
               </div>
               <div class="pc">
-                <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn mi">전자등기 솔루션</span><span class="pd">: 근저당권 전자 등기 접수 플랫폼</span></div>
+                <div class="pc-h"><span class="ch">▶</span><span class="pn mi">전자등기 솔루션</span><span class="pd">: 근저당권 전자 등기 접수 플랫폼</span></div>
                 <div class="pb"><table class="pt">
                   <tr><td class="k">기간</td><td>2025.09 – 2025.10 (총 2개월)</td></tr>
                   <tr><td class="k">개요</td><td>전자등기 솔루션 플랫폼 초기 기획 및 화면 설계</td></tr>
@@ -610,12 +621,12 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="tdot bl"></div>
             <div class="t-per bl">2024.06 – 2025.03 · 10개월</div>
             <div class="t-role">QA 엔지니어</div>
-            <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장 제안, 총 9개월 근무)</span></div>
+            <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장, 총 10개월 근무)</span></div>
             <div class="t-solved bl">What I've Discovered</div>
             <div class="t-hook bl">쿠팝비즈 결함율 <strong>39% → 0%</strong> 달성. <strong>23,464건</strong>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
             <div class="pcards">
               <div class="pc">
-                <div class="pc-h open" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">쿠팝(현 애드콘)</span><span class="pd">: B2B 모바일 쿠폰 마케팅 서비스</span></div>
+                <div class="pc-h open"><span class="ch">▶</span><span class="pn bl">쿠팝(현 애드콘)</span><span class="pd">: B2B 모바일 쿠폰 마케팅 서비스</span></div>
                 <div class="pb open"><table class="pt">
                   <tr><td class="k">기간</td><td>2024.06 – 2024.09 (총 4개월)</td></tr>
                   <tr><td class="k">개요</td><td>비즈쿠팝에서의 B2B 마케팅 수요 특화를 위한 쿠폰 서비스 출시</td></tr>
@@ -625,7 +636,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                 </table></div>
               </div>
               <div class="pc">
-                <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">뿌리오</span><span class="pd">: B2B / B2C 문자 마케팅 서비스</span></div>
+                <div class="pc-h"><span class="ch">▶</span><span class="pn bl">뿌리오</span><span class="pd">: B2B / B2C 문자 마케팅 서비스</span></div>
                 <div class="pb"><table class="pt">
                   <tr><td class="k">기간</td><td>2024.09 – 2024.10 (총 2개월)</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk gr">Jira</span><span class="tk">Figma</span><span class="tk de">CSS</span></div></td></tr>
@@ -633,7 +644,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
                 </table></div>
               </div>
               <div class="pc">
-                <div class="pc-h" onclick="tog(this)"><span class="ch">▶</span><span class="pn bl">다우오피스</span><span class="pd">: 그룹웨어, 회계, 경영, HR 올인원 사내 업무 플랫폼</span></div>
+                <div class="pc-h"><span class="ch">▶</span><span class="pn bl">다우오피스</span><span class="pd">: 그룹웨어, 회계, 경영, HR 올인원 사내 업무 플랫폼</span></div>
                 <div class="pb"><table class="pt">
                   <tr><td class="k">기간</td><td>2024.09 – 2025.03 (총 7개월)</td></tr>
                   <tr><td class="k">기술</td><td><div class="tr"><span class="tk gr">GoogleSpreadsheets</span><span class="tk gr">GoogleSlide</span><span class="tk">Figma</span></div></td></tr>
@@ -654,7 +665,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="portfolio">
       <div class="wrap">
         <div class="eyebrow a">Portfolio</div>
-        <div class="heading a" data-d="1">포트폴리오</div>
+        <h2 class="heading a" data-d="1">포트폴리오</h2>
 
         <!-- #1. FILA 프로젝트 관리 대시보드 -->
         <div class="sp a sc" data-d="2">
@@ -671,18 +682,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             </div>
           </div>
           <div class="sp-top">
-            <div class="sp-badge">ing · 2026.03 ~</div>
+            <div class="sp-badge">개인 데모 · 2026.03 ~ 04</div>
             <div class="sp-title">#1. FILA 프로젝트 관리 대시보드</div>
             <div class="sp-sub">사내 도구 — 루쿠쿠 PM 업무 효율화 대시보드</div>
-            <div class="sp-meta">자체 빌드 · 기획·설계·개발 1인 풀스택</div>
             <div class="sp-tags">
-              <span class="sp-t">Supabase</span><span class="sp-t">Vercel</span><span class="sp-t hl">Claude Code</span>
+              <span class="sp-t hl">Claude Code</span><span class="sp-t">Supabase</span><span class="sp-t">Vercel</span>
             </div>
           </div>
           <div class="sp-body">
             <div>
               <div class="sp-cl">개요</div>
               <p class="sp-d">FILA 고객사 프로젝트 진행 상황을 추적하고 태스크·리소스를 통합 관리하기 위한 사내 대시보드. 흩어진 시트·이슈 트래커를 한 곳에 정리.</p>
+              <p class="sp-note">※ 본 데모는 퇴사 후 개인 클로드로 빌드한 도구이며, 사내 PM단에서 실운영되고 있는 대시보드 자산은 인수인계 후 분리·보존 중입니다. 사내 운영 버전과는 별도의 개인 데모입니다.</p>
               <div class="sp-cl">상세</div>
               <ul class="sp-ol">
                 <li data-n="①">태스크 보드 / 캘린더 / 테이블 — 3가지 뷰로 진행률·일정 시각화</li>
@@ -718,7 +729,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="sp-sub">사이드 프로젝트 — 오피스 그룹웨어 플랫폼</div>
             <div class="sp-meta">서비스 기획자 / PM · 5인조 팀(개발 4인 + 기획 1인)</div>
             <div class="sp-tags">
-              <span class="sp-t">Figma</span><span class="sp-t">FigmaMake</span><span class="sp-t hl">Claude</span><span class="sp-t">Notion</span>
+              <span class="sp-t hl">Claude Code</span><span class="sp-t">Figma</span><span class="sp-t">FigmaMake</span><span class="sp-t">Notion</span>
             </div>
           </div>
           <div class="sp-body">
@@ -771,7 +782,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             <div class="sp-title">#3. 이전 등기 업무 활성화 제안</div>
             <div class="sp-sub">코스 — 법무사 등기 업무 플랫폼</div>
             <div class="sp-tags">
-              <span class="sp-t">Figma</span>
+              <span class="sp-t">Figma</span><span class="sp-t">Python</span><span class="sp-t">Pandas</span><span class="sp-t">Numpy</span><span class="sp-t">Tableau</span>
             </div>
           </div>
           <div class="sp-body">
@@ -910,7 +921,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="more">
       <div class="wrap">
         <div class="eyebrow a">Certificates & Experiences</div>
-        <div class="heading a" data-d="1">자격증 및 경험</div>
+        <h2 class="heading a" data-d="1">자격증 및 경험</h2>
         <div class="more-g">
           <div class="a fl">
             <div class="mc-title">📋 Certificates</div>
@@ -938,15 +949,15 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="campus">
       <div class="wrap">
         <div class="eyebrow a">University</div>
-        <div class="heading a" data-d="1">캠퍼스 프로젝트</div>
+        <h2 class="heading a" data-d="1">캠퍼스 프로젝트</h2>
         <div class="cg">
-          <div class="cc a" data-d="1"><div class="cc-course">2024-1 캡스톤디자인 졸업 심사 <span class="tk" style="font-size:10px">FinalCutPro</span><span class="tk" style="font-size:10px">Motion</span><span class="tk" style="font-size:10px">SketchUp</span></div><div class="cc-title">🎮 게임 블라인드(BLIND)</div><div class="cc-note">컨셉 아이데이션과 플레이스루 영상 프로토타이핑 담당</div></div>
-          <div class="cc a" data-d="2"><div class="cc-course">2024-1 게임기획스튜디오 기말 <span class="tk" style="font-size:10px">Figma</span></div><div class="cc-title">🎮 &lt;즐거우세요? ㅎ 아이돌디렉팅이요&gt; 최종기획안</div><div class="cc-note">컨셉 아이데이션과 피그마 UI구성 작업 담당</div></div>
+          <div class="cc a" data-d="1"><div class="cc-course">2024-1 캡스톤디자인 졸업 심사 <span class="tk">FinalCutPro</span><span class="tk">Motion</span><span class="tk">SketchUp</span></div><div class="cc-title">🎮 게임 블라인드(BLIND)</div><div class="cc-note">컨셉 아이데이션과 플레이스루 영상 프로토타이핑 담당</div></div>
+          <div class="cc a" data-d="2"><div class="cc-course">2024-1 게임기획스튜디오 기말 <span class="tk">Figma</span></div><div class="cc-title">🎮 &lt;즐거우세요? ㅎ 아이돌디렉팅이요&gt; 최종기획안</div><div class="cc-note">컨셉 아이데이션과 피그마 UI구성 작업 담당</div></div>
           <div class="cc a" data-d="3"><div class="cc-course">2023-2 소설창작워크숍 기말</div><div class="cc-title">📄 초단편 소설 「킥플립 마끼아또」</div></div>
-          <div class="cc a" data-d="4"><div class="cc-course">2023-2 게임메이킹워크숍 기말 <span class="tk" style="font-size:10px">SketchUp</span></div><div class="cc-title">🏃 &lt;막내산타 수난시대&gt; 최종기획안</div><div class="cc-note">퀘스트 기획과 공간 구현 담당</div></div>
-          <div class="cc a" data-d="5"><div class="cc-course">2023-2 게임메이킹워크숍 중간 <span class="tk de" style="font-size:10px">HTML</span><span class="tk" style="font-size:10px">Twine</span></div><div class="cc-title">📄 Twine웹게임_푸른수업의아내_한아비새.html</div></div>
+          <div class="cc a" data-d="4"><div class="cc-course">2023-2 게임메이킹워크숍 기말 <span class="tk">SketchUp</span></div><div class="cc-title">🏃 &lt;막내산타 수난시대&gt; 최종기획안</div><div class="cc-note">퀘스트 기획과 공간 구현 담당</div></div>
+          <div class="cc a" data-d="5"><div class="cc-course">2023-2 게임메이킹워크숍 중간 <span class="tk de">HTML</span><span class="tk">Twine</span></div><div class="cc-title">📄 Twine웹게임_푸른수업의아내_한아비새.html</div></div>
           <div class="cc a" data-d="6"><div class="cc-course">2023-1 광고.PR의이해 기말</div><div class="cc-title">📄 SM엔터테인먼트 ESG PR기획 제안</div></div>
-          <div class="cc a" data-d="7"><div class="cc-course">2022-2 영상콘텐츠제작실습 기말 <span class="tk" style="font-size:10px">FinalCutPro</span><span class="tk" style="font-size:10px">Motion</span></div><div class="cc-title">🎬 뮤직비디오 &lt;스물셋&gt;(원곡:IU) 리메이크 기획 및 촬영</div></div>
+          <div class="cc a" data-d="7"><div class="cc-course">2022-2 영상콘텐츠제작실습 기말 <span class="tk">FinalCutPro</span><span class="tk">Motion</span></div><div class="cc-title">🎬 뮤직비디오 &lt;스물셋&gt;(원곡:IU) 리메이크 기획 및 촬영</div></div>
         </div>
       </div>
     </section>
@@ -957,7 +968,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
     <section id="life">
       <div class="wrap">
         <div class="eyebrow a">Activities & Community</div>
-        <div class="heading a" data-d="1">활동 및 봉사</div>
+        <h2 class="heading a" data-d="1">활동 및 봉사</h2>
         <div class="lg">
           <div class="a fl">
             <div class="lt">🏃 Activities</div>
@@ -973,7 +984,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             </ul>
           </div>
           <div class="a fr">
-            <div class="lt">🌱 Volunteers <span style="font-size:14px;color:var(--g400);font-weight:500">총 88시간</span></div>
+            <div class="lt">🌱 Volunteers <span class="lt-meta">총 88시간</span></div>
             <ul class="ll">
               <li class="li"><span class="ld">2021.07–2021.11</span><span class="lb"><strong>서대문교육복지센터</strong> 좋은 이웃 활동가: 발달장애 중학생 멘토링</span></li>
               <li class="li"><span class="ld">2021.11–2022.03</span><span class="lb"><strong>주원지역아동센터</strong> 청소년 멘토링: 발달장애 중학생 멘토링</span></li>
@@ -1005,6 +1016,7 @@ function tog(head) {
   head.classList.toggle('open', !open);
   head.nextElementSibling.classList.toggle('open', !open);
 }
+document.querySelectorAll('.pc-h').forEach(h => h.addEventListener('click', () => tog(h)));
 
 // Counter animation
 function runCounter(el) {
@@ -1314,17 +1326,26 @@ const fp = new FP();
 
   function hide() { pop.hidden = true; active = null; }
 
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
   document.querySelectorAll('.sk[data-sk]').forEach(el => {
-    el.addEventListener('click', e => {
-      e.stopPropagation();
-      if (active === el) { hide(); return; }
-      show(el);
-    });
+    if (canHover) {
+      el.addEventListener('mouseenter', () => show(el));
+      el.addEventListener('mouseleave', hide);
+    } else {
+      el.addEventListener('click', e => {
+        e.stopPropagation();
+        if (active === el) { hide(); return; }
+        show(el);
+      });
+    }
   });
 
-  document.addEventListener('click', e => {
-    if (!pop.contains(e.target) && !e.target.closest('.sk[data-sk]')) hide();
-  });
+  if (!canHover) {
+    document.addEventListener('click', e => {
+      if (!pop.contains(e.target) && !e.target.closest('.sk[data-sk]')) hide();
+    });
+  }
   window.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
   window.addEventListener('resize', hide);
   window.addEventListener('wheel', hide, { passive: true });
