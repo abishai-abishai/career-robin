@@ -1326,7 +1326,7 @@ const fp = new FP();
   const pop = document.getElementById('sk-pop');
   let active = null;
 
-  const fmt = s => s.replace(/\[([^\]]+)\]/g, '<b>$1</b>');
+  const fmt = s => s.replace(/,\s*\[/g, '<br>[').replace(/\[([^\]]+)\]/g, '<b>$1</b>');
 
   function show(el) {
     const desc = el.dataset.sk;
