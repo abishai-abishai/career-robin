@@ -50,11 +50,12 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   .slide { margin:0; box-shadow:none; }
 }
 
-.s-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--gray-100); margin-bottom:32px; }
+.s-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--gray-100); margin-bottom:28px; }
 .logo { font-weight:900; font-size:20px; letter-spacing:-.5px; color:var(--ink); }
 .logo .dot { color:var(--logo-dot); }
 .head-meta { font-size:11px; color:var(--gray-400); font-weight:500; letter-spacing:.3px; }
-.s-foot { margin-top:auto; padding-top:14px; border-top:1px solid var(--gray-100); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--gray-400); }
+.s-foot { margin-top:18px; padding-top:14px; border-top:1px solid var(--gray-100); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--gray-400); }
+.cover .s-foot { margin-top:auto; }
 .s-foot .brand { font-weight:700; color:var(--gray-500); }
 .s-foot .brand .dot { color:var(--logo-dot); }
 
@@ -70,54 +71,114 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 .sec-sub { font-size:13px; color:var(--gray-500); margin-bottom:24px; line-height:1.6; }
 .subtitle-bar { font-size:14px; font-weight:800; color:var(--ink); padding-left:12px; border-left:3px solid var(--accent); margin-bottom:14px; line-height:1.2; }
 
-/* ── Slide 02: 자기 요약 ── */
-.summary-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
-.summary-tldr { font-size:24px; font-weight:800; color:var(--ink); line-height:1.55; margin-bottom:12px; word-break:keep-all; letter-spacing:-.5px; max-width:920px; }
-.summary-bio { font-size:13.5px; color:var(--gray-500); line-height:1.7; margin-bottom:32px; max-width:920px; word-break:keep-all; }
-.summary-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
-.summary-card { border:1px solid var(--gray-100); border-radius:10px; padding:20px; }
-.summary-card .label { font-size:11px; font-weight:700; color:var(--ink); margin-bottom:10px; }
-.summary-card .value { font-size:32px; font-weight:800; color:var(--accent); line-height:1; margin-bottom:8px; letter-spacing:-.5px; }
+/* ── Slide 02: 인포 ── */
+.info-grid { flex:1; display:grid; grid-template-columns:280px 1fr; gap:48px; }
+.info-photo-box { display:flex; flex-direction:column; gap:22px; }
+.info-photo-img {
+  width:240px; height:300px; border-radius:8px; object-fit:cover; object-position:center top;
+  background:var(--gray-50);
+}
+.info-meta-list { display:grid; grid-template-columns:auto 1fr; gap:6px 14px; align-items:baseline; }
+.info-meta-list dt { font-size:11px; font-weight:700; color:var(--gray-400); text-transform:uppercase; letter-spacing:.5px; }
+.info-meta-list dd { font-size:13px; color:var(--gray-700); font-weight:500; }
+
+.info-main { display:flex; flex-direction:column; }
+.info-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+.info-name { font-size:48px; font-weight:900; letter-spacing:-1.5px; line-height:1; margin-bottom:18px; }
+.info-tagline { font-size:14.5px; color:var(--gray-700); line-height:1.65; margin-bottom:22px; word-break:keep-all; max-width:560px; font-weight:500; }
+.info-roles { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px; }
+.info-roles span { font-size:11.5px; font-weight:600; padding:5px 12px; border-radius:100px; border:1px solid var(--gray-100); color:var(--gray-500); }
+
+.info-edu-list { display:flex; flex-direction:column; border-top:1px solid var(--gray-100); padding-top:20px; }
+.info-edu-list .info-edu-label { font-size:10.5px; font-weight:700; letter-spacing:1.8px; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+.info-edu-item { display:grid; grid-template-columns:120px 1fr; gap:14px; padding:7px 0; border-bottom:1px dashed var(--gray-100); align-items:baseline; }
+.info-edu-item:last-child { border-bottom:none; }
+.info-edu-period { font-size:11px; font-weight:700; color:var(--accent); letter-spacing:.2px; }
+.info-edu-name { font-size:12.5px; color:var(--ink); font-weight:700; line-height:1.4; }
+.info-edu-meta { font-size:11px; color:var(--gray-500); margin-top:2px; line-height:1.5; word-break:keep-all; }
+
+.summary-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:auto; }
+.summary-card { border:1px solid var(--gray-100); border-radius:10px; padding:16px 18px 14px; }
+.summary-card .label { font-size:11px; font-weight:700; color:var(--ink); margin-bottom:8px; }
+.summary-card .value { font-size:28px; font-weight:800; color:var(--accent); line-height:1; margin-bottom:6px; letter-spacing:-.5px; }
 .summary-card .caption { font-size:11px; color:var(--gray-400); line-height:1.5; }
 
-/* ── Company Slide (다우/뱅크/루쿠쿠) ── */
-.co-head {
-  display:flex; align-items:flex-start; justify-content:space-between;
-  gap:20px; padding-bottom:14px; margin-bottom:18px; border-bottom:1px dashed var(--gray-100);
-}
-.co-head-left .co-name { font-size:20px; font-weight:800; color:var(--ink); margin-bottom:5px; letter-spacing:-.3px; }
-.co-head-left .co-meta { font-size:12px; color:var(--gray-500); line-height:1.55; }
-.co-head-left .co-meta .leave { color:var(--gray-400); margin-left:4px; }
-.co-head-right { font-size:11.5px; color:var(--accent); font-weight:700; padding-top:4px; white-space:nowrap; letter-spacing:.3px; }
+/* ── Slide 03: TLDR + 3-pillar overview ── */
+.tldr-block { margin-bottom:24px; }
+.tldr-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+.tldr-text { font-size:24px; font-weight:800; color:var(--ink); line-height:1.5; margin-bottom:14px; word-break:keep-all; letter-spacing:-.5px; max-width:980px; }
+.tldr-bio { font-size:13.5px; color:var(--gray-500); line-height:1.7; max-width:980px; word-break:keep-all; }
 
-.co-hook {
-  background:var(--accent-bg); border-left:3px solid var(--accent); padding:14px 18px;
-  border-radius:0 8px 8px 0; font-size:13px; color:var(--gray-700); line-height:1.65;
-  margin-bottom:18px; word-break:keep-all;
-}
-.co-hook b { color:var(--accent); font-weight:800; }
+.flow { display:flex; align-items:stretch; gap:0; margin-top:8px; }
+.slide:has(.flow) .s-foot { margin-top:auto; }
+.flow-node { flex:1; padding:18px 20px; border:1px solid var(--gray-100); border-radius:12px; display:flex; flex-direction:column; gap:5px; }
+.flow-node.bl { border-color:#D8E3F0; }
+.flow-node.mi { border-color:#D8E3F0; }
+.flow-node.co { border-color:var(--blue-200); background:var(--blue-soft); }
+.flow-period { font-size:11px; font-weight:700; letter-spacing:.3px; }
+.flow-period.bl { color:var(--blue-300); }
+.flow-period.mi { color:var(--navy-500); }
+.flow-period.co { color:var(--navy); }
+.flow-role { font-size:18px; font-weight:800; letter-spacing:-.3px; color:var(--ink); }
+.flow-co { font-size:12px; color:var(--gray-500); margin-bottom:6px; }
+.flow-hook { font-size:11.5px; color:var(--gray-700); line-height:1.6; word-break:keep-all; }
+.flow-hook b { color:var(--ink); font-weight:800; }
+.flow-arrow { display:flex; align-items:center; justify-content:center; width:34px; font-size:18px; color:var(--gray-300); flex-shrink:0; font-weight:700; }
 
-.proj-table { width:100%; border-collapse:collapse; font-size:12px; }
-.proj-table thead th {
-  background:var(--gray-50); padding:10px 12px; text-align:left;
-  font-size:11px; font-weight:700; color:var(--ink); border-top:1px solid var(--gray-100);
-  border-bottom:1px solid var(--gray-100); border-right:1px solid var(--gray-100);
-  letter-spacing:.3px;
-}
-.proj-table thead th:last-child { border-right:none; }
-.proj-table td {
-  padding:11px 12px; border-bottom:1px solid var(--gray-100); border-right:1px solid var(--gray-100);
-  vertical-align:top; line-height:1.6; color:var(--gray-700); word-break:keep-all;
-}
-.proj-table td:last-child { border-right:none; }
-.proj-table .pname { font-weight:800; color:var(--ink); white-space:nowrap; }
-.proj-table .pperiod { font-family:inherit; color:var(--gray-500); white-space:nowrap; font-size:11.5px; }
-.proj-table .pwork ul, .proj-table .pkpi ul { list-style:none; padding:0; margin:0; }
-.proj-table .pwork li, .proj-table .pkpi li { padding-left:10px; position:relative; line-height:1.65; }
-.proj-table .pwork li::before, .proj-table .pkpi li::before { content:'·'; position:absolute; left:0; color:var(--gray-300); }
-.proj-table .pkpi { background:var(--accent-bg); }
-.proj-table .pkpi li::before { color:var(--accent); }
-.proj-table .pkpi b { color:var(--accent); font-weight:700; }
+/* ── Company slides (04-06): Compact timeline + per-project cards ── */
+.tl-wrap { position:relative; padding-left:24px; flex:1; display:flex; flex-direction:column; }
+.tl-wrap::before { content:''; position:absolute; left:4px; top:9px; bottom:0; width:1.5px; background:var(--gray-100); }
+.tl-wrap > .tdot { position:absolute; left:0; top:9px; width:9px; height:9px; border-radius:50%; }
+.tl-wrap > .tdot.bl { background:var(--blue-300); box-shadow:0 0 0 3px rgba(138,170,216,.2); }
+.tl-wrap > .tdot.mi { background:var(--navy-500); box-shadow:0 0 0 3px rgba(86,120,177,.18); }
+.tl-wrap > .tdot.co { background:var(--navy); box-shadow:0 0 0 3px rgba(16,54,125,.18); }
+
+.t-hdr { margin-bottom:14px; }
+.t-per { font-size:11.5px; font-weight:700; margin-bottom:3px; letter-spacing:.3px; }
+.t-per.bl { color:var(--blue-300); } .t-per.mi { color:var(--navy-500); } .t-per.co { color:var(--navy); }
+.t-role { font-size:18px; font-weight:800; letter-spacing:-.3px; margin-bottom:3px; color:var(--ink); }
+.t-meta { font-size:11.5px; color:var(--gray-500); line-height:1.55; margin-bottom:8px; }
+.t-meta .nt { color:var(--gray-400); }
+.t-solved { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin:0 0 5px; }
+.t-solved.bl { color:var(--blue-300); } .t-solved.mi { color:var(--navy-500); } .t-solved.co { color:var(--navy); }
+.t-hook { font-size:12px; line-height:1.55; color:var(--gray-700); padding:8px 13px; border-left:3px solid var(--gray-300); border-radius:0 6px 6px 0; background:#FAFBFC; font-weight:500; word-break:keep-all; }
+.t-hook b { color:var(--ink); font-weight:800; }
+.t-hook.bl { border-left-color:var(--blue-300); background:rgba(138,170,216,.08); }
+.t-hook.mi { border-left-color:var(--navy-500); background:rgba(86,120,177,.07); }
+.t-hook.co { border-left-color:var(--navy); background:rgba(16,54,125,.07); }
+
+.pcards { display:flex; flex-direction:column; gap:7px; }
+.pc { border:1px solid var(--gray-100); border-radius:8px; overflow:hidden; }
+.pc-h { display:flex; align-items:center; gap:8px; padding:5px 12px; background:var(--gray-50); border-bottom:1px solid var(--gray-100); }
+.pn { font-size:11.5px; font-weight:800; letter-spacing:-.2px; flex-shrink:0; }
+.pn.bl { color:var(--blue-300); } .pn.mi { color:var(--navy-500); } .pn.co { color:var(--navy); }
+.pd { font-size:10.5px; color:var(--gray-500); flex:1; }
+.pp { font-size:10px; font-weight:700; color:var(--gray-500); white-space:nowrap; letter-spacing:.2px; }
+.pp.bl { color:var(--blue-300); } .pp.mi { color:var(--navy-500); } .pp.co { color:var(--navy); }
+
+.pb { padding:8px 12px 9px; }
+.pl-desc { font-size:10.5px; color:var(--gray-500); margin-bottom:7px; line-height:1.5; word-break:keep-all; }
+.pl-grid { display:grid; grid-template-columns:0.95fr 1.3fr 1.15fr; gap:10px; align-items:start; }
+.pl-grid.no-kpi { grid-template-columns:0.95fr 2.4fr; }
+.pl-grid.no-summary { grid-template-columns:0.95fr 2.4fr; }
+.pl-col { min-width:0; }
+.pl-label { font-size:9.5px; font-weight:700; color:var(--gray-400); letter-spacing:.5px; margin-bottom:4px; text-transform:uppercase; }
+.pl-kpi { background:var(--blue-soft); padding:6px 10px 7px; border-radius:6px; }
+.pl-kpi .pl-label { color:var(--navy); }
+.pl-kpi .ol li::before { color:var(--navy); }
+.pl-kpi .ol li b { color:var(--navy); font-weight:700; }
+
+.tr { display:flex; flex-wrap:wrap; gap:3px; align-items:center; }
+.tk { display:inline-block; font-size:9.5px; font-weight:600; padding:2px 7px; border-radius:4px; border:1px solid var(--gray-100); background:white; color:var(--gray-700); letter-spacing:.2px; }
+.tk.mi { background:var(--blue-soft); color:var(--navy); border-color:#D8E3F0; }
+.tk.bl { background:#EEF2FF; color:#4F6BD5; border-color:#C7D2FE; }
+.tk.de { background:#FFF7ED; color:#C2410C; border-color:#FED7AA; }
+.tk.gr { background:#F0FDF4; color:#16A34A; border-color:#BBF7D0; }
+
+.ol { list-style:none; padding:0; margin:0; }
+.ol li { padding-left:14px; position:relative; font-size:10.5px; line-height:1.55; color:var(--gray-700); word-break:keep-all; margin-bottom:1px; }
+.ol li::before { content:attr(data-n); position:absolute; left:0; color:var(--navy); font-weight:700; font-size:10px; }
+.ol li b { color:var(--ink); font-weight:700; }
 
 /* ── 스킬 매트릭스 ── */
 .matrix-grid { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:24px 48px; }
@@ -127,13 +188,17 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 .matrix-tag.hl { background:var(--accent-bg); border-color:var(--accent-soft); color:var(--accent); font-weight:700; }
 .matrix-note { font-size:11px; color:var(--gray-400); margin-top:8px; line-height:1.55; }
 
-/* ── 학력·자격증·활동 ── */
-.col-3 { flex:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; }
-.list-item { padding:9px 0; border-bottom:1px solid var(--gray-100); }
+/* ── 자격증·활동·봉사 ── */
+.col-3 { flex:1; display:grid; grid-template-columns:.85fr 1.15fr 1fr; gap:32px; }
+.list-item { padding:8px 0; border-bottom:1px solid var(--gray-100); }
 .list-item:last-child { border-bottom:none; }
-.li-period { font-size:11px; font-weight:700; color:var(--accent); margin-bottom:3px; }
-.li-name { font-size:12.5px; color:var(--ink); font-weight:700; margin-bottom:3px; }
-.li-meta { font-size:11px; color:var(--gray-500); line-height:1.55; word-break:keep-all; }
+.li-period { font-size:10.5px; font-weight:700; color:var(--accent); margin-bottom:3px; letter-spacing:.2px; }
+.li-name { font-size:12px; color:var(--ink); font-weight:700; margin-bottom:2px; word-break:keep-all; }
+.li-meta { font-size:10.5px; color:var(--gray-500); line-height:1.5; word-break:keep-all; }
+.col-head-vol { display:flex; align-items:baseline; gap:8px; }
+.col-head-vol .vol-meta { font-size:11px; color:var(--gray-400); font-weight:500; }
+.activity-grid { display:grid; grid-template-columns:1fr 1fr; gap:0 28px; }
+.activity-grid .list-item:nth-last-child(-n+2) { border-bottom:none; }
 </style>
 </head>
 <body>
@@ -157,30 +222,62 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </footer>
 </section>
 
-<!-- Slide 02: 자기 요약 -->
+<!-- Slide 02: 인포 (intro + 학력 + metrics) -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">경력기술서 · 한아비새</div>
   </header>
-  <div class="summary-eyebrow">Summary</div>
-  <p class="summary-tldr">QA → 기획 → PM 으로 이어진 20개월. 사용자 관점으로 발견하고, 정의하며, 실행해왔습니다.</p>
-  <p class="summary-bio">㈜다우기술(QA, 10개월) → ㈜뱅크클리어(서비스 기획자, 4개월) → ㈜루쿠쿠(PM, 6개월). 각 역할에서 '이 서비스가 사용자에게 어떻게 닿고 있는가'라는 같은 질문을 다른 도구로 풀어왔습니다.</p>
-  <div class="summary-cards">
-    <div class="summary-card">
-      <div class="label">실무 경력</div>
-      <div class="value">20개월</div>
-      <div class="caption">인턴 9개월 + 정규직 11개월</div>
+  <div class="info-grid">
+    <div class="info-photo-box">
+      <img class="info-photo-img" src="../assets/photo.jpg" alt="한아비새">
+      <dl class="info-meta-list">
+        <dt>Birth</dt><dd>2001. 03. 17.</dd>
+        <dt>Email</dt><dd>rainbirddd25@gmail.com</dd>
+      </dl>
     </div>
-    <div class="summary-card">
-      <div class="label">작성·수행 TC</div>
-      <div class="value">23,464건</div>
-      <div class="caption">10,382건 설계 + 13,082건 수행</div>
-    </div>
-    <div class="summary-card">
-      <div class="label">기획·QA 프로덕트</div>
-      <div class="value">9개</div>
-      <div class="caption">B2B / B2C / 사내툴 / 글로벌 스토어</div>
+    <div class="info-main">
+      <div class="info-eyebrow">Introduction</div>
+      <div class="info-name">한아비새</div>
+      <p class="info-tagline">서비스의 기능을 점검하던 사람이, 이제는 그 기능을 설계합니다. QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
+      <div class="info-roles">
+        <span>Product Manager</span>
+        <span>UX Thinker</span>
+        <span>Project Communicator</span>
+      </div>
+      <div class="info-edu-list">
+        <div class="info-edu-label">Education</div>
+        <div class="info-edu-item">
+          <div class="info-edu-period">2021.03 – 2025.08</div>
+          <div>
+            <div class="info-edu-name">강남대학교 졸업</div>
+            <div class="info-edu-meta">글로벌문화학부 문화콘텐츠학 주전공 · 사회복지학부 사회서비스정책학 복수전공</div>
+          </div>
+        </div>
+        <div class="info-edu-item">
+          <div class="info-edu-period">2017.03 – 2020.02</div>
+          <div>
+            <div class="info-edu-name">서울 중동고등학교 졸업</div>
+          </div>
+        </div>
+      </div>
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="label">실무 경력</div>
+          <div class="value">20개월</div>
+          <div class="caption">인턴 9개월 + 정규직 11개월</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">작성·수행 TC</div>
+          <div class="value">23,464건</div>
+          <div class="caption">10,382건 설계 + 13,082건 수행</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">기획·QA 프로덕트</div>
+          <div class="value">9개</div>
+          <div class="caption">B2B / B2C / 사내툴 / 글로벌 스토어</div>
+        </div>
+      </div>
     </div>
   </div>
   <footer class="s-foot">
@@ -189,175 +286,204 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </footer>
 </section>
 
-<!-- Slide 03: 다우기술 -->
+<!-- Slide 03: Summary + 3-pillar career flow -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">경력기술서 · 한아비새</div>
   </header>
-  <div class="co-head">
-    <div class="co-head-left">
-      <div class="co-name">㈜다우기술 개발센터 커머스개발부 품질관리팀</div>
-      <div class="co-meta">QA 엔지니어 · 사원 · 인턴계약직 <span class="leave">(계약 종료 — 3개월 인턴 후 계약 2회 연장, 총 10개월 근무)</span></div>
-    </div>
-    <div class="co-head-right">2024.06 – 2025.03 · 10개월</div>
+  <div class="tldr-block">
+    <div class="tldr-eyebrow">Summary</div>
+    <p class="tldr-text">QA → 기획 → PM 으로 이어진 20개월. 사용자 관점으로 발견하고, 정의하며, 실행해왔습니다.</p>
+    <p class="tldr-bio">㈜다우기술(QA, 10개월) → ㈜뱅크클리어(서비스 기획자, 4개월) → ㈜루쿠쿠(PM, 6개월).<br>각 역할에서 '이 서비스가 사용자에게 어떻게 닿고 있는가'라는 같은 질문을 다른 도구로 풀어왔습니다.</p>
   </div>
-  <div class="co-hook">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건</b>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
-  <table class="proj-table">
-    <thead>
-      <tr><th style="width:140px">프로젝트</th><th style="width:130px">기간</th><th>업무 요약</th><th style="width:280px">핵심 성과</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="pname">쿠팝<br>(현 애드콘)</td>
-        <td class="pperiod">2024.06 – 09<br>4개월</td>
-        <td class="pwork"><ul>
-          <li>1~3차 전수 단위테스트·회귀테스트 TC 작성 1,062건, 수행 9,521건</li>
-          <li>각 기능 결함 우선도 설정 및 재테스트 수행</li>
-        </ul></td>
-        <td class="pkpi"><ul><li><b>릴리즈 시 운영 서버 결함율 0%</b> 달성</li></ul></td>
-      </tr>
-      <tr>
-        <td class="pname">뿌리오</td>
-        <td class="pperiod">2024.09 – 10<br>2개월</td>
-        <td class="pwork"><ul>
-          <li>메인화면 개편 단위 테스트 QC 310건</li>
-          <li>모바일 설문 단위 테스트 TC 89건 작성, QC 319건</li>
-        </ul></td>
-        <td class="pkpi"><ul><li>—</li></ul></td>
-      </tr>
-      <tr>
-        <td class="pname">다우오피스</td>
-        <td class="pperiod">2024.09 – 25.03<br>7개월</td>
-        <td class="pwork"><ul>
-          <li>Sprint 단위별 전수 테스트 TC 8,829건 작성, QC 2,322건</li>
-        </ul></td>
-        <td class="pkpi"><ul><li><b>로그인 프로세스 UX·Validation 문구 기획</b></li></ul></td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="flow">
+    <div class="flow-node bl">
+      <div class="flow-period bl">2024.06 – 2025.03 · 10개월</div>
+      <div class="flow-role">QA 엔지니어</div>
+      <div class="flow-co">㈜다우기술 품질관리팀 · 인턴계약직</div>
+      <div class="flow-hook">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건</b>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node mi">
+      <div class="flow-period mi">2025.07 – 2025.10 · 4개월</div>
+      <div class="flow-role">서비스 기획자</div>
+      <div class="flow-co">㈜뱅크클리어 기획팀 · 정규직</div>
+      <div class="flow-hook">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z 프로덕트를 책임졌습니다.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node co">
+      <div class="flow-period co">2025.11 – 2026.04 · 6개월</div>
+      <div class="flow-role">PM(Project Manager)</div>
+      <div class="flow-co">㈜루쿠쿠 · 정규직</div>
+      <div class="flow-hook">기획자로 입사 후 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업 주도. PDP 리뉴얼로 스토어 이탈율 <b>33% 감소</b>, 인수인계 공백을 AI로 돌파했습니다.</div>
+    </div>
+  </div>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
     <span>03</span>
   </footer>
 </section>
 
-<!-- Slide 04: 뱅크클리어 -->
+<!-- Slide 04: 다우기술 -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">경력기술서 · 한아비새</div>
   </header>
-  <div class="co-head">
-    <div class="co-head-left">
-      <div class="co-name">㈜뱅크클리어 기획팀</div>
-      <div class="co-meta">서비스 기획자 · 매니저 · 정규직 <span class="leave">(수습 종료 — 이후 경영 악화로 종료)</span></div>
+  <div class="tl-wrap">
+    <span class="tdot bl"></span>
+    <div class="t-hdr">
+      <div class="t-per bl">2024.06 – 2025.03 · 10개월</div>
+      <div class="t-role">QA 엔지니어</div>
+      <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장, 총 10개월 근무)</span></div>
+      <div class="t-solved bl">What I've Discovered</div>
+      <div class="t-hook bl">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건</b>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
     </div>
-    <div class="co-head-right">2025.07 – 2025.10 · 4개월</div>
+    <div class="pcards">
+      <div class="pc">
+        <div class="pc-h"><span class="pn bl">쿠팝(현 애드콘)</span><span class="pd">: B2B 모바일 쿠폰 마케팅 서비스</span><span class="pp bl">2024.06 – 2024.09 · 4개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">비즈쿠팝에서의 B2B 마케팅 수요 특화를 위한 쿠폰 서비스 출시</div>
+          <div class="pl-grid">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk gr">Spreadsheets</span><span class="tk">Figma</span><span class="tk de">JavaScript</span><span class="tk de">HTML</span><span class="tk de">CSS</span><span class="tk de">Selenium</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">1~3차 전수 단위·회귀테스트 TC 작성 1,062건 / 수행 9,521건</li><li data-n="②">각 기능 결함 조치 우선도 설정 및 재테스트 수행</li></ul></div>
+            <div class="pl-col pl-kpi"><div class="pl-label">성과</div><ul class="ol"><li data-n="①">서비스 릴리즈 당시 <b>운영 서버 결함율 0%</b> 달성</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-h"><span class="pn bl">뿌리오</span><span class="pd">: B2B / B2C 문자 마케팅 서비스</span><span class="pp bl">2024.09 – 2024.10 · 2개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">메인화면 개편 및 모바일 설문 단위 테스트 진행</div>
+          <div class="pl-grid no-kpi">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk gr">Spreadsheets</span><span class="tk gr">Jira</span><span class="tk">Figma</span><span class="tk de">JavaScript</span><span class="tk de">HTML</span><span class="tk de">CSS</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">메인화면 개편 단위 테스트 QC 수행 310건</li><li data-n="②">모바일 설문 단위 테스트 TC 89건 작성 / QC 수행 319건</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-h"><span class="pn bl">다우오피스</span><span class="pd">: 그룹웨어·회계·경영·HR 올인원 사내 업무 플랫폼</span><span class="pp bl">2024.09 – 2025.03 · 7개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">Sprint 단위 전수 테스트 및 로그인 프로세스 UX 기획 참여</div>
+          <div class="pl-grid">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk gr">Spreadsheets</span><span class="tk gr">GoogleSlide</span><span class="tk">Figma</span><span class="tk de">JavaScript</span><span class="tk de">HTML</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">Sprint 단위별 전수 테스트 TC 작성 8,829건 / QC 수행 2,322건</li></ul></div>
+            <div class="pl-col pl-kpi"><div class="pl-label">성과</div><ul class="ol"><li data-n="①"><b>로그인 프로세스 UX 및 Validation 문구 기획</b></li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="co-hook">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z 프로덕트를 책임졌습니다.</div>
-  <table class="proj-table">
-    <thead>
-      <tr><th style="width:160px">프로젝트</th><th style="width:130px">기간</th><th>업무 요약</th><th style="width:300px">핵심 성과</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="pname">코스<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">법무사 등기 업무 플랫폼</span></td>
-        <td class="pperiod">2025.07 – 10<br>4개월</td>
-        <td class="pwork"><ul>
-          <li>앱/어드민 프론트 화면 설계·디자인</li>
-          <li>우리은행–권원보험사–자사 간 데이터 송수신 정책 유지·보수</li>
-          <li>운영 이슈 조치에 따른 QA/QC 진행, 앱/어드민 배포 사후 관리</li>
-          <li>법무사 우선 문의 CS 응대 지원</li>
-        </ul></td>
-        <td class="pkpi"><ul>
-          <li><b>법무사 법정 수수료 상한액 초과 사례 데이터 분석 및 분기 처리 기능 기획</b></li>
-          <li><b>앱 내 법무사 사무소 소개 키워드 기능 기획·출시</b></li>
-        </ul></td>
-      </tr>
-      <tr>
-        <td class="pname">전자등기 솔루션<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">근저당권 전자 등기 접수</span></td>
-        <td class="pperiod">2025.09 – 10<br>2개월</td>
-        <td class="pwork"><ul>
-          <li>플랫폼 초기 기획 및 화면 설계</li>
-          <li>서비스 기획·프로젝트 매니지먼트</li>
-        </ul></td>
-        <td class="pkpi"><ul><li><b>플랫폼 홈 화면 및 로그인 정책 기획</b></li></ul></td>
-      </tr>
-    </tbody>
-  </table>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
     <span>04</span>
   </footer>
 </section>
 
-<!-- Slide 05: 루쿠쿠 -->
+<!-- Slide 05: 뱅크클리어 -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">경력기술서 · 한아비새</div>
   </header>
-  <div class="co-head">
-    <div class="co-head-left">
-      <div class="co-name">㈜루쿠쿠</div>
-      <div class="co-meta">PM (Project Manager) · 정규직 <span class="leave">(이직 — 6개월 근무 후 이직)</span></div>
+  <div class="tl-wrap">
+    <span class="tdot mi"></span>
+    <div class="t-hdr">
+      <div class="t-per mi">2025.07 – 2025.10 · 4개월</div>
+      <div class="t-role">서비스 기획자</div>
+      <div class="t-meta">㈜뱅크클리어 기획팀 · 매니저 · 정규직 <span class="nt">(*이후 경영 악화로 수습 종료)</span></div>
+      <div class="t-solved mi">What I've Defined</div>
+      <div class="t-hook mi">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z 프로덕트를 책임졌습니다.</div>
     </div>
-    <div class="co-head-right">2025.11 – 2026.04 · 6개월</div>
+    <div class="pcards">
+      <div class="pc">
+        <div class="pc-h"><span class="pn mi">코스</span><span class="pd">: 근저당 설정 및 소유권 이전 등 법무사의 등기 업무 플랫폼</span><span class="pp mi">2025.07 – 2025.10 · 4개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">코스 서비스 유지 보수 및 고도화 — 서비스 기획 및 프로젝트 매니지먼트</div>
+          <div class="pl-grid">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk">Figma</span><span class="tk">Notion</span><span class="tk gr">Spreadsheets</span><span class="tk bl">Python</span><span class="tk bl">Pandas</span><span class="tk bl">Numpy</span><span class="tk bl">Tableau</span><span class="tk gr">SQL</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">앱/어드민 프론트 화면 설계 및 디자인</li><li data-n="②">우리은행–권원보험사–자사 간 데이터 송수신 정책 유지 보수</li><li data-n="③">운영 이슈 조치에 따른 QA/QC 및 배포 사후 관리</li><li data-n="④">법무사 우선 문의 CS 응대 지원</li></ul></div>
+            <div class="pl-col pl-kpi"><div class="pl-label">성과</div><ul class="ol"><li data-n="①"><b>법무사 법정 수수료 상한액 초과 사례 데이터 분석 및 분기 처리 기능 기획</b></li><li data-n="②"><b>앱 내 법무사 사무소 소개 키워드 기능 기획·출시</b></li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-h"><span class="pn mi">전자등기 솔루션</span><span class="pd">: 근저당권 전자 등기 접수 플랫폼</span><span class="pp mi">2025.09 – 2025.10 · 2개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">전자등기 솔루션 플랫폼 초기 기획 및 화면 설계 — 서비스 기획 및 프로젝트 매니지먼트</div>
+          <div class="pl-grid no-kpi">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk">Figma</span><span class="tk">Notion</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">플랫폼 홈 화면 및 로그인 정책 기획</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="co-hook">기획자로 입사 후 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업 주도. PDP 리뉴얼로 스토어 이탈율 <b>33% 감소</b>, 인수인계 공백을 AI로 돌파했습니다.</div>
-  <table class="proj-table">
-    <thead>
-      <tr><th style="width:120px">프로젝트</th><th style="width:130px">기간</th><th>업무 요약</th><th style="width:280px">핵심 성과</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td class="pname">FILA<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">스토어 런칭</span></td>
-        <td class="pperiod">2025.11 – 26.04<br>6개월</td>
-        <td class="pwork"><ul>
-          <li>기존 미비 기획 체크리스트 수집 및 엣지케이스 정의</li>
-          <li>단위·통합 테스트 TC 작성 및 결함 관리</li>
-          <li>고객사–해외 개발자 영어 번역 소통 주도</li>
-        </ul></td>
-        <td class="pkpi"><ul>
-          <li><b>최종 테스트 결함율 38% 감소</b></li>
-          <li>고객사 가이드용 어드민 기능 정의서 자산화</li>
-        </ul></td>
-      </tr>
-      <tr>
-        <td class="pname">WILSON<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">스토어 유지보수</span></td>
-        <td class="pperiod">2025.11 – 26.02<br>4개월</td>
-        <td class="pwork"><ul>
-          <li>스토어 PDP 리뉴얼 프로젝트 관리</li>
-          <li>월별 견적서 및 내·외부 자산/공수 관리</li>
-          <li>고객사–해외 개발자 영어 번역 소통 주도</li>
-        </ul></td>
-        <td class="pkpi"><ul>
-          <li><b>리뉴얼 PDP 출시 → 스토어 이탈율 33% 감소</b></li>
-          <li>추가개발 건 고객사 대응 QA 시트 자산화</li>
-        </ul></td>
-      </tr>
-      <tr>
-        <td class="pname">LOEIL<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">스토어 런칭</span></td>
-        <td class="pperiod">2025.11 – 12<br>2개월</td>
-        <td class="pwork"><ul>
-          <li>선수 퇴사 PM 히스토리 파악 및 메인 PM 서포트</li>
-          <li>견적서에 따른 고객사 요구사항 확인 및 조치 진행</li>
-        </ul></td>
-        <td class="pkpi"><ul>
-          <li><b>고객사 요구사항 달성율 62% 상향</b></li>
-          <li>고객사 추가 유지보수 계약 체결</li>
-        </ul></td>
-      </tr>
-    </tbody>
-  </table>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
     <span>05</span>
   </footer>
 </section>
 
-<!-- Slide 06: 스킬 매트릭스 -->
+<!-- Slide 06: 루쿠쿠 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <div class="tl-wrap">
+    <span class="tdot co"></span>
+    <div class="t-hdr">
+      <div class="t-per co">2025.11 – 2026.04 · 6개월</div>
+      <div class="t-role">PM(Project Manager)</div>
+      <div class="t-meta">㈜루쿠쿠 · 정규직 <span class="nt">(*6개월 근무 후 이직)</span></div>
+      <div class="t-solved co">What I've Delivered</div>
+      <div class="t-hook co">기획자로 입사 후 프로젝트 환경상 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업 주도. PDP 리뉴얼로 스토어 이탈율 <b>33% 감소</b>, 인수인계 공백을 AI로 돌파했습니다.</div>
+    </div>
+    <div class="pcards">
+      <div class="pc">
+        <div class="pc-h"><span class="pn co">FILA</span><span class="pd">: 스포츠웨어 브랜드 스토어 런칭</span><span class="pp co">2025.11 – 2026.04 · 6개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">기존 FILA몰 쇼파이 리뉴얼 런칭 — 고객사 대응, 스토어 스펙 문서화 및 TC 작성, 결함 관리</div>
+          <div class="pl-grid">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk">Figma</span><span class="tk mi">Claude Code</span><span class="tk gr">GoogleDocs</span><span class="tk">ClickUp</span><span class="tk">Slack</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">기존 스토어 내 미비된 기획 체크리스트 수집 및 엣지케이스 정의</li><li data-n="②">단위·통합 테스트 TC 작성 및 결함 관리</li><li data-n="③">고객사–해외개발자 영어 번역 소통 주도</li></ul></div>
+            <div class="pl-col pl-kpi"><div class="pl-label">성과</div><ul class="ol"><li data-n="①"><b>최종 테스트 결함율 38% 감소</b></li><li data-n="②">고객사 가이드용 어드민 기능 정의서 자산화</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-h"><span class="pn co">WILSON</span><span class="pd">: 테니스웨어 브랜드 스토어 유지보수</span><span class="pp co">2025.11 – 2026.02 · 4개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">Wilson 쇼파이 스토어 유지보수 리드 — 고객사 대응, 추가개발 및 유지보수 기획-개발-QA-출시 리드</div>
+          <div class="pl-grid">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk">Figma</span><span class="tk mi">Claude Code</span><span class="tk gr">GoogleDocs</span><span class="tk">ClickUp</span><span class="tk">Slack</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">스토어 PDP 리뉴얼 프로젝트 관리</li><li data-n="②">월별 견적서 및 내·외부 자산/공수 관리</li><li data-n="③">고객사–해외개발자 영어 번역 소통 주도</li></ul></div>
+            <div class="pl-col pl-kpi"><div class="pl-label">성과</div><ul class="ol"><li data-n="①"><b>리뉴얼 PDP 출시 → 스토어 이탈율 33% 감소</b></li><li data-n="②">추가개발 건 고객사 대응 QA 시트 자산화</li></ul></div>
+          </div>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-h"><span class="pn co">LOEIL</span><span class="pd">: 하이엔드 브랜드 스토어 런칭</span><span class="pp co">2025.11 – 2025.12 · 2개월</span></div>
+        <div class="pb">
+          <div class="pl-desc">LOEIL 쇼파이 스토어 런칭 서포트 — 고객사 요구사항 대응 및 QA 진행</div>
+          <div class="pl-grid">
+            <div class="pl-col"><div class="pl-label">기술</div><div class="tr"><span class="tk">Figma</span><span class="tk gr">GoogleDocs</span><span class="tk">ClickUp</span><span class="tk">Slack</span></div></div>
+            <div class="pl-col"><div class="pl-label">요약</div><ul class="ol"><li data-n="①">선수 퇴사 PM 히스토리 파악 및 메인 PM 서포트</li><li data-n="②">견적서에 따른 고객사 요구사항 확인 및 조치 진행</li></ul></div>
+            <div class="pl-col pl-kpi"><div class="pl-label">성과</div><ul class="ol"><li data-n="①"><b>고객사 요구사항 달성율 62% 상향</b></li><li data-n="②">고객사 추가 유지보수 계약 체결</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>06</span>
+  </footer>
+</section>
+
+<!-- Slide 07: 스킬 매트릭스 -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
@@ -413,36 +539,25 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   </div>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
-    <span>06</span>
+    <span>07</span>
   </footer>
 </section>
 
-<!-- Slide 07: 학력·자격증·활동 -->
+<!-- Slide 08: 자격증 + 활동 -->
 <section class="slide">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
     <div class="head-meta">경력기술서 · 한아비새</div>
   </header>
-  <h2 class="sec-title">학력 · 자격증 · 활동</h2>
-  <p class="sec-sub">학력·자격증·주요 대외 활동·봉사 경험.</p>
-  <div class="col-3">
-    <div>
-      <div class="subtitle-bar">학력</div>
-      <div class="list-item">
-        <div class="li-period">2021.03 – 2025.08</div>
-        <div class="li-name">강남대학교 졸업</div>
-        <div class="li-meta">글로벌문화학부 문화콘텐츠학 주전공<br>사회복지학부 사회서비스정책학 복수전공</div>
-      </div>
-      <div class="list-item">
-        <div class="li-period">2017.03 – 2020.02</div>
-        <div class="li-name">서울 중동고등학교 졸업</div>
-      </div>
-    </div>
+  <h2 class="sec-title">자격증 · 활동</h2>
+  <p class="sec-sub">취득 자격증과 학부 시절의 주요 대외 활동.</p>
+  <div class="col-3" style="grid-template-columns:.85fr 2fr;">
     <div>
       <div class="subtitle-bar">자격증</div>
       <div class="list-item">
         <div class="li-period">2025.06</div>
         <div class="li-name">SQL 개발자 (SQLD)</div>
+        <div class="li-meta">한국데이터산업진흥원</div>
       </div>
       <div class="list-item">
         <div class="li-period">2025.06</div>
@@ -459,31 +574,96 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
       </div>
     </div>
     <div>
-      <div class="subtitle-bar">활동 · 봉사</div>
-      <div class="list-item">
-        <div class="li-period">2022.03 – 2023.04</div>
-        <div class="li-name">사회복지청년단체 Z team</div>
-        <div class="li-meta">대외홍보팀 · 사회사업·콘텐츠 제작</div>
-      </div>
-      <div class="list-item">
-        <div class="li-period">2022.09 – 2024.06</div>
-        <div class="li-name">강남대학교 카페 블룸즈버리</div>
-        <div class="li-meta">바리스타 및 디저트 제조</div>
-      </div>
-      <div class="list-item">
-        <div class="li-period">2022.09 – 2023.03</div>
-        <div class="li-name">다문화NGO 조인어스코리아</div>
-        <div class="li-meta">그린블루 크리에이터 13기 촬영편집팀장</div>
-      </div>
-      <div class="list-item">
-        <div class="li-period">봉사 · 총 88시간</div>
-        <div class="li-meta">서대문교육복지센터·주원지역아동센터 발달장애 멘토링, Z team 청소년 진로 프로그램 등</div>
+      <div class="subtitle-bar">활동</div>
+      <div class="activity-grid">
+        <div class="list-item">
+          <div class="li-period">2021.08 – 2022.08</div>
+          <div class="li-name">뽀로로파크 영등포빅마켓점</div>
+          <div class="li-meta">운영팀 스탭 — 키즈파크 어트랙션 진행, 유아 응대 및 놀이지도</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2022.03 – 2023.04</div>
+          <div class="li-name">사회복지청년단체 Z team</div>
+          <div class="li-meta">대외홍보팀 — 사회사업 진행 및 홍보 콘텐츠 제작</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2022.07 – 2023.06</div>
+          <div class="li-name">자란다 가정돌봄 교사</div>
+          <div class="li-meta">5–7세 아동 대상 놀이지도, 한글/영어 수업</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2022.09 – 2023.03</div>
+          <div class="li-name">다문화NGO 조인어스코리아</div>
+          <div class="li-meta">그린블루 크리에이터 13기 촬영편집팀장</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2022.09 – 2024.06</div>
+          <div class="li-name">강남대학교 카페 블룸즈버리</div>
+          <div class="li-meta">카페 바리스타 및 디저트 제조</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2023.06 – 2024.02</div>
+          <div class="li-name">수원시 카페 구스타브</div>
+          <div class="li-meta">카페 바리스타 및 디저트 제조</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2023.03 – 2023.05</div>
+          <div class="li-name">강남대학교 유학생 문화 부스</div>
+          <div class="li-meta">기획 및 운영 — 독일·미국·카자흐스탄 유학생 협업</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2023.12 – 2024.06</div>
+          <div class="li-name">'Youth Talk' 촬영편집팀장</div>
+          <div class="li-meta">숏폼 콘텐츠 기획 및 제작</div>
+        </div>
       </div>
     </div>
   </div>
   <footer class="s-foot">
     <span class="brand">Han Abishai<span class="dot">.</span></span>
-    <span>07</span>
+    <span>08</span>
+  </footer>
+</section>
+
+<!-- Slide 09: 봉사 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">봉사</h2>
+  <p class="sec-sub">발달장애 아동 멘토링과 청소년 진로·환경 캠페인을 중심으로 한 봉사 활동 — <b>총 88시간</b>.</p>
+  <div style="flex:1; display:flex; flex-direction:column;">
+    <div class="subtitle-bar">Volunteers <span style="font-size:11px;font-weight:500;color:var(--gray-400);margin-left:8px;">총 88시간</span></div>
+    <div class="list-item">
+      <div class="li-period">2021.07 – 2021.11</div>
+      <div class="li-name">서대문교육복지센터</div>
+      <div class="li-meta">좋은 이웃 활동가 — 발달장애 중학생 멘토링</div>
+    </div>
+    <div class="list-item">
+      <div class="li-period">2021.11 – 2022.03</div>
+      <div class="li-name">주원지역아동센터</div>
+      <div class="li-meta">청소년 멘토링 — 발달장애 중학생 멘토링</div>
+    </div>
+    <div class="list-item">
+      <div class="li-period">2022.02 – 2022.08</div>
+      <div class="li-name">사회복지청년단체 Z team</div>
+      <div class="li-meta">"꿈을 펼쳐라, 드림캐치" 청소년 진로연계 프로그램 기획 및 진행</div>
+    </div>
+    <div class="list-item">
+      <div class="li-period">2022.05 – 2022.11</div>
+      <div class="li-name">사회복지청년단체 Z team</div>
+      <div class="li-meta">필환경 캠페인 "필대로 취하자!" 진행</div>
+    </div>
+    <div class="list-item">
+      <div class="li-period">2022.09 – 2023.02</div>
+      <div class="li-name">다문화NGO 조인어스코리아</div>
+      <div class="li-meta">외국인 대상 국내 언어·문화 소개 활동</div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>09</span>
   </footer>
 </section>
 
