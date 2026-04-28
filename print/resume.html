@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한아비새 · 이력서</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<style>
+:root {
+  --ink: #231F20;
+  --gray-700: #333;
+  --gray-500: #555;
+  --gray-400: #999;
+  --gray-300: #CCC;
+  --gray-100: #F0F0F0;
+  --gray-50: #F9F9F9;
+  --white: #FFF;
+  --navy: #10367D;
+  --navy-500: #5678B1;
+  --blue-300: #8AAAD8;
+  --blue-200: #BFDBFE;
+
+  /* 이력서: charcoal accent (dot은 항상 navy) */
+  --accent: var(--ink);
+  --accent-soft: var(--gray-500);
+  --accent-bg: var(--gray-50);
+  --logo-dot: var(--navy);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+.print-wrap { padding:40px 0; }
+.slide {
+  width:1280px; height:720px;
+  margin:0 auto 32px;
+  padding:48px 64px;
+  background:white;
+  display:flex; flex-direction:column;
+  position:relative;
+  page-break-after:always;
+  box-shadow:0 4px 24px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+.slide:last-child { page-break-after:auto; margin-bottom:0; }
+
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html, body { background:#fff; }
+  .print-wrap { padding:0; }
+  .slide { margin:0; box-shadow:none; }
+}
+
+/* ── Header / Footer ── */
+.s-head {
+  display:flex; justify-content:space-between; align-items:center;
+  padding-bottom:14px; border-bottom:1px solid var(--gray-100); margin-bottom:32px;
+}
+.logo { font-weight:900; font-size:20px; letter-spacing:-.5px; color:var(--ink); }
+.logo .dot { color:var(--logo-dot); }
+.head-meta { font-size:11px; color:var(--gray-400); font-weight:500; letter-spacing:.3px; }
+.s-foot {
+  margin-top:auto; padding-top:14px; border-top:1px solid var(--gray-100);
+  display:flex; justify-content:space-between; align-items:center;
+  font-size:11px; color:var(--gray-400);
+}
+.s-foot .brand { font-weight:700; color:var(--gray-500); }
+.s-foot .brand .dot { color:var(--logo-dot); }
+
+/* ── Cover Slide ── */
+.cover .s-head { padding-bottom:0; border-bottom:0; margin-bottom:0; }
+.cover-body {
+  flex:1; display:flex; flex-direction:column; justify-content:center;
+}
+.cover-label {
+  font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase;
+  color:var(--accent); margin-bottom:18px;
+}
+.cover-title {
+  font-size:96px; font-weight:900; letter-spacing:-3px;
+  margin-bottom:32px; line-height:.95;
+}
+.cover-title .dot { color:var(--logo-dot); }
+.cover-name {
+  font-size:18px; font-weight:700; color:var(--gray-700); margin-bottom:6px;
+}
+.cover-email {
+  font-size:13px; color:var(--gray-500); font-weight:500;
+}
+
+/* ── Section title ── */
+.sec-title { font-size:22px; font-weight:800; margin-bottom:6px; letter-spacing:-.3px; }
+.sec-sub { font-size:13px; color:var(--gray-500); margin-bottom:24px; line-height:1.6; }
+
+/* ── Slide 02: 인포 ── */
+.info-grid {
+  flex:1; display:grid; grid-template-columns:280px 1fr; gap:48px;
+}
+.info-photo-box { display:flex; flex-direction:column; gap:24px; }
+.info-photo-img {
+  width:240px; height:300px; border-radius:8px; object-fit:cover; object-position:center top;
+  background:var(--gray-50);
+}
+.info-meta-list { display:grid; grid-template-columns:auto 1fr; gap:6px 14px; align-items:baseline; }
+.info-meta-list dt {
+  font-size:11px; font-weight:700; color:var(--gray-400);
+  text-transform:uppercase; letter-spacing:.5px;
+}
+.info-meta-list dd { font-size:13px; color:var(--gray-700); font-weight:500; }
+
+.info-main { display:flex; flex-direction:column; }
+.info-eyebrow {
+  font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase;
+  color:var(--accent); margin-bottom:12px;
+}
+.info-name { font-size:48px; font-weight:900; letter-spacing:-1.5px; line-height:1; margin-bottom:18px; }
+.info-tagline {
+  font-size:14.5px; color:var(--gray-700); line-height:1.65; margin-bottom:24px;
+  word-break:keep-all; max-width:560px; font-weight:500;
+}
+.info-roles { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:auto; }
+.info-roles span {
+  font-size:11.5px; font-weight:600; padding:5px 12px; border-radius:100px;
+  border:1px solid var(--gray-100); color:var(--gray-500);
+}
+
+.summary-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; margin-top:28px; }
+.summary-card { border:1px solid var(--gray-100); border-radius:10px; padding:18px 18px 16px; }
+.summary-card .label {
+  font-size:11px; font-weight:700; color:var(--ink);
+  margin-bottom:10px; letter-spacing:.2px;
+}
+.summary-card .value {
+  font-size:30px; font-weight:800; color:var(--accent);
+  line-height:1; margin-bottom:8px; letter-spacing:-.5px;
+}
+.summary-card .caption { font-size:11px; color:var(--gray-400); line-height:1.5; }
+
+/* ── Slide 03: 경력 + 학력/자격증 ── */
+.col-2 { flex:1; display:grid; grid-template-columns:1.25fr 1fr; gap:44px; }
+.subtitle-bar {
+  font-size:14px; font-weight:800; color:var(--ink);
+  padding-left:12px; border-left:3px solid var(--accent);
+  margin-bottom:14px; line-height:1.2;
+}
+.exp-list { display:flex; flex-direction:column; }
+.exp-item {
+  display:grid; grid-template-columns:160px 1fr; gap:18px;
+  padding:14px 0; border-bottom:1px solid var(--gray-100);
+}
+.exp-item:last-child { border-bottom:none; }
+.exp-period { font-size:11.5px; font-weight:700; color:var(--accent); padding-top:2px; letter-spacing:.2px; }
+.exp-name { font-size:13.5px; font-weight:700; color:var(--ink); margin-bottom:4px; }
+.exp-role { font-size:11.5px; color:var(--gray-500); line-height:1.5; }
+.exp-leave { color:var(--gray-400); font-weight:500; margin-left:4px; }
+
+.edu-list { display:flex; flex-direction:column; margin-bottom:24px; }
+.edu-item { padding:11px 0; border-bottom:1px solid var(--gray-100); }
+.edu-item:last-child { border-bottom:none; }
+.edu-period { font-size:11px; font-weight:700; color:var(--accent); margin-bottom:4px; letter-spacing:.2px; }
+.edu-name { font-size:13px; color:var(--ink); font-weight:700; margin-bottom:3px; }
+.edu-meta { font-size:11.5px; color:var(--gray-500); line-height:1.55; word-break:keep-all; }
+
+.cert-list { display:flex; flex-direction:column; }
+.cert-item {
+  display:grid; grid-template-columns:64px 1fr;
+  gap:14px; padding:9px 0; border-bottom:1px solid var(--gray-100);
+  align-items:baseline;
+}
+.cert-item:last-child { border-bottom:none; }
+.cert-date { font-size:11px; font-weight:700; color:var(--accent); letter-spacing:.2px; }
+.cert-body { font-size:12.5px; }
+.cert-name { color:var(--ink); font-weight:700; }
+.cert-meta { font-size:11px; color:var(--gray-400); margin-left:6px; }
+
+/* ── Slide 04·05: 핵심 스킬 (배지+설명) ── */
+.skill-detail-grid {
+  flex:1; display:grid; grid-template-columns:1fr 1fr; gap:32px 56px;
+}
+.skill-detail-group { display:flex; flex-direction:column; }
+.skill-detail-list { display:flex; flex-direction:column; }
+.skill-detail-row {
+  display:grid; grid-template-columns:104px 1fr; gap:14px;
+  padding:8px 0; border-bottom:1px dashed var(--gray-100);
+  align-items:baseline;
+}
+.skill-detail-row:last-child { border-bottom:none; }
+.skill-detail-tag {
+  font-size:11px; font-weight:700; padding:4px 10px; border-radius:5px;
+  background:var(--accent-bg); color:var(--accent); border:1px solid var(--gray-100);
+  text-align:center; line-height:1.4; justify-self:start;
+}
+.skill-detail-desc {
+  font-size:11.5px; color:var(--gray-700); line-height:1.55;
+  word-break:keep-all;
+}
+.skill-detail-desc b { color:var(--accent); font-weight:700; }
+</style>
+</head>
+<body>
+<div class="print-wrap">
+
+<!-- Slide 01: Cover -->
+<section class="slide cover">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">2026.04 · v1.0</div>
+  </header>
+  <div class="cover-body">
+    <div class="cover-label">Resume</div>
+    <h1 class="cover-title">이력서<span class="dot">.</span></h1>
+    <div class="cover-name">한아비새 / Han Abishai</div>
+    <div class="cover-email">rainbirddd25@gmail.com</div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>01</span>
+  </footer>
+</section>
+
+<!-- Slide 02: 인포 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">이력서 · 한아비새</div>
+  </header>
+  <div class="info-grid">
+    <div class="info-photo-box">
+      <img class="info-photo-img" src="../assets/photo.jpg" alt="한아비새">
+      <dl class="info-meta-list">
+        <dt>Birth</dt><dd>2001. 03. 17.</dd>
+        <dt>Email</dt><dd>rainbirddd25@gmail.com</dd>
+      </dl>
+    </div>
+    <div class="info-main">
+      <div class="info-eyebrow">Introduction</div>
+      <div class="info-name">한아비새</div>
+      <p class="info-tagline">서비스의 기능을 점검하던 사람이, 이제는 그 기능을 설계합니다. QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
+      <div class="info-roles">
+        <span>Product Manager</span>
+        <span>UX Thinker</span>
+        <span>Project Communicator</span>
+      </div>
+      <div class="summary-cards">
+        <div class="summary-card">
+          <div class="label">실무 경력</div>
+          <div class="value">20개월</div>
+          <div class="caption">인턴 9개월 + 정규직 11개월</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">작성·수행 TC</div>
+          <div class="value">23,464건</div>
+          <div class="caption">10,382건 설계 + 13,082건 수행</div>
+        </div>
+        <div class="summary-card">
+          <div class="label">기획·QA 프로덕트</div>
+          <div class="value">9개</div>
+          <div class="caption">B2B / B2C / 사내툴 / 글로벌 스토어</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>02</span>
+  </footer>
+</section>
+
+<!-- Slide 03: 경력 + 학력/자격증 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">이력서 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">실무 경력 · 학력 · 자격증</h2>
+  <p class="sec-sub">QA → 기획 → PM 으로 이어진 20개월의 경로.</p>
+  <div class="col-2">
+    <div>
+      <div class="subtitle-bar">실무 경력</div>
+      <div class="exp-list">
+        <div class="exp-item">
+          <div class="exp-period">2025.11 – 2026.04<br>6개월</div>
+          <div>
+            <div class="exp-name">㈜루쿠쿠</div>
+            <div class="exp-role">PM (Project Manager) · 정규직 <span class="exp-leave">(이직)</span><br>FILA · WILSON · LOEIL 글로벌 쇼피파이 스토어</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-period">2025.07 – 2025.10<br>4개월</div>
+          <div>
+            <div class="exp-name">㈜뱅크클리어 기획팀</div>
+            <div class="exp-role">서비스 기획자 · 정규직 <span class="exp-leave">(수습 종료)</span><br>법무사 등기 업무 플랫폼 '코스' 유지보수·고도화</div>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-period">2024.06 – 2025.03<br>10개월</div>
+          <div>
+            <div class="exp-name">㈜다우기술 품질관리팀</div>
+            <div class="exp-role">QA 엔지니어 · 인턴계약직 <span class="exp-leave">(계약 종료)</span><br>쿠팝(애드콘) · 뿌리오 · 다우오피스 자사 도메인 QA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="subtitle-bar">학력</div>
+      <div class="edu-list">
+        <div class="edu-item">
+          <div class="edu-period">2021.03 – 2025.08</div>
+          <div class="edu-name">강남대학교 졸업</div>
+          <div class="edu-meta">글로벌문화학부 문화콘텐츠학 주전공<br>사회복지학부 사회서비스정책학 복수전공</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-period">2017.03 – 2020.02</div>
+          <div class="edu-name">서울 중동고등학교 졸업</div>
+        </div>
+      </div>
+      <div class="subtitle-bar">자격증</div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <span class="cert-date">2025.06</span>
+          <span class="cert-body"><span class="cert-name">SQL 개발자</span><span class="cert-meta">SQLD</span></span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-date">2025.06</span>
+          <span class="cert-body"><span class="cert-name">GAIQ</span><span class="cert-meta">Google Analytics IQ</span></span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-date">2024.02</span>
+          <span class="cert-body"><span class="cert-name">대한유도회 유도 1단</span></span>
+        </div>
+        <div class="cert-item">
+          <span class="cert-date">2024.01</span>
+          <span class="cert-body"><span class="cert-name">운전면허 2종 보통</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>03</span>
+  </footer>
+</section>
+
+<!-- Slide 04: 핵심 스킬 ① — PM · Planning, Data · Analytics -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">이력서 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">핵심 스킬 ① — PM · Data</h2>
+  <p class="sec-sub">실무에서 활용한 도구와 활용 이력. PM·기획·데이터 분석 영역.</p>
+  <div class="skill-detail-grid">
+    <div class="skill-detail-group">
+      <div class="subtitle-bar">PM · Planning</div>
+      <div class="skill-detail-list">
+        <div class="skill-detail-row"><span class="skill-detail-tag">Figma</span><span class="skill-detail-desc"><b>뱅크클리어</b> 코스 앱 유지보수 기획, <b>다가원 그룹웨어</b> IA 수립 및 기획</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">FigmaMake</span><span class="skill-detail-desc"><b>다가원 그룹웨어</b> 목업 화면 빌드</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Claude Code</span><span class="skill-detail-desc"><b>루쿠쿠</b> 입사 후 코드 분석 기반 고객사 유지보수, 본 한아비새 경력 페이지 등 개인 프로젝트 빌드</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Notion</span><span class="skill-detail-desc"><b>뱅크클리어</b> 정책정의서 작성 및 업무 소통</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Spreadsheets</span><span class="skill-detail-desc"><b>다우기술</b> 자사서비스 TC 작성·QC 수행·결함 관리</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Slack</span><span class="skill-detail-desc"><b>루쿠쿠</b> PM 대내외 소통 및 문서 관리</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">ClickUp</span><span class="skill-detail-desc"><b>루쿠쿠</b> FILA·WILSON·LOEIL 배포 건 관리 및 일정 추적</span></div>
+      </div>
+    </div>
+    <div class="skill-detail-group">
+      <div class="subtitle-bar">Data · Analytics</div>
+      <div class="skill-detail-list">
+        <div class="skill-detail-row"><span class="skill-detail-tag">Python</span><span class="skill-detail-desc"><b>뱅크클리어</b> 기능 제안을 위한 사용자 데이터 분석</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Pandas</span><span class="skill-detail-desc"><b>뱅크클리어</b> 법무수수료 상한액 관련 데이터 분석</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Numpy</span><span class="skill-detail-desc"><b>뱅크클리어</b> 위 분석 동반 사용</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Tableau</span><span class="skill-detail-desc"><b>뱅크클리어</b> 위 분석 결과 시각화</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">GA4</span><span class="skill-detail-desc">자격증(GAIQ) 취득 외 실무 경험 없음</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>04</span>
+  </footer>
+</section>
+
+<!-- Slide 05: 핵심 스킬 ② — DB · Collab, Dev · Automation -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">이력서 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">핵심 스킬 ② — DB · Dev</h2>
+  <p class="sec-sub">데이터베이스·협업, 개발·자동화 영역.</p>
+  <div class="skill-detail-grid">
+    <div class="skill-detail-group">
+      <div class="subtitle-bar">DB · Collab</div>
+      <div class="skill-detail-list">
+        <div class="skill-detail-row"><span class="skill-detail-tag">SQL</span><span class="skill-detail-desc"><b>루쿠쿠</b> 스토어API·SQL 쿼리로 상품/주문 일괄 관리, SQLD 자격증 취득</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Jira</span><span class="skill-detail-desc"><b>다우기술</b> 뿌리오 서비스 이슈관리</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Supabase</span><span class="skill-detail-desc"><b>루쿠쿠</b> FILA 프로젝트 관리 대시보드 DB 구축·연결</span></div>
+      </div>
+    </div>
+    <div class="skill-detail-group">
+      <div class="subtitle-bar">Dev · Automation</div>
+      <div class="skill-detail-list">
+        <div class="skill-detail-row"><span class="skill-detail-tag">JavaScript</span><span class="skill-detail-desc"><b>다우기술</b> 자사서비스 프론트/디자인 QA 화이트박스 테스팅</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">HTML</span><span class="skill-detail-desc"><b>다우기술</b> 자사서비스 프론트/디자인 QA 화이트박스 테스팅</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">CSS</span><span class="skill-detail-desc"><b>다우기술</b> 자사서비스 프론트/디자인 QA 화이트박스 테스팅</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Selenium</span><span class="skill-detail-desc"><b>다우기술</b> 쿠팝 서비스 테스트 자동화 코드 작성</span></div>
+        <div class="skill-detail-row"><span class="skill-detail-tag">Vercel</span><span class="skill-detail-desc"><b>루쿠쿠</b> FILA 프로젝트 관리 대시보드 정적 배포, <b>본 한아비새 경력기술서</b> 정적 배포</span></div>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>05</span>
+  </footer>
+</section>
+
+</div>
+</body>
+</html>

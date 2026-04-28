@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한아비새 · 경력기술서</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<style>
+:root {
+  --ink: #231F20;
+  --gray-700: #333;
+  --gray-500: #555;
+  --gray-400: #999;
+  --gray-300: #CCC;
+  --gray-100: #F0F0F0;
+  --gray-50: #F9F9F9;
+  --white: #FFF;
+  --navy: #10367D;
+  --navy-500: #5678B1;
+  --blue-300: #8AAAD8;
+  --blue-200: #BFDBFE;
+  --blue-soft: #EFF4FA;
+
+  /* 경력기술서: navy main */
+  --accent: var(--navy);
+  --accent-soft: var(--navy-500);
+  --accent-bg: var(--blue-soft);
+  --logo-dot: var(--navy);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif; color:var(--ink); -webkit-font-smoothing:antialiased; }
+.print-wrap { padding:40px 0; }
+.slide {
+  width:1280px; height:720px;
+  margin:0 auto 32px;
+  padding:48px 64px;
+  background:white;
+  display:flex; flex-direction:column;
+  position:relative;
+  page-break-after:always;
+  box-shadow:0 4px 24px rgba(0,0,0,.08);
+  overflow:hidden;
+}
+.slide:last-child { page-break-after:auto; margin-bottom:0; }
+
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html, body { background:#fff; }
+  .print-wrap { padding:0; }
+  .slide { margin:0; box-shadow:none; }
+}
+
+.s-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--gray-100); margin-bottom:32px; }
+.logo { font-weight:900; font-size:20px; letter-spacing:-.5px; color:var(--ink); }
+.logo .dot { color:var(--logo-dot); }
+.head-meta { font-size:11px; color:var(--gray-400); font-weight:500; letter-spacing:.3px; }
+.s-foot { margin-top:auto; padding-top:14px; border-top:1px solid var(--gray-100); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--gray-400); }
+.s-foot .brand { font-weight:700; color:var(--gray-500); }
+.s-foot .brand .dot { color:var(--logo-dot); }
+
+.cover .s-head { padding-bottom:0; border-bottom:0; margin-bottom:0; }
+.cover-body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.cover-label { font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
+.cover-title { font-size:96px; font-weight:900; letter-spacing:-3px; margin-bottom:32px; line-height:.95; }
+.cover-title .dot { color:var(--logo-dot); }
+.cover-name { font-size:18px; font-weight:700; color:var(--gray-700); margin-bottom:6px; }
+.cover-email { font-size:13px; color:var(--gray-500); font-weight:500; }
+
+.sec-title { font-size:22px; font-weight:800; margin-bottom:6px; letter-spacing:-.3px; }
+.sec-sub { font-size:13px; color:var(--gray-500); margin-bottom:24px; line-height:1.6; }
+.subtitle-bar { font-size:14px; font-weight:800; color:var(--ink); padding-left:12px; border-left:3px solid var(--accent); margin-bottom:14px; line-height:1.2; }
+
+/* ── Slide 02: 자기 요약 ── */
+.summary-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:12px; }
+.summary-tldr { font-size:24px; font-weight:800; color:var(--ink); line-height:1.55; margin-bottom:12px; word-break:keep-all; letter-spacing:-.5px; max-width:920px; }
+.summary-bio { font-size:13.5px; color:var(--gray-500); line-height:1.7; margin-bottom:32px; max-width:920px; word-break:keep-all; }
+.summary-cards { display:grid; grid-template-columns:repeat(3, 1fr); gap:14px; }
+.summary-card { border:1px solid var(--gray-100); border-radius:10px; padding:20px; }
+.summary-card .label { font-size:11px; font-weight:700; color:var(--ink); margin-bottom:10px; }
+.summary-card .value { font-size:32px; font-weight:800; color:var(--accent); line-height:1; margin-bottom:8px; letter-spacing:-.5px; }
+.summary-card .caption { font-size:11px; color:var(--gray-400); line-height:1.5; }
+
+/* ── Company Slide (다우/뱅크/루쿠쿠) ── */
+.co-head {
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:20px; padding-bottom:14px; margin-bottom:18px; border-bottom:1px dashed var(--gray-100);
+}
+.co-head-left .co-name { font-size:20px; font-weight:800; color:var(--ink); margin-bottom:5px; letter-spacing:-.3px; }
+.co-head-left .co-meta { font-size:12px; color:var(--gray-500); line-height:1.55; }
+.co-head-left .co-meta .leave { color:var(--gray-400); margin-left:4px; }
+.co-head-right { font-size:11.5px; color:var(--accent); font-weight:700; padding-top:4px; white-space:nowrap; letter-spacing:.3px; }
+
+.co-hook {
+  background:var(--accent-bg); border-left:3px solid var(--accent); padding:14px 18px;
+  border-radius:0 8px 8px 0; font-size:13px; color:var(--gray-700); line-height:1.65;
+  margin-bottom:18px; word-break:keep-all;
+}
+.co-hook b { color:var(--accent); font-weight:800; }
+
+.proj-table { width:100%; border-collapse:collapse; font-size:12px; }
+.proj-table thead th {
+  background:var(--gray-50); padding:10px 12px; text-align:left;
+  font-size:11px; font-weight:700; color:var(--ink); border-top:1px solid var(--gray-100);
+  border-bottom:1px solid var(--gray-100); border-right:1px solid var(--gray-100);
+  letter-spacing:.3px;
+}
+.proj-table thead th:last-child { border-right:none; }
+.proj-table td {
+  padding:11px 12px; border-bottom:1px solid var(--gray-100); border-right:1px solid var(--gray-100);
+  vertical-align:top; line-height:1.6; color:var(--gray-700); word-break:keep-all;
+}
+.proj-table td:last-child { border-right:none; }
+.proj-table .pname { font-weight:800; color:var(--ink); white-space:nowrap; }
+.proj-table .pperiod { font-family:inherit; color:var(--gray-500); white-space:nowrap; font-size:11.5px; }
+.proj-table .pwork ul, .proj-table .pkpi ul { list-style:none; padding:0; margin:0; }
+.proj-table .pwork li, .proj-table .pkpi li { padding-left:10px; position:relative; line-height:1.65; }
+.proj-table .pwork li::before, .proj-table .pkpi li::before { content:'·'; position:absolute; left:0; color:var(--gray-300); }
+.proj-table .pkpi { background:var(--accent-bg); }
+.proj-table .pkpi li::before { color:var(--accent); }
+.proj-table .pkpi b { color:var(--accent); font-weight:700; }
+
+/* ── 스킬 매트릭스 ── */
+.matrix-grid { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:24px 48px; }
+.matrix-group { display:flex; flex-direction:column; }
+.matrix-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.matrix-tag { font-size:11.5px; font-weight:600; padding:5px 11px; border-radius:5px; border:1px solid var(--gray-100); background:white; color:var(--gray-700); }
+.matrix-tag.hl { background:var(--accent-bg); border-color:var(--accent-soft); color:var(--accent); font-weight:700; }
+.matrix-note { font-size:11px; color:var(--gray-400); margin-top:8px; line-height:1.55; }
+
+/* ── 학력·자격증·활동 ── */
+.col-3 { flex:1; display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; }
+.list-item { padding:9px 0; border-bottom:1px solid var(--gray-100); }
+.list-item:last-child { border-bottom:none; }
+.li-period { font-size:11px; font-weight:700; color:var(--accent); margin-bottom:3px; }
+.li-name { font-size:12.5px; color:var(--ink); font-weight:700; margin-bottom:3px; }
+.li-meta { font-size:11px; color:var(--gray-500); line-height:1.55; word-break:keep-all; }
+</style>
+</head>
+<body>
+<div class="print-wrap">
+
+<!-- Slide 01: Cover -->
+<section class="slide cover">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">2026.04 · v1.0</div>
+  </header>
+  <div class="cover-body">
+    <div class="cover-label">Career Description</div>
+    <h1 class="cover-title">경력기술서<span class="dot">.</span></h1>
+    <div class="cover-name">한아비새 / Han Abishai</div>
+    <div class="cover-email">rainbirddd25@gmail.com</div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>01</span>
+  </footer>
+</section>
+
+<!-- Slide 02: 자기 요약 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <div class="summary-eyebrow">Summary</div>
+  <p class="summary-tldr">QA → 기획 → PM 으로 이어진 20개월. 사용자 관점으로 발견하고, 정의하며, 실행해왔습니다.</p>
+  <p class="summary-bio">㈜다우기술(QA, 10개월) → ㈜뱅크클리어(서비스 기획자, 4개월) → ㈜루쿠쿠(PM, 6개월). 각 역할에서 '이 서비스가 사용자에게 어떻게 닿고 있는가'라는 같은 질문을 다른 도구로 풀어왔습니다.</p>
+  <div class="summary-cards">
+    <div class="summary-card">
+      <div class="label">실무 경력</div>
+      <div class="value">20개월</div>
+      <div class="caption">인턴 9개월 + 정규직 11개월</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">작성·수행 TC</div>
+      <div class="value">23,464건</div>
+      <div class="caption">10,382건 설계 + 13,082건 수행</div>
+    </div>
+    <div class="summary-card">
+      <div class="label">기획·QA 프로덕트</div>
+      <div class="value">9개</div>
+      <div class="caption">B2B / B2C / 사내툴 / 글로벌 스토어</div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>02</span>
+  </footer>
+</section>
+
+<!-- Slide 03: 다우기술 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <div class="co-head">
+    <div class="co-head-left">
+      <div class="co-name">㈜다우기술 개발센터 커머스개발부 품질관리팀</div>
+      <div class="co-meta">QA 엔지니어 · 사원 · 인턴계약직 <span class="leave">(계약 종료 — 3개월 인턴 후 계약 2회 연장, 총 10개월 근무)</span></div>
+    </div>
+    <div class="co-head-right">2024.06 – 2025.03 · 10개월</div>
+  </div>
+  <div class="co-hook">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건</b>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
+  <table class="proj-table">
+    <thead>
+      <tr><th style="width:140px">프로젝트</th><th style="width:130px">기간</th><th>업무 요약</th><th style="width:280px">핵심 성과</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="pname">쿠팝<br>(현 애드콘)</td>
+        <td class="pperiod">2024.06 – 09<br>4개월</td>
+        <td class="pwork"><ul>
+          <li>1~3차 전수 단위테스트·회귀테스트 TC 작성 1,062건, 수행 9,521건</li>
+          <li>각 기능 결함 우선도 설정 및 재테스트 수행</li>
+        </ul></td>
+        <td class="pkpi"><ul><li><b>릴리즈 시 운영 서버 결함율 0%</b> 달성</li></ul></td>
+      </tr>
+      <tr>
+        <td class="pname">뿌리오</td>
+        <td class="pperiod">2024.09 – 10<br>2개월</td>
+        <td class="pwork"><ul>
+          <li>메인화면 개편 단위 테스트 QC 310건</li>
+          <li>모바일 설문 단위 테스트 TC 89건 작성, QC 319건</li>
+        </ul></td>
+        <td class="pkpi"><ul><li>—</li></ul></td>
+      </tr>
+      <tr>
+        <td class="pname">다우오피스</td>
+        <td class="pperiod">2024.09 – 25.03<br>7개월</td>
+        <td class="pwork"><ul>
+          <li>Sprint 단위별 전수 테스트 TC 8,829건 작성, QC 2,322건</li>
+        </ul></td>
+        <td class="pkpi"><ul><li><b>로그인 프로세스 UX·Validation 문구 기획</b></li></ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>03</span>
+  </footer>
+</section>
+
+<!-- Slide 04: 뱅크클리어 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <div class="co-head">
+    <div class="co-head-left">
+      <div class="co-name">㈜뱅크클리어 기획팀</div>
+      <div class="co-meta">서비스 기획자 · 매니저 · 정규직 <span class="leave">(수습 종료 — 이후 경영 악화로 종료)</span></div>
+    </div>
+    <div class="co-head-right">2025.07 – 2025.10 · 4개월</div>
+  </div>
+  <div class="co-hook">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z 프로덕트를 책임졌습니다.</div>
+  <table class="proj-table">
+    <thead>
+      <tr><th style="width:160px">프로젝트</th><th style="width:130px">기간</th><th>업무 요약</th><th style="width:300px">핵심 성과</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="pname">코스<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">법무사 등기 업무 플랫폼</span></td>
+        <td class="pperiod">2025.07 – 10<br>4개월</td>
+        <td class="pwork"><ul>
+          <li>앱/어드민 프론트 화면 설계·디자인</li>
+          <li>우리은행–권원보험사–자사 간 데이터 송수신 정책 유지·보수</li>
+          <li>운영 이슈 조치에 따른 QA/QC 진행, 앱/어드민 배포 사후 관리</li>
+          <li>법무사 우선 문의 CS 응대 지원</li>
+        </ul></td>
+        <td class="pkpi"><ul>
+          <li><b>법무사 법정 수수료 상한액 초과 사례 데이터 분석 및 분기 처리 기능 기획</b></li>
+          <li><b>앱 내 법무사 사무소 소개 키워드 기능 기획·출시</b></li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td class="pname">전자등기 솔루션<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">근저당권 전자 등기 접수</span></td>
+        <td class="pperiod">2025.09 – 10<br>2개월</td>
+        <td class="pwork"><ul>
+          <li>플랫폼 초기 기획 및 화면 설계</li>
+          <li>서비스 기획·프로젝트 매니지먼트</li>
+        </ul></td>
+        <td class="pkpi"><ul><li><b>플랫폼 홈 화면 및 로그인 정책 기획</b></li></ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>04</span>
+  </footer>
+</section>
+
+<!-- Slide 05: 루쿠쿠 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <div class="co-head">
+    <div class="co-head-left">
+      <div class="co-name">㈜루쿠쿠</div>
+      <div class="co-meta">PM (Project Manager) · 정규직 <span class="leave">(이직 — 6개월 근무 후 이직)</span></div>
+    </div>
+    <div class="co-head-right">2025.11 – 2026.04 · 6개월</div>
+  </div>
+  <div class="co-hook">기획자로 입사 후 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업 주도. PDP 리뉴얼로 스토어 이탈율 <b>33% 감소</b>, 인수인계 공백을 AI로 돌파했습니다.</div>
+  <table class="proj-table">
+    <thead>
+      <tr><th style="width:120px">프로젝트</th><th style="width:130px">기간</th><th>업무 요약</th><th style="width:280px">핵심 성과</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="pname">FILA<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">스토어 런칭</span></td>
+        <td class="pperiod">2025.11 – 26.04<br>6개월</td>
+        <td class="pwork"><ul>
+          <li>기존 미비 기획 체크리스트 수집 및 엣지케이스 정의</li>
+          <li>단위·통합 테스트 TC 작성 및 결함 관리</li>
+          <li>고객사–해외 개발자 영어 번역 소통 주도</li>
+        </ul></td>
+        <td class="pkpi"><ul>
+          <li><b>최종 테스트 결함율 38% 감소</b></li>
+          <li>고객사 가이드용 어드민 기능 정의서 자산화</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td class="pname">WILSON<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">스토어 유지보수</span></td>
+        <td class="pperiod">2025.11 – 26.02<br>4개월</td>
+        <td class="pwork"><ul>
+          <li>스토어 PDP 리뉴얼 프로젝트 관리</li>
+          <li>월별 견적서 및 내·외부 자산/공수 관리</li>
+          <li>고객사–해외 개발자 영어 번역 소통 주도</li>
+        </ul></td>
+        <td class="pkpi"><ul>
+          <li><b>리뉴얼 PDP 출시 → 스토어 이탈율 33% 감소</b></li>
+          <li>추가개발 건 고객사 대응 QA 시트 자산화</li>
+        </ul></td>
+      </tr>
+      <tr>
+        <td class="pname">LOEIL<br><span style="font-weight:500;color:var(--gray-500);font-size:11px">스토어 런칭</span></td>
+        <td class="pperiod">2025.11 – 12<br>2개월</td>
+        <td class="pwork"><ul>
+          <li>선수 퇴사 PM 히스토리 파악 및 메인 PM 서포트</li>
+          <li>견적서에 따른 고객사 요구사항 확인 및 조치 진행</li>
+        </ul></td>
+        <td class="pkpi"><ul>
+          <li><b>고객사 요구사항 달성율 62% 상향</b></li>
+          <li>고객사 추가 유지보수 계약 체결</li>
+        </ul></td>
+      </tr>
+    </tbody>
+  </table>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>05</span>
+  </footer>
+</section>
+
+<!-- Slide 06: 스킬 매트릭스 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">스킬 매트릭스</h2>
+  <p class="sec-sub">실무에서 활용한 도구를 4개 그룹으로 정리합니다. 강조 표시는 PM·기획 영역에서 주력 활용한 도구.</p>
+  <div class="matrix-grid">
+    <div class="matrix-group">
+      <div class="subtitle-bar">PM · Planning</div>
+      <div class="matrix-tags">
+        <span class="matrix-tag hl">Figma</span>
+        <span class="matrix-tag hl">FigmaMake</span>
+        <span class="matrix-tag hl">Claude Code</span>
+        <span class="matrix-tag hl">Notion</span>
+        <span class="matrix-tag hl">Spreadsheets</span>
+        <span class="matrix-tag hl">Slack</span>
+        <span class="matrix-tag hl">ClickUp</span>
+      </div>
+      <div class="matrix-note">뱅크클리어 코스 기획·다가원 IA 수립·루쿠쿠 PM 운영에서 주력 사용.</div>
+    </div>
+    <div class="matrix-group">
+      <div class="subtitle-bar">Data · Analytics</div>
+      <div class="matrix-tags">
+        <span class="matrix-tag">Python</span>
+        <span class="matrix-tag">Pandas</span>
+        <span class="matrix-tag">Numpy</span>
+        <span class="matrix-tag">Tableau</span>
+        <span class="matrix-tag">GA4</span>
+      </div>
+      <div class="matrix-note">뱅크클리어 법정 수수료 상한액 사례 데이터 분석에서 활용. GA4는 자격증(GAIQ) 취득.</div>
+    </div>
+    <div class="matrix-group">
+      <div class="subtitle-bar">DB · Collab</div>
+      <div class="matrix-tags">
+        <span class="matrix-tag">SQL</span>
+        <span class="matrix-tag">Jira</span>
+        <span class="matrix-tag">Supabase</span>
+      </div>
+      <div class="matrix-note">루쿠쿠 스토어API·SQL 일괄 관리(SQLD), 다우 뿌리오 이슈관리, FILA 대시보드 DB 구축.</div>
+    </div>
+    <div class="matrix-group">
+      <div class="subtitle-bar">Dev · Automation</div>
+      <div class="matrix-tags">
+        <span class="matrix-tag">JavaScript</span>
+        <span class="matrix-tag">HTML</span>
+        <span class="matrix-tag">CSS</span>
+        <span class="matrix-tag">Selenium</span>
+        <span class="matrix-tag">Vercel</span>
+      </div>
+      <div class="matrix-note">다우기술 자사서비스 화이트박스 테스팅·테스트 자동화. Vercel은 FILA 대시보드/본 페이지 정적 배포.</div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>06</span>
+  </footer>
+</section>
+
+<!-- Slide 07: 학력·자격증·활동 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">경력기술서 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">학력 · 자격증 · 활동</h2>
+  <p class="sec-sub">학력·자격증·주요 대외 활동·봉사 경험.</p>
+  <div class="col-3">
+    <div>
+      <div class="subtitle-bar">학력</div>
+      <div class="list-item">
+        <div class="li-period">2021.03 – 2025.08</div>
+        <div class="li-name">강남대학교 졸업</div>
+        <div class="li-meta">글로벌문화학부 문화콘텐츠학 주전공<br>사회복지학부 사회서비스정책학 복수전공</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">2017.03 – 2020.02</div>
+        <div class="li-name">서울 중동고등학교 졸업</div>
+      </div>
+    </div>
+    <div>
+      <div class="subtitle-bar">자격증</div>
+      <div class="list-item">
+        <div class="li-period">2025.06</div>
+        <div class="li-name">SQL 개발자 (SQLD)</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">2025.06</div>
+        <div class="li-name">GAIQ</div>
+        <div class="li-meta">Google Analytics Individual Qualification</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">2024.02</div>
+        <div class="li-name">대한유도회 유도 1단</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">2024.01</div>
+        <div class="li-name">운전면허 2종 보통</div>
+      </div>
+    </div>
+    <div>
+      <div class="subtitle-bar">활동 · 봉사</div>
+      <div class="list-item">
+        <div class="li-period">2022.03 – 2023.04</div>
+        <div class="li-name">사회복지청년단체 Z team</div>
+        <div class="li-meta">대외홍보팀 · 사회사업·콘텐츠 제작</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">2022.09 – 2024.06</div>
+        <div class="li-name">강남대학교 카페 블룸즈버리</div>
+        <div class="li-meta">바리스타 및 디저트 제조</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">2022.09 – 2023.03</div>
+        <div class="li-name">다문화NGO 조인어스코리아</div>
+        <div class="li-meta">그린블루 크리에이터 13기 촬영편집팀장</div>
+      </div>
+      <div class="list-item">
+        <div class="li-period">봉사 · 총 88시간</div>
+        <div class="li-meta">서대문교육복지센터·주원지역아동센터 발달장애 멘토링, Z team 청소년 진로 프로그램 등</div>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>07</span>
+  </footer>
+</section>
+
+</div>
+</body>
+</html>

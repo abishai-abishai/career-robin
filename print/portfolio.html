@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한아비새 · 포트폴리오</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css">
+<style>
+:root {
+  --ink: #231F20;
+  --gray-700: #333;
+  --gray-500: #555;
+  --gray-400: #999;
+  --gray-300: #CCC;
+  --gray-100: #F0F0F0;
+  --gray-50: #F9F9F9;
+  --white: #FFF;
+  --navy: #10367D;
+  --navy-500: #5678B1;
+  --blue-300: #8AAAD8;
+  --blue-200: #BFDBFE;
+  --blue-soft: #EFF4FA;
+
+  /* 포트폴리오: 다크 베이스 + 라이트블루 액센트 */
+  --bg: var(--ink);
+  --fg: rgba(255,255,255,.85);
+  --fg-muted: rgba(255,255,255,.55);
+  --fg-faint: rgba(255,255,255,.35);
+  --fg-dim: rgba(255,255,255,.18);
+  --accent: var(--blue-200);
+  --accent-soft: rgba(191,219,254,.5);
+  --accent-bg: rgba(191,219,254,.12);
+  --line: rgba(255,255,255,.12);
+  --line-soft: rgba(255,255,255,.06);
+  --logo-dot: var(--blue-200);
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif; color:var(--fg); -webkit-font-smoothing:antialiased; }
+.print-wrap { padding:40px 0; }
+.slide {
+  width:1280px; height:720px;
+  margin:0 auto 32px;
+  padding:48px 64px;
+  background:var(--bg);
+  display:flex; flex-direction:column;
+  position:relative;
+  page-break-after:always;
+  box-shadow:0 4px 24px rgba(0,0,0,.4);
+  overflow:hidden;
+  color:var(--fg);
+}
+.slide:last-child { page-break-after:auto; margin-bottom:0; }
+
+@page { size: 1280px 720px; margin: 0; }
+@media print {
+  html, body { background:#1A1A1A; }
+  .print-wrap { padding:0; }
+  .slide { margin:0; box-shadow:none; }
+}
+
+/* ── Header / Footer ── */
+.s-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:32px; }
+.logo { font-weight:900; font-size:20px; letter-spacing:-.5px; color:#fff; }
+.logo .dot { color:var(--logo-dot); }
+.head-meta { font-size:11px; color:var(--fg-faint); font-weight:500; letter-spacing:.3px; }
+.s-foot { margin-top:auto; padding-top:14px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--fg-faint); }
+.s-foot .brand { font-weight:700; color:var(--fg-muted); }
+.s-foot .brand .dot { color:var(--logo-dot); }
+
+/* ── Cover Slide ── */
+.cover .s-head { padding-bottom:0; border-bottom:0; margin-bottom:0; }
+.cover-body { flex:1; display:flex; flex-direction:column; justify-content:center; }
+.cover-label { font-size:13px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--accent); margin-bottom:18px; }
+.cover-title { font-size:96px; font-weight:900; letter-spacing:-3px; margin-bottom:32px; line-height:.95; color:#fff; }
+.cover-title .dot { color:var(--logo-dot); }
+.cover-name { font-size:18px; font-weight:700; color:var(--fg); margin-bottom:6px; }
+.cover-email { font-size:13px; color:var(--fg-muted); font-weight:500; }
+
+/* ── Section title ── */
+.sec-title { font-size:22px; font-weight:800; margin-bottom:6px; letter-spacing:-.3px; color:#fff; }
+.sec-sub { font-size:13px; color:var(--fg-muted); margin-bottom:24px; line-height:1.6; }
+
+/* ── Slide 02: TOC ── */
+.toc-list { display:flex; flex-direction:column; flex:1; }
+.toc-item {
+  display:grid; grid-template-columns:80px 1fr 200px;
+  gap:24px; align-items:center;
+  padding:18px 0; border-bottom:1px solid var(--line);
+}
+.toc-item:last-child { border-bottom:none; }
+.toc-num { font-size:32px; font-weight:900; color:var(--accent); letter-spacing:-1px; }
+.toc-title { font-size:17px; font-weight:700; color:#fff; margin-bottom:5px; }
+.toc-sub { font-size:12px; color:var(--fg-muted); line-height:1.6; }
+.toc-page { font-size:11px; font-weight:700; color:var(--fg-faint); text-align:right; letter-spacing:.5px; }
+
+/* ── Project Slide ── */
+.proj-eyebrow { font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+.proj-title { font-size:26px; font-weight:800; color:#fff; margin-bottom:5px; letter-spacing:-.5px; }
+.proj-sub { font-size:12.5px; color:var(--fg-muted); margin-bottom:16px; line-height:1.6; }
+
+.proj-body { flex:1; display:grid; grid-template-columns:1.4fr 1fr; gap:28px; }
+.proj-thumb {
+  border-radius:8px; overflow:hidden; background:#000;
+  border:1px solid var(--line); aspect-ratio:16/9;
+  display:flex; align-items:center; justify-content:center;
+}
+.proj-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.proj-info { display:flex; flex-direction:column; gap:14px; }
+.proj-row { display:flex; flex-direction:column; gap:4px; }
+.proj-label { font-size:10.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--fg-faint); }
+.proj-value { font-size:12px; color:var(--fg); line-height:1.65; word-break:keep-all; }
+.proj-tags { display:flex; flex-wrap:wrap; gap:5px; }
+.proj-tag { font-size:10.5px; font-weight:600; padding:3px 9px; border-radius:5px; background:var(--accent-bg); color:var(--accent); border:1px solid var(--accent-soft); }
+.proj-tag.hl { background:rgba(191,219,254,.25); font-weight:700; }
+.proj-link { font-size:12px; font-weight:700; color:var(--accent); text-decoration:none; word-break:break-all; }
+
+/* ── Closing Slide (다크) ── */
+.closing { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:80px 64px; }
+.closing-logo { font-size:48px; font-weight:900; letter-spacing:-1.5px; color:#fff; margin-bottom:32px; }
+.closing-logo .dot { color:var(--accent); }
+.closing-msg { font-size:14px; color:#888; margin-bottom:18px; line-height:1.7; word-break:keep-all; text-align:center; max-width:640px; }
+.closing-contact { font-size:13px; color:#AAA; margin-bottom:auto; }
+.closing-contact .sep { color:#555; margin:0 8px; }
+.closing-meta { font-size:12px; color:#777; text-align:center; margin-top:auto; padding-top:32px; }
+</style>
+</head>
+<body>
+<div class="print-wrap">
+
+<!-- Slide 01: Cover -->
+<section class="slide cover">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">2026.04 · v1.0</div>
+  </header>
+  <div class="cover-body">
+    <div class="cover-label">Portfolio</div>
+    <h1 class="cover-title">포트폴리오<span class="dot">.</span></h1>
+    <div class="cover-name">한아비새 / Han Abishai</div>
+    <div class="cover-email">rainbirddd25@gmail.com</div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>01</span>
+  </footer>
+</section>
+
+<!-- Slide 02: 목차 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <h2 class="sec-title">목차</h2>
+  <p class="sec-sub">사이드 프로젝트·기획안·제안서·아카이브 6건.</p>
+  <div class="toc-list">
+    <div class="toc-item">
+      <div class="toc-num">#1</div>
+      <div>
+        <div class="toc-title">FILA 프로젝트 관리 대시보드</div>
+        <div class="toc-sub">사내 도구 — 루쿠쿠 PM 업무 효율화 대시보드 (개인 데모)</div>
+      </div>
+      <div class="toc-page">P. 03</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-num">#2</div>
+      <div>
+        <div class="toc-title">다가원 그룹웨어</div>
+        <div class="toc-sub">사이드 프로젝트 — 오피스 그룹웨어 플랫폼 기획</div>
+      </div>
+      <div class="toc-page">P. 04</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-num">#3</div>
+      <div>
+        <div class="toc-title">이전 등기 업무 활성화 제안</div>
+        <div class="toc-sub">코스 — 법무사 등기 업무 플랫폼 제안서</div>
+      </div>
+      <div class="toc-page">P. 05</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-num">#4</div>
+      <div>
+        <div class="toc-title">법무사 사무소 소개 키워드</div>
+        <div class="toc-sub">코스 — 차주 접근성 향상 기능 기획</div>
+      </div>
+      <div class="toc-page">P. 06</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-num">#5</div>
+      <div>
+        <div class="toc-title">UX 개선 제안</div>
+        <div class="toc-sub">애드콘 — 쿠폰 마케팅 서비스 UX 개선 제안서</div>
+      </div>
+      <div class="toc-page">P. 07</div>
+    </div>
+    <div class="toc-item">
+      <div class="toc-num">App.</div>
+      <div>
+        <div class="toc-title">다우기술 품질관리 경력 상세</div>
+        <div class="toc-sub">9개월 QA 재직 리소스 아카이브</div>
+      </div>
+      <div class="toc-page">P. 08</div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>02</span>
+  </footer>
+</section>
+
+<!-- Slide 03: #1 FILA -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <div class="proj-eyebrow">#1 · 개인 데모 · 2026.03 ~ 04</div>
+  <h2 class="proj-title">FILA 프로젝트 관리 대시보드</h2>
+  <p class="proj-sub">사내 도구 — 루쿠쿠 PM 업무 효율화 대시보드 / 자체 빌드</p>
+  <div class="proj-body">
+    <div class="proj-thumb"><img src="../assets/portfolio/01-fila-1.jpg" alt="FILA 대시보드"></div>
+    <div class="proj-info">
+      <div class="proj-row">
+        <div class="proj-label">개요</div>
+        <div class="proj-value">FILA 고객사 프로젝트 진행 상황 추적·태스크·리소스 통합 관리 사내 대시보드. 흩어진 시트·이슈 트래커를 한 곳에 정리.</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">주요 기능</div>
+        <div class="proj-value">태스크 보드·캘린더·테이블 3뷰 / Supabase 인증·실시간 영속·다중 사용자 협업 / AI 풀스택 단독 빌드 (기획~배포)</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">기술</div>
+        <div class="proj-tags">
+          <span class="proj-tag hl">Claude Code</span>
+          <span class="proj-tag">Supabase</span>
+          <span class="proj-tag">Vercel</span>
+        </div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">비고</div>
+        <div class="proj-value" style="font-size:11px;color:var(--fg-faint);line-height:1.6">※ 본 데모는 퇴사 후 개인 클로드로 빌드한 도구이며, 사내 PM단에서 실운영 중인 대시보드 자산은 인수인계 후 분리·보존 중. 사내 운영 버전과 별도의 개인 데모.</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">링크</div>
+        <a class="proj-link" href="https://lukuku-fila-int.vercel.app/">lukuku-fila-int.vercel.app →</a>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>03</span>
+  </footer>
+</section>
+
+<!-- Slide 04: #2 다가원 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <div class="proj-eyebrow">#2 · 사이드 프로젝트 · 2025.10 ~</div>
+  <h2 class="proj-title">다가원 그룹웨어</h2>
+  <p class="proj-sub">오피스 그룹웨어 플랫폼 / 5인조 팀 (개발 4 + 기획 1)</p>
+  <div class="proj-body">
+    <div class="proj-thumb"><img src="../assets/portfolio/02-dagaone-1.jpg" alt="다가원 그룹웨어"></div>
+    <div class="proj-info">
+      <div class="proj-row">
+        <div class="proj-label">개요</div>
+        <div class="proj-value">그룹웨어 서비스 기능 정의 및 프로젝트 관리.</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">역할 · 산출물</div>
+        <div class="proj-value">IA·메뉴 구조도 작성 및 상세 기능 정의 / 프론트 UI·UX 정의 + 백엔드 테이블 설계 어시스트 / Figma Make·Claude Code로 화면 프로토타이핑 / 이해관계자 커뮤니케이션 주도</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">기술</div>
+        <div class="proj-tags">
+          <span class="proj-tag hl">Claude Code</span>
+          <span class="proj-tag">Figma</span>
+          <span class="proj-tag">FigmaMake</span>
+          <span class="proj-tag">Notion</span>
+        </div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">문서</div>
+        <a class="proj-link" href="https://www.figma.com/design/oh3iPFjMQ5idX5wHAKaWqk/">🅵 [다가원 그룹웨어🌊] 기획안 →</a>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>04</span>
+  </footer>
+</section>
+
+<!-- Slide 05: #3 코스 이전 등기 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <div class="proj-eyebrow">#3 · 제안서 · 2025.08.22 ~ 09.04</div>
+  <h2 class="proj-title">이전 등기 업무 활성화 제안</h2>
+  <p class="proj-sub">코스 — 법무사 등기 업무 플랫폼 / 데이터 분석 기반 제안서</p>
+  <div class="proj-body">
+    <div class="proj-thumb"><img src="../assets/portfolio/03-cose-3.jpg" alt="이전 등기 제안"></div>
+    <div class="proj-info">
+      <div class="proj-row">
+        <div class="proj-label">개요</div>
+        <div class="proj-value">코스 법무사의 소유권 이전 등기 업무 활성화 기능 제안. 9장 슬라이드(타이틀·목차·ASIS·레퍼런스·A/B/C안·기대효과·Appendix).</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">역할 · 산출물</div>
+        <div class="proj-value">법무사의 법정 수수료 상한액 초과 사례 데이터 분석 / 이전 등기 활성화 신규 기능·유저 플로우 제안 (A/B/C안)</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">기술</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+          <span class="proj-tag">Python</span>
+          <span class="proj-tag">Pandas</span>
+          <span class="proj-tag">Numpy</span>
+          <span class="proj-tag">Tableau</span>
+        </div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">파일</div>
+        <a class="proj-link" href="https://www.figma.com/design/7wDcJTyAbRtfB7alMiqcQc/?node-id=16-9306">🅵 [포트폴리오] 한아비새.fig (이전 등기) →</a>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>05</span>
+  </footer>
+</section>
+
+<!-- Slide 06: #4 코스 키워드 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <div class="proj-eyebrow">#4 · 기획서 · 2025.09.03 ~ 09.09</div>
+  <h2 class="proj-title">법무사 사무소 소개 키워드</h2>
+  <p class="proj-sub">코스 — 법무사 등기 업무 플랫폼 / 차주 접근성 향상 기능</p>
+  <div class="proj-body">
+    <div class="proj-thumb"><img src="../assets/portfolio/04-keyword-1.jpg" alt="사무소 소개 키워드"></div>
+    <div class="proj-info">
+      <div class="proj-row">
+        <div class="proj-label">개요</div>
+        <div class="proj-value">차주(채무자)의 코스 앱 접근성 향상을 위한 법무사 사무소 소개 키워드 기능 기획.</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">역할 · 산출물</div>
+        <div class="proj-value">상세 기능 정의·유저 플로우 시각화 / 최초 기획 단계부터 운영 서버 릴리즈까지의 프로젝트 관리 현황 공유</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">기술</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+          <span class="proj-tag">Notion</span>
+        </div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">파일</div>
+        <a class="proj-link" href="https://www.figma.com/design/7wDcJTyAbRtfB7alMiqcQc/?node-id=16-42">🅵 [포트폴리오] 한아비새.fig (소개 키워드) →</a>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>06</span>
+  </footer>
+</section>
+
+<!-- Slide 07: #5 UX 개선 -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <div class="proj-eyebrow">#5 · 제안서 · 2025.06.02 ~ 06.04</div>
+  <h2 class="proj-title">UX 개선 제안</h2>
+  <p class="proj-sub">애드콘(쿠팝비즈) — 쿠폰 마케팅 서비스 UX 개선 제안서</p>
+  <div class="proj-body">
+    <div class="proj-thumb"><img src="../assets/portfolio/05-ux-1.jpg" alt="UX 개선 제안"></div>
+    <div class="proj-info">
+      <div class="proj-row">
+        <div class="proj-label">개요</div>
+        <div class="proj-value">다우기술 쿠폰 마케팅 서비스 '쿠팝비즈'의 UX 개선 제안서. QA 실무 시절 경험을 토대로 작성.</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">역할 · 산출물</div>
+        <div class="proj-value">QA 실무 당시 Fail 건들을 바탕으로 사용성 문제 정의 / UX·사용성 개선안 수립</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">기술</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Figma</span>
+        </div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">파일</div>
+        <a class="proj-link" href="https://www.figma.com/design/7wDcJTyAbRtfB7alMiqcQc/?node-id=0-1">🅵 [포트폴리오] 한아비새.fig (UX 개선) →</a>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>07</span>
+  </footer>
+</section>
+
+<!-- Slide 08: Appendix -->
+<section class="slide">
+  <header class="s-head">
+    <div class="logo">Han Abishai<span class="dot">.</span></div>
+    <div class="head-meta">포트폴리오 · 한아비새</div>
+  </header>
+  <div class="proj-eyebrow">Appendix · 2024.06 – 2025.03</div>
+  <h2 class="proj-title">다우기술 품질관리 경력 상세</h2>
+  <p class="proj-sub">9개월 QA 재직 리소스 아카이브 / 스프레드시트 기반</p>
+  <div class="proj-body">
+    <div class="proj-thumb"><img src="../assets/portfolio/06-appendix-1.jpg" alt="다우기술 QA 아카이브"></div>
+    <div class="proj-info">
+      <div class="proj-row">
+        <div class="proj-label">개요</div>
+        <div class="proj-value">㈜다우기술에서 9개월 간 QA로 재직하며 참여한 리소스, UX 기획 산출물, TC 작성 예시, 결함관리 슬라이드 템플릿 등을 아카이브한 스프레드시트.</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">포함 자산</div>
+        <div class="proj-value">쿠팝비즈 1·2차 단위 테스트 / 비즈쿠팝 EOS 업그레이드 / 뿌리오 메인 개편·모바일 설문 / 다우오피스 Sprint 1~3 테스트 (총 23,464건 TC 관련 자료)</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">기술</div>
+        <div class="proj-tags">
+          <span class="proj-tag">Spreadsheets</span>
+        </div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-label">파일</div>
+        <a class="proj-link" href="https://docs.google.com/spreadsheets/d/1afCbCsN84dlLC0dEeXY9sfk-4ELHzivE8NV7gV9-4tE/">🗂 다우기술 품질관리 경력 상세 →</a>
+      </div>
+    </div>
+  </div>
+  <footer class="s-foot">
+    <span class="brand">Han Abishai<span class="dot">.</span></span>
+    <span>08</span>
+  </footer>
+</section>
+
+<!-- Slide 09: Closing -->
+<section class="slide closing">
+  <div class="closing-logo">Han Abishai<span class="dot">.</span></div>
+  <div class="closing-msg">읽어주셔서 감사합니다.<br>QA에서 시작해 기획·PM으로 이어진 여정의 끝에서, 다음 3년의 임팩트를 함께 만들 수 있는 곳을 찾고 있습니다.</div>
+  <div class="closing-contact">
+    <span>rainbirddd25@gmail.com</span>
+    <span class="sep">·</span>
+    <span>robinhan.vercel.app</span>
+  </div>
+  <div class="closing-meta">한아비새 · Career & Portfolio · 2026.04</div>
+</section>
+
+</div>
+</body>
+</html>
