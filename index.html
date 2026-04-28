@@ -239,6 +239,12 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .sp-ol li::before { content:attr(data-n); position:absolute; left:0; color:var(--navy-3); font-weight:700; font-family:var(--en); font-size:12px; }
 #portfolio .sp { margin-bottom:18px; }
 #portfolio .sp:last-child { margin-bottom:0; }
+.sp-thumb { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#000; }
+.sp-thumb-track { display:flex; height:100%; transition:transform .8s cubic-bezier(.4,0,.2,1); will-change:transform; }
+.sp-thumb-track img { flex:0 0 100%; width:100%; height:100%; object-fit:cover; display:block; }
+.sp-thumb-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; padding:5px 10px; background:rgba(0,0,0,.35); border-radius:100px; backdrop-filter:blur(6px); }
+.sp-thumb-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.45); transition:background .3s ease, width .3s ease; }
+.sp-thumb-dot.on { background:#fff; width:18px; border-radius:3px; }
 .sp-d { font-size:12.5px; color:rgba(255,255,255,.55); margin-bottom:14px; line-height:1.7; word-break:keep-all; }
 .sp-d + .sp-cl { margin-top:4px; }
 .sp-link { display:inline-block; color:var(--navy-bg); font-size:13px; font-weight:600; text-decoration:none; line-height:1.6; word-break:break-all; }
@@ -651,6 +657,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
         <!-- #1. FILA 프로젝트 관리 대시보드 -->
         <div class="sp a sc" data-d="2">
+          <div class="sp-thumb">
+            <div class="sp-thumb-track">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+            </div>
+            <div class="sp-thumb-dots">
+              <span class="sp-thumb-dot on"></span>
+              <span class="sp-thumb-dot"></span>
+              <span class="sp-thumb-dot"></span>
+            </div>
+          </div>
           <div class="sp-top">
             <div class="sp-badge">ing · 2026.03 ~</div>
             <div class="sp-title">#1. FILA 프로젝트 관리 대시보드</div>
@@ -681,6 +699,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
         <!-- #2. 다가원 그룹웨어 -->
         <div class="sp a sc" data-d="3">
+          <div class="sp-thumb">
+            <div class="sp-thumb-track">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+            </div>
+            <div class="sp-thumb-dots">
+              <span class="sp-thumb-dot on"></span>
+              <span class="sp-thumb-dot"></span>
+              <span class="sp-thumb-dot"></span>
+            </div>
+          </div>
           <div class="sp-top">
             <div class="sp-badge">ing · 2025.10 ~</div>
             <div class="sp-title">#2. 다가원 그룹웨어</div>
@@ -711,6 +741,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
         <!-- #3. 코스 / 이전 등기 업무 활성화 제안 -->
         <div class="sp a sc" data-d="4">
+          <div class="sp-thumb">
+            <div class="sp-thumb-track">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+            </div>
+            <div class="sp-thumb-dots">
+              <span class="sp-thumb-dot on"></span>
+              <span class="sp-thumb-dot"></span>
+              <span class="sp-thumb-dot"></span>
+            </div>
+          </div>
           <div class="sp-top">
             <div class="sp-badge">제안서 · 2025.08.22 ~ 09.04</div>
             <div class="sp-title">#3. 이전 등기 업무 활성화 제안</div>
@@ -738,6 +780,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
         <!-- #4. 코스 / 법무사 사무소 소개 키워드 -->
         <div class="sp a sc" data-d="5">
+          <div class="sp-thumb">
+            <div class="sp-thumb-track">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+            </div>
+            <div class="sp-thumb-dots">
+              <span class="sp-thumb-dot on"></span>
+              <span class="sp-thumb-dot"></span>
+              <span class="sp-thumb-dot"></span>
+            </div>
+          </div>
           <div class="sp-top">
             <div class="sp-badge">기획서 · 2025.09.03 ~ 09.09</div>
             <div class="sp-title">#4. 법무사 사무소 소개 키워드</div>
@@ -765,6 +819,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
         <!-- #5. 애드콘 / UX 개선 제안 -->
         <div class="sp a sc" data-d="6">
+          <div class="sp-thumb">
+            <div class="sp-thumb-track">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+            </div>
+            <div class="sp-thumb-dots">
+              <span class="sp-thumb-dot on"></span>
+              <span class="sp-thumb-dot"></span>
+              <span class="sp-thumb-dot"></span>
+            </div>
+          </div>
           <div class="sp-top">
             <div class="sp-badge">제안서 · 2025.06.02 ~ 06.04</div>
             <div class="sp-title">#5. UX 개선 제안</div>
@@ -792,6 +858,18 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
 
         <!-- Appendix. 다우기술 품질관리 경력 상세 -->
         <div class="sp a sc sp-app" data-d="7">
+          <div class="sp-thumb">
+            <div class="sp-thumb-track">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+              <img src="./assets/portfolio/sample.jpg" alt="" loading="lazy">
+            </div>
+            <div class="sp-thumb-dots">
+              <span class="sp-thumb-dot on"></span>
+              <span class="sp-thumb-dot"></span>
+              <span class="sp-thumb-dot"></span>
+            </div>
+          </div>
           <div class="sp-top">
             <div class="sp-badge">Appendix</div>
             <div class="sp-title">다우기술 품질관리 경력 상세</div>
@@ -1116,6 +1194,37 @@ class FP {
 }
 
 const fp = new FP();
+
+// Portfolio thumbnail carousels
+(function() {
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.sp-thumb').forEach(carousel => {
+    const track = carousel.querySelector('.sp-thumb-track');
+    const slides = track.querySelectorAll('img');
+    const dots = carousel.querySelectorAll('.sp-thumb-dot');
+    if (slides.length <= 1) return;
+
+    let idx = 0, timer = null, inView = false, paused = false;
+
+    function show(i) {
+      idx = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, di) => d.classList.toggle('on', di === idx));
+    }
+    function start() {
+      if (timer || paused || !inView || reduced) return;
+      timer = setInterval(() => show(idx + 1), 4500);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    carousel.addEventListener('mouseenter', () => { paused = true; stop(); });
+    carousel.addEventListener('mouseleave', () => { paused = false; start(); });
+
+    new IntersectionObserver(entries => {
+      entries.forEach(e => { inView = e.isIntersecting; inView ? start() : stop(); });
+    }, { threshold: 0.3 }).observe(carousel);
+  });
+})();
 
 // Skill badge popover
 (() => {
