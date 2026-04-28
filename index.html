@@ -239,11 +239,12 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .sp-ol li::before { content:attr(data-n); position:absolute; left:0; color:var(--navy-3); font-weight:700; font-family:var(--en); font-size:12px; }
 #portfolio .sp { margin-bottom:18px; }
 #portfolio .sp:last-child { margin-bottom:0; }
-.sp-thumb { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#000; }
+.sp-thumb { position:relative; width:100%; aspect-ratio:16/9; overflow:hidden; background:#000; cursor:grab; touch-action:pan-y; user-select:none; -webkit-user-select:none; }
+.sp-thumb.dragging { cursor:grabbing; }
 .sp-thumb-track { display:flex; height:100%; transition:transform .8s cubic-bezier(.4,0,.2,1); will-change:transform; }
-.sp-thumb-track img { flex:0 0 100%; width:100%; height:100%; object-fit:cover; display:block; }
+.sp-thumb-track img { flex:0 0 100%; width:100%; height:100%; object-fit:cover; display:block; pointer-events:none; -webkit-user-drag:none; }
 .sp-thumb-dots { position:absolute; bottom:12px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:2; padding:5px 10px; background:rgba(0,0,0,.35); border-radius:100px; backdrop-filter:blur(6px); }
-.sp-thumb-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.45); transition:background .3s ease, width .3s ease; }
+.sp-thumb-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.45); transition:background .3s ease, width .3s ease; cursor:pointer; }
 .sp-thumb-dot.on { background:#fff; width:18px; border-radius:3px; }
 .sp-d { font-size:12.5px; color:rgba(255,255,255,.55); margin-bottom:14px; line-height:1.7; word-break:keep-all; }
 .sp-d + .sp-cl { margin-top:4px; }
@@ -1198,6 +1199,7 @@ const fp = new FP();
 // Portfolio thumbnail carousels
 (function() {
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TRANSITION = 'transform .8s cubic-bezier(.4,0,.2,1)';
   document.querySelectorAll('.sp-thumb').forEach(carousel => {
     const track = carousel.querySelector('.sp-thumb-track');
     const slides = track.querySelectorAll('img');
@@ -1205,9 +1207,11 @@ const fp = new FP();
     if (slides.length <= 1) return;
 
     let idx = 0, timer = null, inView = false, paused = false;
+    let dragging = false, pointerId = null, startX = 0, dx = 0, width = 0;
 
-    function show(i) {
+    function show(i, animate = true) {
       idx = (i + slides.length) % slides.length;
+      track.style.transition = animate ? TRANSITION : 'none';
       track.style.transform = `translateX(-${idx * 100}%)`;
       dots.forEach((d, di) => d.classList.toggle('on', di === idx));
     }
@@ -1216,9 +1220,55 @@ const fp = new FP();
       timer = setInterval(() => show(idx + 1), 3000);
     }
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
 
     carousel.addEventListener('mouseenter', () => { paused = true; stop(); });
-    carousel.addEventListener('mouseleave', () => { paused = false; start(); });
+    carousel.addEventListener('mouseleave', () => { if (!dragging) { paused = false; start(); } });
+
+    dots.forEach((dot, di) => {
+      dot.addEventListener('click', e => {
+        e.stopPropagation();
+        show(di);
+        restart();
+      });
+    });
+
+    carousel.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'mouse' && e.button !== 0) return;
+      if (e.target.closest('.sp-thumb-dot')) return;
+      dragging = true;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      dx = 0;
+      width = carousel.clientWidth;
+      track.style.transition = 'none';
+      carousel.classList.add('dragging');
+      stop();
+      try { carousel.setPointerCapture(pointerId); } catch (_) {}
+    });
+
+    carousel.addEventListener('pointermove', e => {
+      if (!dragging || e.pointerId !== pointerId) return;
+      dx = e.clientX - startX;
+      const pct = (dx / width) * 100;
+      track.style.transform = `translateX(calc(-${idx * 100}% + ${pct}%))`;
+    });
+
+    function endDrag(e) {
+      if (!dragging || (e.pointerId !== undefined && e.pointerId !== pointerId)) return;
+      dragging = false;
+      try { carousel.releasePointerCapture(pointerId); } catch (_) {}
+      pointerId = null;
+      carousel.classList.remove('dragging');
+      const threshold = Math.max(50, width * 0.18);
+      if (dx > threshold) show(idx - 1);
+      else if (dx < -threshold) show(idx + 1);
+      else show(idx);
+      paused = false;
+      start();
+    }
+    carousel.addEventListener('pointerup', endDrag);
+    carousel.addEventListener('pointercancel', endDrag);
 
     new IntersectionObserver(entries => {
       entries.forEach(e => { inView = e.isIntersecting; inView ? start() : stop(); });
