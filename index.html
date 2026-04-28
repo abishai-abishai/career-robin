@@ -151,6 +151,12 @@ nav.light .nav-links a:hover, nav.light .nav-links a.on { color:var(--ink); }
 .sk:hover { border-color:var(--navy); background:var(--navy-soft); }
 .s-head { display:flex; align-items:baseline; flex-wrap:wrap; }
 .sk-hint { text-transform:none; letter-spacing:0; font-weight:500; font-size:10.5px; color:var(--g400); font-family:var(--kr); margin-left:10px; }
+.sk-hint .hint-d { display:none; }
+.sk-hint .hint-m { display:inline; }
+@media (hover: hover) and (pointer: fine) {
+  .sk-hint .hint-d { display:inline; }
+  .sk-hint .hint-m { display:none; }
+}
 .sk-hint .sk-go { color:var(--g500); text-decoration:underline; cursor:pointer; }
 .sk-hint .sk-go:hover { color:var(--g700); }
 .sk-pop { position:fixed; z-index:9999; background:#fff; border:1px solid #E5E7EB; border-radius:8px; padding:12px 14px; font-size:12.5px; line-height:1.6; color:var(--g700); box-shadow:0 10px 30px rgba(0,0,0,.12); max-width:340px; font-family:var(--kr); }
@@ -494,7 +500,7 @@ footer { background:var(--ink); padding:48px 48px; display:flex; justify-content
             </ul>
           </div>
           <div class="a fr">
-            <p class="s-head">Skills<span class="sk-hint">배지에 마우스 호버 시 활용 이력이 나타납니다. 자세한 정보는 <a class="sk-go" data-go="career">Career</a> 페이지를 참고해주세요.</span></p>
+            <p class="s-head">Skills<span class="sk-hint"><span class="hint-d">각 배지 마우스 호버 시 활용 이력이 나타납니다.</span><span class="hint-m">각 배지 선택 시 활용 이력이 나타납니다.</span> 자세한 정보는 <a class="sk-go" data-go="career">Career</a> 페이지를 참고해주세요.</span></p>
             <div class="sg"><div class="sg-name">PM · Planning</div><div class="st"><span class="sk mi" data-sk="[뱅크클리어] 코스 앱 유지보수 기획, [다가원 그룹웨어] IA 수립 및 기획">Figma</span><span class="sk mi" data-sk="[다가원 그룹웨어] 목업 화면 빌드">FigmaMake</span><span class="sk mi" data-sk="[루쿠쿠] 입사 후 코드 분석을 바탕으로 고객사 유지보수, 개인 프로젝트를 위한 본 한아비새 커리어 페이지 등 바이브 코딩">Claude</span><span class="sk mi" data-sk="[뱅크클리어] 정책정의서 작성 및 업무 소통">Notion</span><span class="sk mi" data-sk="[다우기술] 자사서비스 TC 작성, QC 수행 및 결함 관리">GoogleDocs</span><span class="sk mi" data-sk="[루쿠쿠] PM 대내외 소통 및 문서 관리">Slack</span></div></div>
             <div class="sg"><div class="sg-name">Data · Analytics</div><div class="st"><span class="sk" data-sk="[뱅크클리어] 기능 제안을 위한 사용자 데이터 분석">Python</span><span class="sk" data-sk="[뱅크클리어] 법무수수료 상한액 관련 사용자 데이터 분석">Pandas</span><span class="sk" data-sk="[뱅크클리어] 법무수수료 상한액 관련 사용자 데이터 분석">Numpy</span><span class="sk" data-sk="[뱅크클리어] 법무수수료 상한액 관련 사용자 데이터 분석">Tableau</span><span class="sk" data-sk="자격증 취득 외 실무 경험 없음">GA4</span></div></div>
             <div class="sg"><div class="sg-name">DB · Collab</div><div class="st"><span class="sk" data-sk="[루쿠쿠] 스토어API 및 SQL 쿼리를 사용한 스토어 상/주문 등품 일괄 관리, SQLD 자격증 취득">SQL</span><span class="sk" data-sk="[다우기술] 뿌리오 서비스 이슈관리">Jira</span></div></div>
