@@ -53,9 +53,10 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
 
 @page { size: 1280px 720px; margin: 0; }
 @media print {
-  html, body { background:#1A1A1A; }
+  html, body { background:#1A1A1A; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   .print-wrap { padding:0; }
-  .slide { margin:0; box-shadow:none; }
+  .slide { margin:0; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 }
 
 /* ── Header / Footer ── */

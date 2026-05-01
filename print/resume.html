@@ -44,9 +44,10 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 
 @page { size: 1280px 720px; margin: 0; }
 @media print {
-  html, body { background:#fff; }
+  html, body { background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   .print-wrap { padding:0; }
-  .slide { margin:0; box-shadow:none; }
+  .slide { margin:0; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 }
 
 /* ── Header / Footer ── */
@@ -292,10 +293,10 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
           </div>
         </div>
         <div class="exp-item">
-          <div class="exp-period">2024.06 – 2025.03<br>10개월</div>
+          <div class="exp-period">2024.06 – 2025.03<br>9개월</div>
           <div>
             <div class="exp-name">㈜다우기술 품질관리팀</div>
-            <div class="exp-role">QA 엔지니어 · 인턴계약직 <span class="exp-leave">(계약 종료)</span><br>쿠팝(애드콘) · 뿌리오 · 다우오피스 자사 도메인 QA</div>
+            <div class="exp-role">QA 엔지니어 · 인턴 <span class="exp-leave">(계약 종료)</span><br>쿠팝(애드콘) · 뿌리오 · 다우오피스 자사 도메인 QA</div>
           </div>
         </div>
       </div>

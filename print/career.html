@@ -45,9 +45,10 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 
 @page { size: 1280px 720px; margin: 0; }
 @media print {
-  html, body { background:#fff; }
+  html, body { background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   .print-wrap { padding:0; }
-  .slide { margin:0; box-shadow:none; }
+  .slide { margin:0; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 }
 
 .s-head { display:flex; justify-content:space-between; align-items:center; padding-bottom:14px; border-bottom:1px solid var(--gray-100); margin-bottom:28px; }
@@ -120,7 +121,8 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 .flow-period.mi { color:var(--navy-500); }
 .flow-period.co { color:var(--navy); }
 .flow-role { font-size:18px; font-weight:800; letter-spacing:-.3px; color:var(--ink); }
-.flow-co { font-size:12px; color:var(--gray-500); margin-bottom:6px; }
+.flow-co { font-size:12px; color:var(--gray-500); margin-bottom:6px; display:flex; justify-content:space-between; align-items:baseline; gap:8px; }
+.flow-resign { font-size:10.5px; color:var(--gray-400); font-weight:600; flex-shrink:0; letter-spacing:-.2px; }
 .flow-hook { font-size:11.5px; color:var(--gray-700); line-height:1.6; word-break:keep-all; }
 .flow-hook b { color:var(--ink); font-weight:800; }
 .flow-arrow { display:flex; align-items:center; justify-content:center; width:34px; font-size:18px; color:var(--gray-300); flex-shrink:0; font-weight:700; }
@@ -295,27 +297,27 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   <div class="tldr-block">
     <div class="tldr-eyebrow">Summary</div>
     <p class="tldr-text">QA → 기획 → PM 으로 이어진 20개월. 사용자 관점으로 발견하고, 정의하며, 실행해왔습니다.</p>
-    <p class="tldr-bio">㈜다우기술(QA, 10개월) → ㈜뱅크클리어(서비스 기획자, 4개월) → ㈜루쿠쿠(PM, 6개월).<br>각 역할에서 '이 서비스가 사용자에게 어떻게 닿고 있는가'라는 같은 질문을 다른 도구로 풀어왔습니다.</p>
+    <p class="tldr-bio">각 역할에서 '이 서비스가 사용자에게 어떻게 닿고 있는가'라는 같은 질문을 다른 도구로 풀어왔습니다.</p>
   </div>
   <div class="flow">
     <div class="flow-node bl">
-      <div class="flow-period bl">2024.06 – 2025.03 · 10개월</div>
+      <div class="flow-period bl">2024.06 – 2025.03 · 9개월</div>
       <div class="flow-role">QA 엔지니어</div>
-      <div class="flow-co">㈜다우기술 품질관리팀 · 인턴계약직</div>
+      <div class="flow-co"><span>㈜다우기술 품질관리팀 · 인턴</span><span class="flow-resign">계약 만료</span></div>
       <div class="flow-hook">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건</b>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
     </div>
     <div class="flow-arrow">→</div>
     <div class="flow-node mi">
       <div class="flow-period mi">2025.07 – 2025.10 · 4개월</div>
       <div class="flow-role">서비스 기획자</div>
-      <div class="flow-co">㈜뱅크클리어 기획팀 · 정규직</div>
+      <div class="flow-co"><span>㈜뱅크클리어 기획팀 · 정규직</span><span class="flow-resign">수습 종료 (경영악화)</span></div>
       <div class="flow-hook">법정 수수료 초과 사례를 데이터로 발견하고 분기 처리 기능으로 해결. <b>전사 유일 기획자</b>로 A to Z 프로덕트를 책임졌습니다.</div>
     </div>
     <div class="flow-arrow">→</div>
     <div class="flow-node co">
       <div class="flow-period co">2025.11 – 2026.04 · 6개월</div>
-      <div class="flow-role">PM(Project Manager)</div>
-      <div class="flow-co">㈜루쿠쿠 · 정규직</div>
+      <div class="flow-role">PM (Project Manager)</div>
+      <div class="flow-co"><span>㈜루쿠쿠 · 정규직</span><span class="flow-resign">이직</span></div>
       <div class="flow-hook">기획자로 입사 후 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업 주도. PDP 리뉴얼로 스토어 이탈율 <b>33% 감소</b>, 인수인계 공백을 AI로 돌파했습니다.</div>
     </div>
   </div>
@@ -334,9 +336,9 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
   <div class="tl-wrap">
     <span class="tdot bl"></span>
     <div class="t-hdr">
-      <div class="t-per bl">2024.06 – 2025.03 · 10개월</div>
+      <div class="t-per bl">2024.06 – 2025.03 · 9개월</div>
       <div class="t-role">QA 엔지니어</div>
-      <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴계약직 <span class="nt">(*3개월 인턴 후 계약 2회 연장, 총 10개월 근무)</span></div>
+      <div class="t-meta">㈜다우기술 개발센터 커머스개발부 품질관리팀 · 사원 · 인턴 <span class="nt">(*인턴으로 9개월 근무)</span></div>
       <div class="t-solved bl">What I've Discovered</div>
       <div class="t-hook bl">쿠팝비즈 결함율 <b>39% → 0%</b> 달성. <b>23,464건</b>의 TC를 다루며 QA로 사용자 관점을 체득했습니다.</div>
     </div>
@@ -436,7 +438,7 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
     <span class="tdot co"></span>
     <div class="t-hdr">
       <div class="t-per co">2025.11 – 2026.04 · 6개월</div>
-      <div class="t-role">PM(Project Manager)</div>
+      <div class="t-role">PM (Project Manager)</div>
       <div class="t-meta">㈜루쿠쿠 · 정규직 <span class="nt">(*6개월 근무 후 이직)</span></div>
       <div class="t-solved co">What I've Delivered</div>
       <div class="t-hook co">기획자로 입사 후 프로젝트 환경상 PM 역할에 집중하며 글로벌 브랜드 쇼피파이 협업 주도. PDP 리뉴얼로 스토어 이탈율 <b>33% 감소</b>, 인수인계 공백을 AI로 돌파했습니다.</div>
@@ -576,6 +578,15 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
     <div>
       <div class="subtitle-bar">활동</div>
       <div class="activity-grid">
+        <div class="list-item">
+          <div class="li-period">2018.08</div>
+          <div class="li-name">소설 「향기, 통증, 가면.」 출판</div>
+        </div>
+        <div class="list-item">
+          <div class="li-period">2018.10 – 2019.03</div>
+          <div class="li-name">YG엔터테인먼트 디렉터 프로젝트 4기</div>
+          <div class="li-meta">작사가 활동</div>
+        </div>
         <div class="list-item">
           <div class="li-period">2021.08 – 2022.08</div>
           <div class="li-name">뽀로로파크 영등포빅마켓점</div>

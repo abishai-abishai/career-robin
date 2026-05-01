@@ -45,9 +45,10 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
 
 @page { size: 1280px 720px; margin: 0; }
 @media print {
-  html, body { background:#fff; }
+  html, body { background:#fff; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
   .print-wrap { padding:0; }
-  .slide { margin:0; box-shadow:none; }
+  .slide { margin:0; box-shadow:none; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  * { -webkit-print-color-adjust:exact; print-color-adjust:exact; }
 }
 
 /* ── Header / Footer ── */
@@ -196,7 +197,7 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
     <div class="subtitle-bar">들어가며</div>
     <p class="intro-tldr">QA에서 사용자의 문제를 발견하고, 기획으로 정의하며, PM으로 실행을 맡아왔습니다.</p>
     <div class="intro-greet">
-      안녕하세요. 10개월의 QA 엔지니어, 10개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <b>QA에서 시작해 기획, PM으로 이어진 경험은</b> <span class="acc">서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</span>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.
+      안녕하세요. 9개월의 QA 엔지니어, 10개월의 서비스 기획자/PM 경험으로 실무 경력을 쌓아온 한아비새입니다. <b>QA에서 시작해 기획, PM으로 이어진 경험은</b> <span class="acc">서비스를 사용자의 관점에서 점검하고, 문제를 정의하며 실행으로 옮겨 온 일관된 여정</span>이었습니다. 저는 이 흐름 속에서 사용자에게 유능하고 다정하게 다가가는 UX 전문가로 성장하고 싶은 비전을 지니고 있습니다.
     </div>
   </div>
   <div class="combo-section">
@@ -234,7 +235,7 @@ html, body { background:#E5E5E5; font-family:'Wanted Sans Variable', sans-serif;
     <div class="ch-tag">#인수인계 공백을 AI로 돌파하며 글로벌 협업을 만들다</div>
     <div class="ch-punch">인수인계 공백을 <b>AI로 돌파</b>하며 글로벌 협업을 주도. 결과를 만드는 건 결국 <b>소통의 밀도</b>였습니다.</div>
     <div class="ch-body">
-      <p class="ch-p">경영 악화로 ㈜뱅크클리어 수습 종료 통보를 받은 뒤, 곧이어 이커머스 에이전시 ㈜루쿠쿠에 <b>Assistant PM</b>으로 입사하여 FILA, WILSON, LOEIL 등 글로벌 브랜드 쇼피파이 스토어 런칭·유지보수를 맡았습니다. 고객사 대응과 <b>해외 개발자(중앙아시아권)와의 영어 커뮤니케이션</b>이 주요 업무였고, 시차를 넘는 협업 속에서 <b>문제의 핵심을 파악해 상대가 이해할 수 있게 전달하는 '소통'</b>이 가장 중요한 도구임을 체감했습니다.</p>
+      <p class="ch-p">경영 악화로 ㈜뱅크클리어 수습 종료 통보를 받은 뒤, 곧이어 이커머스 에이전시 ㈜루쿠쿠에 <b>PM (Project Manager)</b>으로 입사하여 FILA, WILSON, LOEIL 등 글로벌 브랜드 쇼피파이 스토어 런칭·유지보수를 맡았습니다. 고객사 대응과 <b>해외 개발자(중앙아시아권)와의 영어 커뮤니케이션</b>이 주요 업무였고, 시차를 넘는 협업 속에서 <b>문제의 핵심을 파악해 상대가 이해할 수 있게 전달하는 '소통'</b>이 가장 중요한 도구임을 체감했습니다.</p>
       <p class="ch-p">특히 입사 초기, 규모 있는 스토어 구축 프로젝트를 단독으로 맡으며 <b>기존 인수인계 자료가 거의 없는 상황</b>에 직면했습니다. <b>Claude를 활용해 Git 내 코드 구조를 빠르게 이해</b>하고, API 연결·폴더 구조를 파악해 담당 개발자 부재 상황에서도 <b>고객사 유지보수 요청을 신속히 처리</b>했습니다. AI 활용은 '<b>정보의 공백을 메워 소통을 가능하게 만든 방식</b>'이었습니다.</p>
     </div>
   </div>
