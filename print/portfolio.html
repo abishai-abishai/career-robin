@@ -99,14 +99,16 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
 .proj-title { font-size:26px; font-weight:800; color:#fff; margin-bottom:5px; letter-spacing:-.5px; }
 .proj-sub { font-size:12.5px; color:var(--fg-muted); margin-bottom:16px; line-height:1.6; }
 
-.proj-body { flex:1; display:grid; grid-template-columns:1.4fr 1fr; gap:28px; }
+.proj-body { flex:1; display:flex; flex-direction:column; gap:24px; min-height:0; }
 .proj-thumb {
   border-radius:8px; overflow:hidden; background:#000;
-  border:1px solid var(--line); aspect-ratio:16/9;
+  border:1px solid var(--line);
   display:flex; align-items:center; justify-content:center;
 }
-.proj-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
-.proj-info { display:flex; flex-direction:column; gap:14px; }
+.proj-thumb img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+.proj-gallery { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; width:100%; flex:0 0 auto; }
+.proj-gallery .proj-thumb { aspect-ratio:16/9; }
+.proj-info { display:grid; grid-template-columns:1fr 1fr; gap:12px 32px; align-content:start; }
 .proj-row { display:flex; flex-direction:column; gap:4px; }
 .proj-label { font-size:10.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--fg-faint); }
 .proj-value { font-size:12px; color:var(--fg); line-height:1.65; word-break:keep-all; }
@@ -132,7 +134,7 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
 <section class="slide cover">
   <header class="s-head">
     <div class="logo">Han Abishai<span class="dot">.</span></div>
-    <div class="head-meta">2026.04 · v1.0</div>
+    <div class="head-meta">2026.04 · v3.0.0</div>
   </header>
   <div class="cover-body">
     <div class="cover-label">Portfolio</div>
@@ -220,7 +222,11 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
   <h2 class="proj-title">FILA 프로젝트 관리 대시보드</h2>
   <p class="proj-sub">사내 도구 — 루쿠쿠 PM 업무 효율화 대시보드 / 자체 빌드</p>
   <div class="proj-body">
-    <div class="proj-thumb"><img src="../assets/portfolio/01-fila-1.jpg" alt="FILA 대시보드"></div>
+    <div class="proj-gallery">
+      <div class="proj-thumb"><img src="../assets/portfolio/01-fila-1.jpg" alt="FILA 대시보드 #1"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/01-fila-2.jpg" alt="FILA 대시보드 #2"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/01-fila-3.jpg" alt="FILA 대시보드 #3"></div>
+    </div>
     <div class="proj-info">
       <div class="proj-row">
         <div class="proj-label">개요</div>
@@ -264,7 +270,11 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
   <h2 class="proj-title">다가원 그룹웨어</h2>
   <p class="proj-sub">오피스 그룹웨어 플랫폼 / 5인조 팀 (개발 4 + 기획 1)</p>
   <div class="proj-body">
-    <div class="proj-thumb"><img src="../assets/portfolio/02-dagaone-1.jpg" alt="다가원 그룹웨어"></div>
+    <div class="proj-gallery">
+      <div class="proj-thumb"><img src="../assets/portfolio/02-dagaone-1.jpg" alt="다가원 그룹웨어 #1"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/02-dagaone-2.jpg" alt="다가원 그룹웨어 #2"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/02-dagaone-3.jpg" alt="다가원 그룹웨어 #3"></div>
+    </div>
     <div class="proj-info">
       <div class="proj-row">
         <div class="proj-label">개요</div>
@@ -305,7 +315,11 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
   <h2 class="proj-title">이전 등기 업무 활성화 제안</h2>
   <p class="proj-sub">코스 — 법무사 등기 업무 플랫폼 / 데이터 분석 기반 제안서</p>
   <div class="proj-body">
-    <div class="proj-thumb"><img src="../assets/portfolio/03-cose-3.jpg" alt="이전 등기 제안"></div>
+    <div class="proj-gallery">
+      <div class="proj-thumb"><img src="../assets/portfolio/03-cose-1.jpg" alt="이전 등기 제안 #1"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/03-cose-4.jpg" alt="이전 등기 제안 #4"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/03-cose-5.jpg" alt="이전 등기 제안 #5"></div>
+    </div>
     <div class="proj-info">
       <div class="proj-row">
         <div class="proj-label">개요</div>
@@ -347,7 +361,11 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
   <h2 class="proj-title">법무사 사무소 소개 키워드</h2>
   <p class="proj-sub">코스 — 법무사 등기 업무 플랫폼 / 차주 접근성 향상 기능</p>
   <div class="proj-body">
-    <div class="proj-thumb"><img src="../assets/portfolio/04-keyword-1.jpg" alt="사무소 소개 키워드"></div>
+    <div class="proj-gallery">
+      <div class="proj-thumb"><img src="../assets/portfolio/04-keyword-1.jpg" alt="사무소 소개 키워드 #1"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/04-keyword-2.jpg" alt="사무소 소개 키워드 #2"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/04-keyword-3.jpg" alt="사무소 소개 키워드 #3"></div>
+    </div>
     <div class="proj-info">
       <div class="proj-row">
         <div class="proj-label">개요</div>
@@ -386,7 +404,11 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
   <h2 class="proj-title">UX 개선 제안</h2>
   <p class="proj-sub">애드콘(쿠팝비즈) — 쿠폰 마케팅 서비스 UX 개선 제안서</p>
   <div class="proj-body">
-    <div class="proj-thumb"><img src="../assets/portfolio/05-ux-1.jpg" alt="UX 개선 제안"></div>
+    <div class="proj-gallery">
+      <div class="proj-thumb"><img src="../assets/portfolio/05-ux-1.jpg" alt="UX 개선 제안 #1"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/05-ux-2.jpg" alt="UX 개선 제안 #2"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/05-ux-3.jpg" alt="UX 개선 제안 #3"></div>
+    </div>
     <div class="proj-info">
       <div class="proj-row">
         <div class="proj-label">개요</div>
@@ -424,7 +446,11 @@ html, body { background:#1A1A1A; font-family:'Wanted Sans Variable', sans-serif;
   <h2 class="proj-title">다우기술 품질관리 경력 상세</h2>
   <p class="proj-sub">9개월 QA 재직 리소스 아카이브 / 스프레드시트 기반</p>
   <div class="proj-body">
-    <div class="proj-thumb"><img src="../assets/portfolio/06-appendix-1.jpg" alt="다우기술 QA 아카이브"></div>
+    <div class="proj-gallery">
+      <div class="proj-thumb"><img src="../assets/portfolio/06-appendix-1.jpg" alt="다우기술 QA 아카이브 #1"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/06-appendix-2.jpg" alt="다우기술 QA 아카이브 #2"></div>
+      <div class="proj-thumb"><img src="../assets/portfolio/06-appendix-3.jpg" alt="다우기술 QA 아카이브 #3"></div>
+    </div>
     <div class="proj-info">
       <div class="proj-row">
         <div class="proj-label">개요</div>
